@@ -1,0 +1,22 @@
+{
+  "name": "@hancom/hwp-ui-test-mcp",
+  "version": "1.0.0",
+  "description": "한글(Hwp.exe) UI 테스트 자동화 MCP 서버",
+  "main": "src/mcp-server.js",
+  "bin": {
+    "hwp-ui-test-mcp": "src/mcp-server.js"
+  },
+  "scripts": {
+    "start": "node src/mcp-server.js",
+    "test:hwp": "node test-hwp.js"
+  },
+  "keywords": ["hwp", "hancom", "ui-test", "mcp", "automation"],
+  "author": "Hancom",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "koffi": "^2.15.6",
+    "zod": "^3.24.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "hwp-ui-test": {
+      "command": "node",
+      "args": ["src/mcp-server.js"],
+      "cwd": "C:\\Users\\minjae\\IdeaProjects\\han-office-test"
+    }
+  }
+}
