@@ -7,13 +7,20 @@
 
 const crypto = require('crypto');
 
-// === Default HWP executable path ===
-const DEFAULT_HWP_PATH =
-    'C:\\Program Files (x86)\\Hnc\\Office 2024\\HOffice130\\Bin\\Hwp.exe';
+// === Default executable paths (Office 2027) ===
+const OFFICE_BASE = 'C:\\Program Files (x86)\\Hnc\\Office 2027\\HOffice140\\Bin';
+const PRODUCTS = {
+    hwp:    { exe: OFFICE_BASE + '\\Hwp.exe',    name: '한글' },
+    hword:  { exe: OFFICE_BASE + '\\Hword.exe',  name: '한워드' },
+    hshow:  { exe: OFFICE_BASE + '\\HShow.exe',  name: '한쇼' },
+    hcell:  { exe: OFFICE_BASE + '\\HCell.exe',  name: '한셀' },
+};
+const DEFAULT_HWP_PATH = PRODUCTS.hwp.exe;
 
 // === Singleton session state ===
 const session = {
     sessionId:   null,          // UUID string
+    product:     'hwp',         // 'hwp' | 'hword' | 'hshow' | 'hcell'
     hwpProcess: {
         pid:        null,       // number
         hwnd:       null,       // koffi void* (native HWND)
@@ -40,28 +47,52 @@ function getSession() {
 
 /**
  * Initialize a new session with process info.
- * Generates a fresh UUID, resets logs and state.
- * @param {number} pid      - HWP process ID
- * @param {*}      hwnd     - Native HWND (koffi void*), may be null initially
- * @param {string} [exePath] - HWP executable path (defaults to DEFAULT_HWP_PATH)
+ * Accepts either an options object or individual arguments for backwards compatibility.
+ *
+ * Object form (preferred):
+ *   initSession({ hwpProcess: { pid, hwnd }, hwpElement, product, ... })
+ *
+ * Legacy form:
+ *   initSession(pid, hwnd, exePath)
+ *
+ * @returns {typeof session} The initialized session object
  */
-function initSession(pid, hwnd, exePath) {
+function initSession(pidOrOptions, hwnd, exePath) {
     // Clean up any previous session resources first
     _releaseResources();
 
-    session.sessionId            = crypto.randomUUID();
-    session.hwpProcess.pid       = pid;
-    session.hwpProcess.hwnd      = hwnd || null;
-    session.hwpProcess.exePath   = exePath || DEFAULT_HWP_PATH;
-    session.hwpProcess.launchedAt = new Date().toISOString();
+    session.sessionId = crypto.randomUUID();
+
+    if (pidOrOptions && typeof pidOrOptions === 'object' && !Buffer.isBuffer(pidOrOptions)) {
+        // Object form: initSession({ hwpProcess, hwpElement, product, ... })
+        const opts = pidOrOptions;
+        const proc = opts.hwpProcess || {};
+        session.hwpProcess.pid       = proc.pid || null;
+        session.hwpProcess.hwnd      = proc.hwnd || null;
+        session.hwpProcess.exePath   = proc.exePath || DEFAULT_HWP_PATH;
+        session.hwpProcess.launchedAt = new Date().toISOString();
+        session.product              = opts.product || 'hwp';
+        session.hwpElement           = opts.hwpElement || null;
+        session.crashHistory         = opts.crashHistory || [];
+        session._cachedSearchResults = opts._cachedSearchResults || [];
+    } else {
+        // Legacy form: initSession(pid, hwnd, exePath)
+        session.hwpProcess.pid       = pidOrOptions;
+        session.hwpProcess.hwnd      = hwnd || null;
+        session.hwpProcess.exePath   = exePath || DEFAULT_HWP_PATH;
+        session.hwpProcess.launchedAt = new Date().toISOString();
+        session.product              = 'hwp';
+        session.hwpElement           = null;
+        session.crashHistory         = [];
+        session._cachedSearchResults = [];
+    }
+
     session.actionLog            = [];
-    session.crashHistory         = [];
     session.isMonitoring         = false;
     session._heartbeatInterval   = null;
-    session._cachedSearchResults = [];
-    // hwpElement and uia remain from previous session if present — release them
-    session.hwpElement           = null;
     // uia is retained if already initialized (lazy singleton)
+
+    return session;
 }
 
 /**
@@ -156,6 +187,7 @@ function _releaseResources() {
 }
 
 module.exports = {
+    PRODUCTS,
     DEFAULT_HWP_PATH,
     getSession,
     initSession,

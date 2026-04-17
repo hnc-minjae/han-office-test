@@ -1,7 +1,10 @@
 node_modules/
 .env
 .omc/
+.idea/
+.claude/
 screenshots/
 reports/
 *.bmp
 *.log
+screenshot-*.png

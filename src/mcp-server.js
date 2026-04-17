@@ -10,6 +10,7 @@ function getController() { return require('./hwp-controller'); }
 function getCrashMonitor() { return require('./crash-monitor'); }
 function getActionLogger() { return require('./action-logger'); }
 function getJiraReporter() { return require('./jira-reporter'); }
+function getMonkeyTest() { return require('./monkey-test'); }
 
 const server = new McpServer({
   name: 'hwp-ui-test',
@@ -50,8 +51,9 @@ function mcpResult(data) {
 
 server.tool(
   'hwp_launch',
-  'Launch HWP (한글) application',
+  'Launch a Hancom Office application (한글, 한워드, 한쇼, 한셀)',
   {
+    product:       z.enum(['hwp', 'hword', 'hshow', 'hcell']).optional(),
     hwpPath:       z.string().optional(),
     closeLauncher: z.boolean().optional(),
     timeoutMs:     z.number().optional(),
@@ -64,8 +66,9 @@ server.tool(
 
 server.tool(
   'hwp_attach',
-  'Attach to a running HWP process',
+  'Attach to a running Hancom Office process (한글, 한워드, 한쇼, 한셀)',
   {
+    product:     z.enum(['hwp', 'hword', 'hshow', 'hcell']).optional(),
     pid:         z.number().optional(),
     windowTitle: z.string().optional(),
   },
@@ -358,6 +361,72 @@ server.tool(
   async (args) => {
     try {
       const result = await getJiraReporter().configure(args);
+      return mcpResult(result);
+    } catch (err) {
+      return mcpResult({ error: err.message });
+    }
+  }
+);
+
+// ---------------------------------------------------------------------------
+// MONKEY TESTING TOOLS (3) - NOT wrapped with withLogging
+// ---------------------------------------------------------------------------
+
+server.tool(
+  'hwp_monkey_start',
+  'Start a monkey test: randomly exercise UI features for a set duration',
+  {
+    product:    z.enum(['hwp', 'hword', 'hshow', 'hcell']).optional(),
+    durationMs: z.number().optional(),
+    seed:       z.number().optional(),
+    maxCrashes: z.number().optional(),
+    intervalMin: z.number().optional(),
+    intervalMax: z.number().optional(),
+  },
+  async (args) => {
+    try {
+      const options = {
+        product: args.product,
+        durationMs: args.durationMs,
+        seed: args.seed,
+        maxCrashes: args.maxCrashes,
+      };
+      if (args.intervalMin || args.intervalMax) {
+        options.interval = {
+          min: args.intervalMin || 800,
+          max: args.intervalMax || 3000,
+        };
+      }
+      const result = await getMonkeyTest().startMonkeyTest(options);
+      const { _promise, ...rest } = result;
+      return mcpResult(rest);
+    } catch (err) {
+      return mcpResult({ error: err.message });
+    }
+  }
+);
+
+server.tool(
+  'hwp_monkey_stop',
+  'Stop the running monkey test and get the report',
+  {},
+  async (_args) => {
+    try {
+      const result = getMonkeyTest().stopMonkeyTest();
+      return mcpResult(result);
+    } catch (err) {
+      return mcpResult({ error: err.message });
+    }
+  }
+);
+
+server.tool(
+  'hwp_monkey_status',
+  'Get the current monkey test status',
+  {},
+  async (_args) => {
+    try {
+      const result = getMonkeyTest().getMonkeyStatus();
       return mcpResult(result);
     } catch (err) {
       return mcpResult({ error: err.message });

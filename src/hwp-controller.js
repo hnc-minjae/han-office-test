@@ -9,7 +9,7 @@ const { UIAutomation, ControlTypeId, TreeScope } = require('./uia');
 const sessionModule = require('./session');
 const win32 = require('./win32');
 
-const DEFAULT_HWP_PATH = String.raw`C:\Program Files (x86)\Hnc\Office 2024\HOffice130\Bin\Hwp.exe`;
+const { PRODUCTS } = sessionModule;
 
 // Shared UIA instance (initialized once)
 let _uia = null;
@@ -139,21 +139,29 @@ function clearCachedSearch(session) {
 // =============================================================================
 
 /**
- * Launch Hwp.exe and wait for its window to appear
+ * Launch a Hancom Office application and wait for its window to appear
  * @param {object} options
- * @param {string} [options.hwpPath]
+ * @param {string} [options.product='hwp']  'hwp' | 'hword' | 'hshow' | 'hcell'
+ * @param {string} [options.hwpPath]        Override exe path (auto-resolved from product if omitted)
  * @param {boolean} [options.closeLauncher=true]
  * @param {number} [options.timeoutMs=20000]
  */
 async function launch(options = {}) {
     const {
-        hwpPath = DEFAULT_HWP_PATH,
+        product = 'hwp',
+        hwpPath,
         closeLauncher = true,
         timeoutMs = 20000,
     } = options;
 
+    const productInfo = PRODUCTS[product];
+    if (!productInfo) {
+        throw new Error(`Unknown product: "${product}". Use one of: ${Object.keys(PRODUCTS).join(', ')}`);
+    }
+    const exePath = hwpPath || productInfo.exe;
+
     const uia = getUia();
-    const proc = spawn(hwpPath, [], { detached: true, stdio: 'ignore' });
+    const proc = spawn(exePath, [], { detached: true, stdio: 'ignore' });
     proc.unref();
     const pid = proc.pid;
 
@@ -167,7 +175,7 @@ async function launch(options = {}) {
     }
 
     if (!hwpElement) {
-        throw new Error(`Timed out waiting for Hwp.exe window (PID ${pid})`);
+        throw new Error(`Timed out waiting for ${productInfo.name} window (PID ${pid})`);
     }
 
     const hwnd = win32.getHwnd(hwpElement);
@@ -181,7 +189,7 @@ async function launch(options = {}) {
         hwpElement.release();
         hwpElement = findWindowByPid(uia, pid);
         if (!hwpElement) {
-            throw new Error('Hwp window disappeared after closing launcher');
+            throw new Error(`${productInfo.name} window disappeared after closing launcher`);
         }
 
         const title = hwpElement.name;
@@ -197,14 +205,17 @@ async function launch(options = {}) {
     const windowTitle = hwpElement ? hwpElement.name : '';
 
     const session = sessionModule.initSession({
-        hwpProcess: { pid, hwnd },
+        hwpProcess: { pid, hwnd, exePath },
         hwpElement,
+        product,
         _cachedSearchResults: [],
         crashHistory: [],
     });
 
     return {
-        sessionId: session.id,
+        sessionId: session.sessionId,
+        product,
+        productName: productInfo.name,
         pid,
         windowTitle,
         status: 'ready',
@@ -212,14 +223,20 @@ async function launch(options = {}) {
 }
 
 /**
- * Attach to an already-running Hwp.exe instance
+ * Attach to an already-running Hancom Office instance
  * @param {object} options
+ * @param {string} [options.product='hwp']  'hwp' | 'hword' | 'hshow' | 'hcell'
  * @param {number} [options.pid]
  * @param {string} [options.windowTitle]
  */
 async function attach(options = {}) {
-    const { pid, windowTitle } = options;
+    const { product = 'hwp', pid, windowTitle } = options;
     const uia = getUia();
+
+    const productInfo = PRODUCTS[product];
+    if (!productInfo) {
+        throw new Error(`Unknown product: "${product}". Use one of: ${Object.keys(PRODUCTS).join(', ')}`);
+    }
 
     let hwpElement = null;
 
@@ -228,23 +245,39 @@ async function attach(options = {}) {
     } else if (windowTitle) {
         hwpElement = findWindowByTitle(uia, windowTitle);
     } else {
-        // Find any FrameWindowImpl
+        // Find a FrameWindowImpl whose title matches the product name
         const root = uia.getRootElement();
         if (root) {
             const windows = root.findAllChildren();
+            // First pass: match by product name
             for (const win of windows) {
-                if (win.className === 'FrameWindowImpl') {
-                    hwpElement = win;
-                    break;
+                try {
+                    if (win.className === 'FrameWindowImpl' && win.name.includes(productInfo.name)) {
+                        hwpElement = win;
+                        break;
+                    }
+                } catch (e) { /* ignore */ }
+                if (win !== hwpElement) win.release();
+            }
+            // Fallback: any FrameWindowImpl if product-specific match failed
+            if (!hwpElement) {
+                const windows2 = root.findAllChildren();
+                for (const win of windows2) {
+                    try {
+                        if (win.className === 'FrameWindowImpl') {
+                            hwpElement = win;
+                            break;
+                        }
+                    } catch (e) { /* ignore */ }
+                    if (win !== hwpElement) win.release();
                 }
-                win.release();
             }
             root.release();
         }
     }
 
     if (!hwpElement) {
-        throw new Error('Could not find a running Hwp.exe window');
+        throw new Error(`Could not find a running ${productInfo.name} window`);
     }
 
     const foundPid = hwpElement.processId;
@@ -252,14 +285,17 @@ async function attach(options = {}) {
     const title = hwpElement.name;
 
     const session = sessionModule.initSession({
-        hwpProcess: { pid: foundPid, hwnd },
+        hwpProcess: { pid: foundPid, hwnd, exePath: productInfo.exe },
         hwpElement,
+        product,
         _cachedSearchResults: [],
         crashHistory: [],
     });
 
     return {
-        sessionId: session.id,
+        sessionId: session.sessionId,
+        product,
+        productName: productInfo.name,
         pid: foundPid,
         windowTitle: title,
         status: 'ready',

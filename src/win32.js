@@ -61,6 +61,12 @@ const KEYEVENTF_KEYUP = 0x0002;
 // === ShowWindow commands ===
 const SW_RESTORE = 9;
 
+// === MOUSEEVENTF flags ===
+const MOUSEEVENTF_LEFTDOWN  = 0x0002;
+const MOUSEEVENTF_LEFTUP    = 0x0004;
+const MOUSEEVENTF_RIGHTDOWN = 0x0008;
+const MOUSEEVENTF_RIGHTUP   = 0x0010;
+
 // === SendInput INPUT struct (x64: 40 bytes) ===
 // type(4) + _pad0(4) + wVk(2) + wScan(2) + dwFlags(4) + time(4) + _pad1(4) + dwExtraInfo(8) + _pad2(8) = 40
 const INPUT_KEYBOARD = koffi.struct('INPUT_KEYBOARD', {
@@ -75,6 +81,20 @@ const INPUT_KEYBOARD = koffi.struct('INPUT_KEYBOARD', {
     _pad2:       koffi.array('uint8', 8),
 });
 
+// === SendInput INPUT_MOUSE struct (x64: 40 bytes) ===
+// type(4) + _pad0(4) + dx(4) + dy(4) + mouseData(4) + dwFlags(4) + time(4) + _pad1(4) + dwExtraInfo(8) = 40
+const INPUT_MOUSE = koffi.struct('INPUT_MOUSE', {
+    type:        'uint32',
+    _pad0:       'uint32',
+    dx:          'int32',
+    dy:          'int32',
+    mouseData:   'uint32',
+    dwFlags:     'uint32',
+    time:        'uint32',
+    _pad1:       'uint32',
+    dwExtraInfo: 'uint64',
+});
+
 // === Lazy-initialized API function cache ===
 let _apis = null;
 
@@ -84,6 +104,8 @@ function getApis() {
     const k32 = loadKernel32();
     _apis = {
         SendInput:                u32.func('uint32 __stdcall SendInput(uint32, INPUT_KEYBOARD *, int32)'),
+        SendInputMouse:           u32.func('uint32 __stdcall SendInput(uint32, INPUT_MOUSE *, int32)'),
+        SetCursorPos:             u32.func('int32 __stdcall SetCursorPos(int32, int32)'),
         SetForegroundWindow:      u32.func('int32 __stdcall SetForegroundWindow(void *)'),
         BringWindowToTop:         u32.func('int32 __stdcall BringWindowToTop(void *)'),
         ShowWindow:               u32.func('int32 __stdcall ShowWindow(void *, int32)'),
@@ -149,27 +171,62 @@ function typeAsciiText(text) {
 }
 
 /**
+ * Click at absolute screen coordinates via SetCursorPos + SendInput.
+ * @param {number} x - Screen X coordinate
+ * @param {number} y - Screen Y coordinate
+ * @param {object} [options]
+ * @param {boolean} [options.rightClick=false] - Use right click instead of left
+ */
+function mouseClick(x, y, options = {}) {
+    const { rightClick = false } = options;
+    const apis = getApis();
+
+    apis.SetCursorPos(x, y);
+    // Brief pause for cursor to settle
+    const start = Date.now();
+    while (Date.now() - start < 30) { /* spin */ }
+
+    const downFlag = rightClick ? MOUSEEVENTF_RIGHTDOWN : MOUSEEVENTF_LEFTDOWN;
+    const upFlag   = rightClick ? MOUSEEVENTF_RIGHTUP   : MOUSEEVENTF_LEFTUP;
+
+    const makeMouseInput = (flags) => ({
+        type: 0,  // INPUT_MOUSE = 0
+        _pad0: 0, dx: 0, dy: 0, mouseData: 0,
+        dwFlags: flags, time: 0, _pad1: 0, dwExtraInfo: 0,
+    });
+
+    apis.SendInputMouse(1, [makeMouseInput(downFlag)], 40);
+    apis.SendInputMouse(1, [makeMouseInput(upFlag)], 40);
+}
+
+/**
  * Write text to the clipboard via PowerShell Set-Clipboard, then send Ctrl+V.
  * This approach handles full Unicode/Korean text reliably without raw Win32
  * GlobalAlloc memory management complexity.
  * @param {string} text - Text to paste (supports Unicode/Korean)
  */
 function clipboardPaste(text) {
-    // Escape single quotes for PowerShell string
-    const escaped = text.replace(/'/g, "''");
     let clipSuccess = false;
 
+    // Primary: PowerShell -EncodedCommand (Base64 UTF-16LE, no escaping issues)
     try {
+        const psCommand = "Set-Clipboard -Value '" + text.replace(/'/g, "''") + "'";
+        const encoded = Buffer.from(psCommand, 'utf16le').toString('base64');
         execSync(
-            `powershell -NoProfile -NonInteractive -Command "Set-Clipboard -Value '${escaped}'"`,
-            { timeout: 5000, windowsHide: true }
+            `powershell -NoProfile -NonInteractive -EncodedCommand ${encoded}`,
+            { timeout: 5000, windowsHide: true, stdio: 'ignore' }
         );
         clipSuccess = true;
     } catch (_e) {
         // Fallback: pipe UTF-16LE bytes to clip.exe
         try {
             const utf16 = Buffer.from(text, 'utf16le');
-            spawnSync('clip', [], { input: utf16, timeout: 3000 });
+            spawnSync('clip', [], {
+                input: utf16,
+                timeout: 3000,
+                windowsHide: true,
+                stdio: ['pipe', 'ignore', 'ignore'],
+            });
             clipSuccess = true;
         } catch (_e2) {
             clipSuccess = false;
@@ -335,6 +392,34 @@ function parseKeyExpression(expr) {
     return vks;
 }
 
+/**
+ * Execute a parsed key expression (array of VK codes from parseKeyExpression).
+ * All tokens except the last are treated as modifiers (held down during the main key press).
+ * @param {number[]} vks - Array of VK codes
+ */
+function executeKeyExpression(vks) {
+    if (!vks || vks.length === 0) return;
+
+    if (vks.length === 1) {
+        sendKey(vks[0]);
+        return;
+    }
+
+    // Hold modifiers, press main key, release in reverse order
+    const { SendInput } = getApis();
+    const modifiers = vks.slice(0, -1);
+    const mainKey = vks[vks.length - 1];
+
+    for (const mod of modifiers) {
+        SendInput(1, [makeInput(mod, 0)], 40);
+    }
+    SendInput(1, [makeInput(mainKey, 0)], 40);
+    SendInput(1, [makeInput(mainKey, KEYEVENTF_KEYUP)], 40);
+    for (const mod of modifiers.reverse()) {
+        SendInput(1, [makeInput(mod, KEYEVENTF_KEYUP)], 40);
+    }
+}
+
 module.exports = {
     // DLL loaders
     loadUser32,
@@ -344,6 +429,8 @@ module.exports = {
     sendKeyCombo,
     typeAsciiText,
     clipboardPaste,
+    // Mouse input
+    mouseClick,
     // Window messaging
     postKey,
     forceSetForeground,
@@ -353,8 +440,9 @@ module.exports = {
     // Process / window status
     isProcessAlive,
     isHungAppWindow,
-    // Key expression parser
+    // Key expression parser & executor
     parseKeyExpression,
+    executeKeyExpression,
     // VK constants
     VK_ESCAPE, VK_RETURN, VK_TAB,
     VK_CONTROL, VK_ALT, VK_SHIFT,

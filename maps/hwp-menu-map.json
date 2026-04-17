@@ -1,0 +1,4126 @@
+{
+  "product": "hwp",
+  "productName": "한글",
+  "version": "2027",
+  "mappedAt": "2026-04-17T12:43:35.606Z",
+  "tabs": {
+    "파일": {
+      "accessKey": "F",
+      "uiaName": "파일 F",
+      "ribbonItems": [],
+      "note": "backstage"
+    },
+    "편집": {
+      "accessKey": "E",
+      "uiaName": "편집 E",
+      "ribbonItems": [
+        {
+          "name": "오려 두기 : ALT+T",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1040,
+          "clickY": 210
+        },
+        {
+          "name": "복사하기 : ALT+C",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1091,
+          "clickY": 210
+        },
+        {
+          "name": "붙이기 : ALT+P",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1146,
+          "clickY": 210
+        },
+        {
+          "name": "모양 복사 : ALT+A",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1191,
+          "clickY": 210
+        },
+        {
+          "name": "조판 부호 지우기 : ALT+Y",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1244,
+          "clickY": 210,
+          "dialog": {
+            "title": "조판 부호 지우기",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "모두 선택 : ALT+C",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "글자 모양 : ALT+L",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1309,
+          "clickY": 210,
+          "dialog": {
+            "title": "글자 모양",
+            "tabs": [
+              "기본",
+              "확장",
+              "테두리/배경"
+            ],
+            "controls": {
+              "기본": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "기준 크기 : 10.0 pt ALT+Z",
+                  "type": "ComboBox",
+                  "className": "SpinComboImpl"
+                },
+                {
+                  "name": "언어 : ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "글꼴 : ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "함초롬바탕",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "상대크기 : 100 % ALT+R",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "장평 : 100 % ALT+W",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "글자 위치 : 0 % ALT+F",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "자간 : 0 % ALT+P",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "진하게 : ALT+B",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "기울임 : ALT+I",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "밑줄 : ALT+U",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "취소선 : ALT+E",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "외곽선 : ALT+O",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "그림자 : ALT+S",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "양각 : ALT+J",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "음각 : ALT+K",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "위 첨자 : ALT+H",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "아래 첨자 : ALT+Y",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "보통 모양 : ALT+N",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "확장": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "없음 : ALT+N",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "비연속 : ALT+U",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "연속 : ALT+T",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "X 방향 : 10 % ALT+X",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "Y 방향 : 10 % ALT+Y",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "위치 : ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "모양 : ALT+M",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "모양 : ALT+S",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "외곽선 : ALT+O",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "강조점 : ALT+E",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "글꼴에 어울리는 빈칸 : ALT+F",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "커닝 : ALT+K",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "테두리/배경": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "종류 : ALT+Y",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "굵기 : ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "위 : ALT+3",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "아래 : ALT+4",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "왼쪽 : ALT+1",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "오른쪽 : ALT+2",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "모두 : ALT+5",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "무늬 모양 : ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "문단 모양 : ALT+M",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1351,
+          "clickY": 210,
+          "dialog": {
+            "title": "문단 모양",
+            "tabs": [
+              "기본",
+              "확장",
+              "탭 설정",
+              "테두리/배경"
+            ],
+            "controls": {
+              "기본": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "양쪽 정렬 : ALT+M",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "왼쪽 정렬 : ALT+L",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "가운데 정렬 : ALT+C",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "오른쪽 정렬 : ALT+R",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "배분 정렬 : ALT+T",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "나눔 정렬 : ALT+P",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "왼쪽 : 0.0 pt ALT+F",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "오른쪽 : 0.0 pt ALT+O",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "보통 : ALT+N",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "들여쓰기 : ALT+A",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "내어쓰기 : ALT+B",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "0.0 pt ALT+J",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "줄 간격 : ALT+S",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "줄 간격 : 160 % ALT+K",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "문단 위 : 0.0 pt ALT+U",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "문단 아래 : 0.0 pt ALT+V",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "편집 용지의 줄 격자 사용 : ALT+G",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "한글 단위 : ALT+H",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "영어 단위 : ALT+E",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "최소 공백 : 100 % ALT+I",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "확장": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "없음 : ALT+O",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "개요 문단 : ALT+U",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "번호 문단 : ALT+M",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "글머리표 문단 : ALT+B",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "외톨이줄 보호 : ALT+K",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "다음 문단과 함께 : ALT+N",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "문단 보호 : ALT+P",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "문단 앞에서 항상 쪽 나눔 : ALT+E",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "글꼴에 어울리는 줄 높이 : ALT+H",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "한 줄로 입력 : ALT+W",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "한글과 영어 간격을 자동 조절 : ALT+G",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "한글과 숫자 간격을 자동 조절 : ALT+R",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "세로 정렬 : ALT+S",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "탭 설정": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "왼쪽 : ALT+L",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "오른쪽 : ALT+R",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "가운데 : ALT+C",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "소수점 : ALT+M",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "채울 모양 : ALT+F",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "탭 위치 : 0.0 pt ALT+P",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "추가 : ALT+S",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "지우기 : ALT+N",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "모두 지우기 : ALT+A",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "내어쓰기용 자동 탭 : ALT+E",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "문단 오른쪽 끝 자동 탭 : ALT+I",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "구역 기본 탭 간격 : 40.0 pt ALT+G",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "변경 : ALT+H",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "테두리/배경": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "종류 : ALT+Y",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "굵기 : ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "문단 테두리 연결 : ALT+M",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "선 모양 바로 적용 : ALT+I",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "위 : ALT+3",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "아래 : ALT+4",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "왼쪽 : ALT+1",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "오른쪽 : ALT+2",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "모두 : ALT+5",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "무늬 모양 : ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "왼쪽 : 0.00 mm ALT+E",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "오른쪽 : 0.00 mm ALT+R",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "위쪽 : 0.00 mm ALT+U",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "아래쪽 : 0.00 mm ALT+V",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "문단 여백 무시 : ALT+B",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "스타일 : ALT+S",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1397,
+          "clickY": 210
+        },
+        {
+          "name": "세로 : ALT+G",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1455,
+          "clickY": 210
+        },
+        {
+          "name": "가로 : ALT+D",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1496,
+          "clickY": 210
+        },
+        {
+          "name": "쪽 여백 : ALT+J",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1547,
+          "clickY": 210
+        },
+        {
+          "name": "바탕쪽 : ALT+E",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1601,
+          "clickY": 210,
+          "dialog": {
+            "title": "바탕쪽",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "양쪽 : ALT+B",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "홀수 쪽 : ALT+O",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "짝수 쪽 : ALT+E",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "현재 구역의 마지막 쪽 : ALT+L",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "현재 구역 안 임의 쪽 : ALT+R",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "기존 바탕쪽과 겹치게 하기 : ALT+U",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "인쇄할 때 바탕쪽 맨 위로 보내기 : ALT+F",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "현재 구역부터 : ALT+C",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "첫 구역부터 : ALT+A",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "단 : ALT+U",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1647,
+          "clickY": 210
+        },
+        {
+          "name": "도형 : ALT+H",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1701,
+          "clickY": 210
+        },
+        {
+          "name": "그림 : ALT+I",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1743,
+          "clickY": 210
+        },
+        {
+          "name": "표 : ALT+B",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1784,
+          "clickY": 210
+        },
+        {
+          "name": "차트 : ALT+R",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1825,
+          "clickY": 210
+        },
+        {
+          "name": "개체 선택 : ALT+V",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1889,
+          "clickY": 210
+        },
+        {
+          "name": "개체 보호 : ALT+K",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1948,
+          "clickY": 210
+        },
+        {
+          "name": "찾기 : ALT+F",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2012,
+          "clickY": 210
+        },
+        {
+          "name": "글자 바꾸기 : ALT+N",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2068,
+          "clickY": 210
+        },
+        {
+          "name": "정렬 : ALT+O",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 2124,
+          "clickY": 210,
+          "dialog": {
+            "title": "정렬",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+M",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+N",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+O",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+P",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+Q",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "탭 : ALT+T",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "쉼표 : ALT+C",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "빈칸 : ALT+S",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "기호 : ALT+H",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "기호 : ALT+R",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "연속된 구분 기호 무시 : ALT+I",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "고어 정렬 : ALT+G",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "뒤부터 앞으로 비교 : ALT+B",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "종성/중성/초성 순으로 비교 : ALT+J",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "각 문단별 단어 정렬 : ALT+E",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "두 자리 연도기준 적용 : ALT+Y",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "두 자리 연도기준 적용 : 1930 ALT+A",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "2029 ALT+F",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "어시스턴트",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2181,
+          "clickY": 210
+        }
+      ]
+    },
+    "보기": {
+      "accessKey": "U",
+      "uiaName": "보기 U",
+      "ribbonItems": [
+        {
+          "name": "쪽 윤곽 : ALT+L",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1040,
+          "clickY": 210
+        },
+        {
+          "name": "문서 보기 색 : ALT+C",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1112,
+          "clickY": 210
+        },
+        {
+          "name": "문단 부호 : ALT+H",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1203,
+          "clickY": 196
+        },
+        {
+          "name": "그림 : ALT+I",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1273,
+          "clickY": 196
+        },
+        {
+          "name": "형광펜 : ALT+Y",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1351,
+          "clickY": 196
+        },
+        {
+          "name": "조판 부호 : ALT+R",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1203,
+          "clickY": 221
+        },
+        {
+          "name": "투명 선 : ALT+T",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1281,
+          "clickY": 221
+        },
+        {
+          "name": "교정 부호 : ALT+F",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1203,
+          "clickY": 246
+        },
+        {
+          "name": "메모 : ALT+M",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1273,
+          "clickY": 246
+        },
+        {
+          "name": "상황 선 : ALT+S",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1434,
+          "clickY": 196
+        },
+        {
+          "name": "문서 탭 : ALT+A",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1434,
+          "clickY": 221
+        },
+        {
+          "name": "눈금자 : ALT+X",
+          "controlType": "CheckBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1432,
+          "clickY": 246
+        },
+        {
+          "name": "격자 : ALT+G",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1490,
+          "clickY": 210
+        },
+        {
+          "name": "안내선 : ALT+D",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1535,
+          "clickY": 210
+        },
+        {
+          "name": "한자 발음 표시 : ALT+P",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1616,
+          "clickY": 210
+        },
+        {
+          "name": "작업 창 : ALT+W",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1697,
+          "clickY": 210
+        },
+        {
+          "name": "편집 화면 나누기 : ALT+B",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1769,
+          "clickY": 210
+        },
+        {
+          "name": "창 배열 : ALT+O",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1834,
+          "clickY": 210
+        },
+        {
+          "name": "창 전환 : ALT+K",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1893,
+          "clickY": 210
+        },
+        {
+          "name": "새 창 : ALT+Q",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1943,
+          "clickY": 210
+        },
+        {
+          "name": "축소 : ALT+U",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1997,
+          "clickY": 210
+        },
+        {
+          "name": "확대 : ALT+N",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2039,
+          "clickY": 210
+        },
+        {
+          "name": "100% : ALT+J",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2097,
+          "clickY": 210
+        },
+        {
+          "name": "쪽 맞춤 : ALT+E",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2158,
+          "clickY": 195
+        },
+        {
+          "name": "폭 맞춤 : ALT+V",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2158,
+          "clickY": 220
+        }
+      ]
+    },
+    "입력": {
+      "accessKey": "D",
+      "uiaName": "입력 D",
+      "ribbonItems": [
+        {
+          "name": "그림 : ALT+P",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1185,
+          "clickY": 210
+        },
+        {
+          "name": "표 : ALT+T",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1226,
+          "clickY": 210
+        },
+        {
+          "name": "차트 : ALT+C",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1267,
+          "clickY": 210
+        },
+        {
+          "name": "글맵시 : ALT+W",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1313,
+          "clickY": 210
+        },
+        {
+          "name": "수식 : ALT+E",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1358,
+          "clickY": 210
+        },
+        {
+          "name": "OLE 개체 : ALT+O",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1399,
+          "clickY": 210
+        },
+        {
+          "name": "동영상",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1444,
+          "clickY": 210,
+          "dialog": {
+            "title": "동영상 넣기",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "웹 동영상 : ALT+W",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "로컬 동영상 : ALT+L",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "양식 개체 : ALT+L",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1512,
+          "clickY": 210
+        },
+        {
+          "name": "누름틀 : ALT+K",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1567,
+          "clickY": 210
+        },
+        {
+          "name": "각주 : ALT+F",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1625,
+          "clickY": 210
+        },
+        {
+          "name": "미주 : ALT+D",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1667,
+          "clickY": 210
+        },
+        {
+          "name": "메모 : ALT+M",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1708,
+          "clickY": 210
+        },
+        {
+          "name": "교정 부호 : ALT+R",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1758,
+          "clickY": 210
+        },
+        {
+          "name": "책갈피 : ALT+B",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1825,
+          "clickY": 210,
+          "dialog": {
+            "title": "책갈피",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "ALT+N",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "이름 : ALT+A",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "위치 : ALT+P",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "책갈피 이름 바꾸기 : ALT+E",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "삭제 : ALT+Y",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "상호 참조 : ALT+U",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1871,
+          "clickY": 210,
+          "dialog": {
+            "title": "상호 참조",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "ALT+F",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "[현재 문서]",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "파일 선택 : ALT+O",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "절대 경로↔상대 경로 : ALT+P",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+C",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "하이퍼링크로 연결 : ALT+H",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "현재 탭으로 : ALT+U",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "새 탭으로 : ALT+N",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "새 창으로 : ALT+W",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "하이퍼링크 : ALT+Y",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1941,
+          "clickY": 210,
+          "dialog": {
+            "title": "하이퍼링크",
+            "tabs": [
+              "웹 주소/파일",
+              "글 문서",
+              "전자 우편"
+            ],
+            "controls": {
+              "웹 주소/파일": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "ALT+T",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "ALT+H",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "웹 주소 : ",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "기존 파일 : ALT+E",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "새 문서 만들기 : ALT+C",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                }
+              ],
+              "글 문서": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "문서의 처음 ALT+T",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "ALT+H",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "ALT+F",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "찾아보기 : ALT+O",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "절대 경로↔상대 경로 : ALT+P",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "현재 탭으로 : ALT+U",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "새 탭으로 : ALT+N",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "새 창으로 : ALT+W",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                }
+              ],
+              "전자 우편": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "ALT+T",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "ALT+H",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "ALT+M",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "ALT+S",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "지우기 : ALT+Y",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "하이퍼링크 이전",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1991,
+          "clickY": 195
+        },
+        {
+          "name": "하이퍼링크 다음",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1991,
+          "clickY": 220
+        },
+        {
+          "name": "문자표 : ALT+S",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2042,
+          "clickY": 210
+        },
+        {
+          "name": "입력 도우미 : ALT+N",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2121,
+          "clickY": 195
+        },
+        {
+          "name": "한자 입력 : ALT+H",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2116,
+          "clickY": 221
+        },
+        {
+          "name": "다른 문서 활용",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2221,
+          "clickY": 210
+        }
+      ]
+    },
+    "서식": {
+      "accessKey": "J",
+      "uiaName": "서식 J",
+      "ribbonItems": [
+        {
+          "name": "스타일 추가하기 : ALT+Y",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1459,
+          "clickY": 203
+        },
+        {
+          "name": "스타일마당 : ALT+T",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1459,
+          "clickY": 243,
+          "dialog": {
+            "title": "스타일마당",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "글자 모양 : ALT+F",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1505,
+          "clickY": 211,
+          "dialog": {
+            "title": "글자 모양",
+            "tabs": [
+              "기본",
+              "확장",
+              "테두리/배경"
+            ],
+            "controls": {
+              "기본": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "기준 크기 : pt ALT+Z",
+                  "type": "ComboBox",
+                  "className": "SpinComboImpl"
+                },
+                {
+                  "name": "언어 : ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "글꼴 : ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "상대크기 : % ALT+R",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "장평 : % ALT+W",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "글자 위치 : % ALT+F",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "자간 : % ALT+P",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "진하게 : ALT+B",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "기울임 : ALT+I",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "밑줄 : ALT+U",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "취소선 : ALT+E",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "외곽선 : ALT+O",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "그림자 : ALT+S",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "양각 : ALT+J",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "음각 : ALT+K",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "위 첨자 : ALT+H",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "아래 첨자 : ALT+Y",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "보통 모양 : ALT+N",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "확장": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "없음 : ALT+N",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "비연속 : ALT+U",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "연속 : ALT+T",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "X 방향 : % ALT+X",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "Y 방향 : % ALT+Y",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "위치 : ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "모양 : ALT+M",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "모양 : ALT+S",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "외곽선 : ALT+O",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "강조점 : ALT+E",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "글꼴에 어울리는 빈칸 : ALT+F",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "커닝 : ALT+K",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "테두리/배경": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "종류 : ALT+Y",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "굵기 : ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "위 : ALT+3",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "아래 : ALT+4",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "왼쪽 : ALT+1",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "오른쪽 : ALT+2",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "모두 : ALT+5",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "무늬 모양 : ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "언어 : ALT+G",
+          "controlType": "ComboBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1583,
+          "clickY": 202
+        },
+        {
+          "name": "함초롬바탕",
+          "controlType": "ComboBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1722,
+          "clickY": 202
+        },
+        {
+          "name": "글자 크기 : 10.0 pt ALT+Z",
+          "controlType": "ComboBox",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1874,
+          "clickY": 202
+        },
+        {
+          "name": "진하게 : ALT+B",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1554,
+          "clickY": 243
+        },
+        {
+          "name": "기울임 : ALT+I",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1580,
+          "clickY": 243
+        },
+        {
+          "name": "밑줄 : ALT+U",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1615,
+          "clickY": 243
+        },
+        {
+          "name": "취소선 : ALT+K",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1658,
+          "clickY": 243
+        },
+        {
+          "name": "아래 첨자 : ALT+5",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1692,
+          "clickY": 243
+        },
+        {
+          "name": "위 첨자 : ALT+6",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1719,
+          "clickY": 243
+        },
+        {
+          "name": "글자 테두리 : ALT+D",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1759,
+          "clickY": 243
+        },
+        {
+          "name": "형광펜 : ALT+H",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1802,
+          "clickY": 243
+        },
+        {
+          "name": "글자 색 : ALT+C",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1844,
+          "clickY": 243
+        },
+        {
+          "name": "글자 자간 좁게 : ALT+R",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1884,
+          "clickY": 243
+        },
+        {
+          "name": "글자 자간 넓게 : ALT+J",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1911,
+          "clickY": 243
+        },
+        {
+          "name": "문단 모양 : ALT+P",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1965,
+          "clickY": 211,
+          "dialog": {
+            "title": "문단 모양",
+            "tabs": [
+              "기본",
+              "확장",
+              "탭 설정",
+              "테두리/배경"
+            ],
+            "controls": {
+              "기본": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "양쪽 정렬 : ALT+M",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "왼쪽 정렬 : ALT+L",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "가운데 정렬 : ALT+C",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "오른쪽 정렬 : ALT+R",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "배분 정렬 : ALT+T",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "나눔 정렬 : ALT+P",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "왼쪽 : pt ALT+F",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "오른쪽 : pt ALT+O",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "보통 : ALT+N",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "들여쓰기 : ALT+A",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "내어쓰기 : ALT+B",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "pt ALT+J",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "줄 간격 : ALT+S",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "줄 간격 : % ALT+K",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "문단 위 : pt ALT+U",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "문단 아래 : pt ALT+V",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "편집 용지의 줄 격자 사용 : ALT+G",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "한글 단위 : ALT+H",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "영어 단위 : ALT+E",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "최소 공백 : % ALT+I",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "확장": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "없음 : ALT+O",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "개요 문단 : ALT+U",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "번호 문단 : ALT+M",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "글머리표 문단 : ALT+B",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "외톨이줄 보호 : ALT+K",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "다음 문단과 함께 : ALT+N",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "문단 보호 : ALT+P",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "문단 앞에서 항상 쪽 나눔 : ALT+E",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "글꼴에 어울리는 줄 높이 : ALT+H",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "한 줄로 입력 : ALT+W",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "한글과 영어 간격을 자동 조절 : ALT+G",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "한글과 숫자 간격을 자동 조절 : ALT+R",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "세로 정렬 : ALT+S",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "탭 설정": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "왼쪽 : ALT+L",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "오른쪽 : ALT+R",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "가운데 : ALT+C",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "소수점 : ALT+M",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "채울 모양 : ALT+F",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "탭 위치 : 0.0 pt ALT+P",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "추가 : ALT+S",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "지우기 : ALT+N",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "모두 지우기 : ALT+A",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "내어쓰기용 자동 탭 : ALT+E",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "문단 오른쪽 끝 자동 탭 : ALT+I",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "구역 기본 탭 간격 : 40.0 pt ALT+G",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "변경 : ALT+H",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "테두리/배경": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "종류 : ALT+Y",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "굵기 : ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "문단 테두리 연결 : ALT+M",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "선 모양 바로 적용 : ALT+I",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "위 : ALT+3",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "아래 : ALT+4",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "왼쪽 : ALT+1",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "오른쪽 : ALT+2",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "모두 : ALT+5",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "무늬 모양 : ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "왼쪽 : mm ALT+E",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "오른쪽 : mm ALT+R",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "위쪽 : mm ALT+U",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "아래쪽 : mm ALT+V",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                },
+                {
+                  "name": "문단 여백 무시 : ALT+B",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "대화 상자 설정 : ALT+/",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "구성 : ALT+;",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "문단 정렬 : ALT+AL",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2030,
+          "clickY": 211
+        },
+        {
+          "name": "왼쪽 여백 줄이기 : ALT+A1",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2073,
+          "clickY": 203
+        },
+        {
+          "name": "왼쪽 여백 늘리기 : ALT+A2",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2100,
+          "clickY": 203
+        },
+        {
+          "name": "문단 첫 글자 장식 : ALT+A3",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2126,
+          "clickY": 203
+        },
+        {
+          "name": "첫 줄 들여쓰기 : ALT+A5",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2073,
+          "clickY": 243
+        },
+        {
+          "name": "첫 줄 내어쓰기 : ALT+A4",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2100,
+          "clickY": 243
+        },
+        {
+          "name": "개요 : ALT+M",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2173,
+          "clickY": 211
+        },
+        {
+          "name": "글머리표 : ALT+L",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2216,
+          "clickY": 203
+        },
+        {
+          "name": "그림 글머리표 : ALT+E",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2258,
+          "clickY": 203
+        },
+        {
+          "name": "문단 번호 : ALT+N",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2216,
+          "clickY": 242
+        },
+        {
+          "name": "문단 번호 새 번호로 시작 : ALT+V",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2251,
+          "clickY": 241
+        },
+        {
+          "name": "한 수준 증가 : ALT+W",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2306,
+          "clickY": 203
+        },
+        {
+          "name": "한 수준 감소 : ALT+X",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2306,
+          "clickY": 243
+        }
+      ]
+    },
+    "쪽": {
+      "accessKey": "W",
+      "uiaName": "쪽 W",
+      "ribbonItems": [
+        {
+          "name": "편집 용지 : ALT+J",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1040,
+          "clickY": 210
+        },
+        {
+          "name": "세로 : ALT+O",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1081,
+          "clickY": 210
+        },
+        {
+          "name": "가로 : ALT+Y",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1123,
+          "clickY": 210
+        },
+        {
+          "name": "쪽 여백 : ALT+Z",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1173,
+          "clickY": 210
+        },
+        {
+          "name": "글자 방향 : ALT+C",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1246,
+          "clickY": 210
+        },
+        {
+          "name": "바탕쪽 : ALT+F",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1313,
+          "clickY": 210,
+          "dialog": {
+            "title": "바탕쪽",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "양쪽 : ALT+B",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "홀수 쪽 : ALT+O",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "짝수 쪽 : ALT+E",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "현재 구역의 마지막 쪽 : ALT+L",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "현재 구역 안 임의 쪽 : ALT+R",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "기존 바탕쪽과 겹치게 하기 : ALT+U",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "인쇄할 때 바탕쪽 맨 위로 보내기 : ALT+F",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "현재 구역부터 : ALT+C",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "첫 구역부터 : ALT+A",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "머리말 : ALT+H",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1363,
+          "clickY": 210
+        },
+        {
+          "name": "꼬리말 : ALT+T",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1412,
+          "clickY": 210
+        },
+        {
+          "name": "쪽 테두리/배경 : ALT+B",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1471,
+          "clickY": 210
+        },
+        {
+          "name": "쪽 번호 매기기 : ALT+G",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1533,
+          "clickY": 210,
+          "dialog": {
+            "title": "쪽 번호 매기기",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "왼쪽 위 : ALT+W",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "가운데 위 : ALT+C",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "오른쪽 위 : ALT+R",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "안쪽 위 : ALT+I",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "바깥쪽 위 : ALT+O",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "왼쪽 아래 : ALT+E",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "가운데 아래 : ALT+G",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "오른쪽 아래 : ALT+H",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "안쪽 아래 : ALT+N",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "바깥쪽 아래 : ALT+U",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "쪽 번호 없음 : ALT+X",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "줄표 넣기 : ALT+L",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "1 ALT+S",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "새 번호로 시작 : ALT+W",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1591,
+          "clickY": 210,
+          "dialog": {
+            "title": "새 번호로 시작",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "쪽 번호 : ALT+P",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "그림 번호 : ALT+G",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "각주 번호 : ALT+F",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "표 번호 : ALT+T",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "미주 번호 : ALT+E",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "수식 번호 : ALT+H",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "1 ALT+S",
+                  "type": "Edit",
+                  "className": "SpinImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "현재 쪽만 감추기 : ALT+I",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1655,
+          "clickY": 210
+        },
+        {
+          "name": "줄 번호 : ALT+M",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1716,
+          "clickY": 210
+        },
+        {
+          "name": "쪽 나누기 : ALT+P",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1785,
+          "clickY": 210
+        },
+        {
+          "name": "단 나누기 : ALT+D",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1836,
+          "clickY": 210
+        },
+        {
+          "name": "쪽 지우기 : ALT+R",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1886,
+          "clickY": 210
+        },
+        {
+          "name": "단 : ALT+U",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1945,
+          "clickY": 210
+        },
+        {
+          "name": "단 설정 나누기 : ALT+N",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1993,
+          "clickY": 210
+        },
+        {
+          "name": "구역 설정 : ALT+E",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2052,
+          "clickY": 210
+        },
+        {
+          "name": "구역 나누기 : ALT+S",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2098,
+          "clickY": 210
+        },
+        {
+          "name": "라벨 : ALT+L",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 2158,
+          "clickY": 210
+        },
+        {
+          "name": "원고지 : ALT+A",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 2203,
+          "clickY": 210
+        }
+      ]
+    },
+    "보안": {
+      "accessKey": "R",
+      "uiaName": "보안 R",
+      "ribbonItems": [
+        {
+          "name": "문서 암호 설정 : ALT+W",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1052,
+          "clickY": 210,
+          "dialog": {
+            "title": "열기/쓰기 암호 설정",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Edit",
+                  "className": "PasswordBox"
+                },
+                {
+                  "name": "",
+                  "type": "Edit",
+                  "className": "PasswordBox"
+                },
+                {
+                  "name": "",
+                  "type": "Edit",
+                  "className": "PasswordBox"
+                },
+                {
+                  "name": "",
+                  "type": "Edit",
+                  "className": "PasswordBox"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "문서 암호 변경/해제 : ALT+R",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1118,
+          "clickY": 210
+        },
+        {
+          "name": "배포용 문서로 저장 : ALT+B",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1203,
+          "clickY": 210,
+          "dialog": {
+            "title": "배포용 문서로 저장",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Edit",
+                  "className": "PasswordBox"
+                },
+                {
+                  "name": "",
+                  "type": "Edit",
+                  "className": "PasswordBox"
+                },
+                {
+                  "name": "인쇄 제한 : ALT+P",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "복사 제한 : ALT+V",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "배포용 문서 편집 : ALT+I",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1275,
+          "clickY": 210
+        },
+        {
+          "name": "배포용 문서 암호 변경/해제 : ALT+H",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1354,
+          "clickY": 210
+        },
+        {
+          "name": "선택 글자 보호 : ALT+T",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1447,
+          "clickY": 210
+        },
+        {
+          "name": "개인 정보 찾아서 보호 : ALT+P",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1518,
+          "clickY": 210,
+          "dialog": {
+            "title": "개인 정보 보호하기",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "주소 : ALT+D",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "전화번호 : ALT+E",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "생년월일 : ALT+B",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "전자 우편 : ALT+M",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "주민등록번호 : ALT+U",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "외국인등록번호 : ALT+N",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "IP 주소 : ALT+I",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "계좌 번호 : ALT+J",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "신용카드 번호 : ALT+W",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "사용자 정의 : ALT+P",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "기타 : ALT+T",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "ALT+O",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "사용자 정의 설정 : ALT+S",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "표시 형식 선택 : ALT+L",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "****** : ALT+G",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "~~~~~~ : ALT+K",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "XXXXXX : ALT+X",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "사용자 정의 문자 : ALT+C",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "개인 정보 보호 해제 : ALT+O",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1588,
+          "clickY": 210
+        },
+        {
+          "name": "개인 정보 보호 암호 변경 : ALT+A",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1666,
+          "clickY": 210
+        },
+        {
+          "name": "문서 보안 설정 : ALT+S",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1759,
+          "clickY": 210,
+          "dialog": {
+            "title": "문서 보안 설정",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "높음 : ALT+V",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "낮음(권장하지 않음) : ALT+L",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "검토": {
+      "accessKey": "H",
+      "uiaName": "검토 H",
+      "ribbonItems": [
+        {
+          "name": "교정 부호 : ALT+R",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1049,
+          "clickY": 210
+        },
+        {
+          "name": "문서 이력 관리 : ALT+V",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1124,
+          "clickY": 210,
+          "dialog": {
+            "title": "문서 이력 관리",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "새 버전으로 저장 : ALT+A",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "버전 지우기 : ALT+Y",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "버전 설명 보기 : ALT+V",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "문서를 저장할 때 버전 정보 자동 저장 : ALT+S",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "버전 비교 분리 창으로 보기 : ALT+U",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "문서 비교 : ALT+D",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "dialog",
+          "clickX": 1177,
+          "clickY": 210,
+          "dialog": {
+            "title": "문서 비교",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "ALT+O",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "열기 : ALT+P",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "ALT+R",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "열기 : ALT+E",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "서로 바꾸기 : ALT+S",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "변경 내용 추적 : ALT+C",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1255,
+          "clickY": 210
+        },
+        {
+          "name": "안내문에 표시 : ALT+H",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1327,
+          "clickY": 210
+        },
+        {
+          "name": "변경 내용 보기 : ALT+S",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1401,
+          "clickY": 210
+        },
+        {
+          "name": "원본 : ALT+O",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1477,
+          "clickY": 210
+        },
+        {
+          "name": "원본 및 변경 내용 : ALT+U",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1531,
+          "clickY": 210
+        },
+        {
+          "name": "최종본 및 변경 내용 : ALT+I",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1596,
+          "clickY": 210
+        },
+        {
+          "name": "최종본 : ALT+F",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1653,
+          "clickY": 210
+        },
+        {
+          "name": "적용 : ALT+A",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1712,
+          "clickY": 210
+        },
+        {
+          "name": "적용 안 함 : ALT+J",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1764,
+          "clickY": 210
+        },
+        {
+          "name": "이전 : ALT+P",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1809,
+          "clickY": 195
+        },
+        {
+          "name": "다음 : ALT+N",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1809,
+          "clickY": 220
+        },
+        {
+          "name": "새 메모 : ALT+M",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1856,
+          "clickY": 210
+        },
+        {
+          "name": "메모 : ALT+T",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1897,
+          "clickY": 210
+        }
+      ]
+    },
+    "도구": {
+      "accessKey": "K",
+      "uiaName": "도구 K",
+      "ribbonItems": [
+        {
+          "name": "색인 : ALT+C",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1040,
+          "clickY": 210
+        },
+        {
+          "name": "제목 차례 : ALT+T",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1090,
+          "clickY": 210
+        },
+        {
+          "name": "인용 : ALT+I",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1154,
+          "clickY": 210
+        },
+        {
+          "name": "참고 문헌 삽입 : ALT+B",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1188,
+          "clickY": 195
+        },
+        {
+          "name": "참고 문헌 스타일 : ALT+Y",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1196,
+          "clickY": 220
+        },
+        {
+          "name": "참고 문헌 새로 고침 : ALT+F",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1188,
+          "clickY": 245
+        },
+        {
+          "name": "블록 계산 : ALT+L",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1260,
+          "clickY": 210
+        },
+        {
+          "name": "스크립트 매크로 : ALT+R",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1339,
+          "clickY": 210
+        },
+        {
+          "name": "맞춤법 : ALT+S",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1412,
+          "clickY": 210
+        },
+        {
+          "name": "빠른 교정 : ALT+Q",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1466,
+          "clickY": 210
+        },
+        {
+          "name": "한컴 사전 : ALT+A",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1516,
+          "clickY": 210
+        },
+        {
+          "name": "번역 : ALT+D",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1571,
+          "clickY": 210
+        },
+        {
+          "name": "프레젠테이션 : ALT+P",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1647,
+          "clickY": 210
+        },
+        {
+          "name": "글자판 : ALT+K",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1727,
+          "clickY": 210
+        },
+        {
+          "name": "사용자 설정 : ALT+Z",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1776,
+          "clickY": 210
+        },
+        {
+          "name": "환경 설정 : ALT+U",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1821,
+          "clickY": 210
+        },
+        {
+          "name": "개인 정보 바꾸기 : ALT+E",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1891,
+          "clickY": 210
+        },
+        {
+          "name": "한컴 애셋 : ALT+H",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1947,
+          "clickY": 210
+        }
+      ]
+    },
+    "도형": {
+      "accessKey": "X3",
+      "uiaName": "도형 X3",
+      "ribbonItems": [],
+      "note": "disabled"
+    },
+    "추가 기능": {
+      "accessKey": null,
+      "uiaName": "추가 기능",
+      "ribbonItems": [
+        {
+          "name": "한애드온즈",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 1056,
+          "clickY": 210
+        }
+      ]
+    }
+  },
+  "toolbar": [
+    {
+      "name": "새 문서 : ALT+N",
+      "controlType": "MenuItem"
+    },
+    {
+      "name": "불러오기 : ALT+O",
+      "controlType": "MenuItem"
+    },
+    {
+      "name": "저장하기 : ALT+S",
+      "controlType": "MenuItem"
+    },
+    {
+      "name": "인쇄 : ALT+P",
+      "controlType": "Button"
+    },
+    {
+      "name": "미리 보기 : ALT+V",
+      "controlType": "Button"
+    },
+    {
+      "name": "되돌리기 : ALT+8",
+      "controlType": "MenuItem"
+    },
+    {
+      "name": "다시 실행 : ALT+9",
+      "controlType": "MenuItem"
+    },
+    {
+      "name": "스타일 : ALT+Y",
+      "controlType": "ComboBox"
+    },
+    {
+      "name": "언어 : ALT+Q",
+      "controlType": "ComboBox"
+    },
+    {
+      "name": "함초롬바탕",
+      "controlType": "ComboBox"
+    },
+    {
+      "name": "글자 크기 : 10.0 pt ALT+M",
+      "controlType": "ComboBox"
+    },
+    {
+      "name": "진하게 : ALT+B",
+      "controlType": "Button"
+    },
+    {
+      "name": "기울임 : ALT+I",
+      "controlType": "Button"
+    },
+    {
+      "name": "밑줄 : ALT+L",
+      "controlType": "MenuItem"
+    },
+    {
+      "name": "취소선 : ALT+T",
+      "controlType": "MenuItem"
+    },
+    {
+      "name": "글자 색 : ALT+C",
+      "controlType": "MenuItem"
+    },
+    {
+      "name": "양쪽 정렬 : ALT+1",
+      "controlType": "Button"
+    },
+    {
+      "name": "왼쪽 정렬 : ALT+2",
+      "controlType": "Button"
+    },
+    {
+      "name": "가운데 정렬 : ALT+3",
+      "controlType": "Button"
+    },
+    {
+      "name": "오른쪽 정렬 : ALT+4",
+      "controlType": "Button"
+    },
+    {
+      "name": "배분 정렬 : ALT+5",
+      "controlType": "Button"
+    },
+    {
+      "name": "나눔 정렬 : ALT+6",
+      "controlType": "Button"
+    },
+    {
+      "name": "줄 간격 : 160 % ALT+7",
+      "controlType": "ComboBox"
+    }
+  ],
+  "statusbar": [],
+  "stats": {
+    "totalTabs": 9,
+    "totalRibbonItems": 168,
+    "totalDialogs": 21,
+    "totalControls": 472,
+    "errors": 0
+  }
+}

@@ -84,6 +84,7 @@ const VTABLE = {
         get_CurrentAutomationId: 29,
         get_CurrentClassName: 30,
         get_CurrentNativeWindowHandle: 36,
+        get_CurrentBoundingRectangle: 43,
     },
     IUIAutomationElementArray: {
         Release: 2,
@@ -275,6 +276,17 @@ class UIElement {
         const buf = Buffer.alloc(PTR_SIZE);
         comCall(this._ptr, VTABLE.IUIAutomationElement.get_CurrentNativeWindowHandle, proto.GetBstrProp, buf);
         return buf.readBigUInt64LE(0);
+    }
+
+    get boundingRect() {
+        const buf = Buffer.alloc(16);
+        comCall(this._ptr, VTABLE.IUIAutomationElement.get_CurrentBoundingRectangle, proto.GetBstrProp, buf);
+        return {
+            left:   buf.readInt32LE(0),
+            top:    buf.readInt32LE(4),
+            right:  buf.readInt32LE(8),
+            bottom: buf.readInt32LE(12),
+        };
     }
 
     // --- 요소 정보 객체 ---
