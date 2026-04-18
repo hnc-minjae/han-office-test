@@ -60,6 +60,7 @@ const KEYEVENTF_KEYUP = 0x0002;
 
 // === ShowWindow commands ===
 const SW_RESTORE = 9;
+const SW_MAXIMIZE = 3;
 
 // === MOUSEEVENTF flags ===
 const MOUSEEVENTF_LEFTDOWN  = 0x0002;
@@ -279,6 +280,16 @@ function forceSetForeground(hwnd) {
 }
 
 /**
+ * 지정한 창을 최대화. 리본 버튼 클리핑을 방지해 모든 컨트롤이 가시 영역에 들어오게 함.
+ * @param {*} hwnd - Native window handle (koffi void*)
+ */
+function maximizeWindow(hwnd) {
+    if (!hwnd) return;
+    const apis = getApis();
+    apis.ShowWindow(hwnd, SW_MAXIMIZE);
+}
+
+/**
  * Return the PID of the process that owns the currently-foreground window.
  * Used to verify that input events will land in the intended target process
  * (e.g. HWP) before dispatching mouse/keyboard actions.
@@ -449,6 +460,7 @@ module.exports = {
     // Window messaging
     postKey,
     forceSetForeground,
+    maximizeWindow,
     getForegroundPid,
     // UIA helpers
     findWindowByPid,

@@ -15,7 +15,7 @@ const win32 = require('./win32');
 
 const { PRODUCTS } = sessionModule;
 
-const DELAY = { short: 150, medium: 300, long: 600, dialog: 1000 };
+const DELAY = { short: 50, medium: 120, long: 250, dialog: 450 };
 const MAX_TAB_CONTROLS = 60;
 
 // 다이얼로그 프로빙에서 전체 스킵할 탭 — 보기 탭은 창 생성/분할/리본 토글 등
@@ -38,12 +38,12 @@ const MAIN_CLASSES = ['HwpMainEditWnd', 'FrameWindowImpl', 'HwpRulerWnd', 'Popup
 // =============================================================================
 
 const DD_LIMITS = {
-    closeAttempts: 5,
+    closeAttempts: 2,
     popupTreeMaxNodes: 500,
     popupTreeMaxDepth: 8,
-    popupWaitMs: 1500,
-    perDropdownBudgetMs: 10_000,
-    perTabBudgetMs: 180_000,         // 일반 탭 3 min. 도형 탭은 재선택 오버헤드 감안.
+    popupWaitMs: 350,
+    perDropdownBudgetMs: 8_000,
+    perTabBudgetMs: 180_000,
     totalProbingBudgetMs: 900_000,
 };
 
@@ -71,6 +71,7 @@ class MenuMapper {
         this.probeShapeTab = options.probeShapeTab !== false;
         this.probeTableTabs = options.probeTableTabs !== false;
         this.probeChartTabs = options.probeChartTabs !== false;
+        this.probeContextMenus = options.probeContextMenus !== false;
         this._recoveryInProgress = false; // plan §5 Layer 5
 
         const info = PRODUCTS[this.product];
@@ -114,6 +115,20 @@ class MenuMapper {
 
         await controller.setForeground();
         await sleep(DELAY.medium);
+
+        // 리본 버튼이 창 밖으로 잘리지 않도록 최대화 강제
+        try {
+            const hwnd = sessionModule.getSession().hwpProcess.hwnd;
+            if (hwnd) {
+                win32.maximizeWindow(hwnd);
+                await sleep(DELAY.long);
+                log('🗖', '  창 최대화');
+            }
+        } catch (_) {}
+
+        // LauncherImpl(시작 화면) 자동 해제 — 새 문서 ListItem을 더블클릭
+        await this._dismissLauncher();
+
         await controller.pressKeys({ keys: 'Escape' });
         await sleep(DELAY.long);
 
@@ -204,6 +219,16 @@ class MenuMapper {
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
             await this._probeChartTabs();
+        }
+
+        // Step 9: 우클릭 컨텍스트 메뉴 프로빙 (Phase E)
+        if (this.probeContextMenus) {
+            log('▶', 'Step 9: 우클릭 컨텍스트 메뉴 프로빙');
+            try { await controller.setForeground(); } catch (_) {}
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            await this._probeContextMenus();
         }
 
         log('▶', '완료!');
@@ -650,6 +675,47 @@ class MenuMapper {
      * 현재 foreground 창의 소유 PID가 HWP와 일치하는지 확인.
      * 불일치 시 setForeground 재시도. 2회 실패 시 throw하여 잘못된 이벤트 발사 차단.
      */
+    /**
+     * HWP 런처(시작 화면)가 떠있으면 "새 문서" ListItem을 더블클릭해서 빈 문서로 진입.
+     * 런처는 Escape/PostMessage로 닫히지 않으므로 UI 클릭이 필요.
+     */
+    async _dismissLauncher() {
+        sessionModule.refreshHwpElement();
+        const session = sessionModule.getSession();
+        if (!session.hwpElement) return;
+        const children = session.hwpElement.findAllChildren();
+        const launcher = children.find(c => {
+            try { return c.className === 'LauncherImpl'; } catch (_) { return false; }
+        });
+        children.filter(c => c !== launcher).forEach(c => { try { c.release(); } catch (_) {} });
+        if (!launcher) return;
+
+        log('🚀', '  런처 화면 감지 — "새 문서"로 진입');
+        const descs = launcher.findAll(TreeScope.Descendants);
+        let target = null;
+        for (const d of descs) {
+            try {
+                if (d.name === '새 문서' && d.controlTypeName === 'ListItem') {
+                    target = d; break;
+                }
+            } catch (_) {}
+        }
+        descs.filter(d => d !== target).forEach(d => { try { d.release(); } catch (_) {} });
+        try { launcher.release(); } catch (_) {}
+        if (!target) return;
+
+        const r = target.boundingRect;
+        const cx = Math.round((r.left + r.right) / 2);
+        const cy = Math.round((r.top + r.bottom) / 2);
+        try { target.release(); } catch (_) {}
+
+        // 더블클릭으로 빈 문서 열기
+        win32.mouseClick(cx, cy);
+        await sleep(DELAY.short);
+        win32.mouseClick(cx, cy);
+        await sleep(DELAY.dialog * 3);
+    }
+
     async _ensureForeground() {
         const expectedPid = sessionModule.getSession().hwpProcess.pid;
         if (!expectedPid) return;
@@ -726,6 +792,7 @@ class MenuMapper {
 
             await this._ensureUiHealthy();
 
+            let probeCount = 0;
             for (const item of dropdownItems) {
                 if (Date.now() > tabDeadline) {
                     log('⏰', `  "${tabName}" 탭 예산 초과 — 남은 드롭다운 스킵`);
@@ -738,8 +805,8 @@ class MenuMapper {
                 }
 
                 try {
-                    await this._switchTab(tabInfo);
-                    await this._resetCaretContext();
+                    // 첫 probe에서만 탭 전환 (같은 탭 내에서는 이미 활성)
+                    if (probeCount === 0) await this._switchTab(tabInfo);
                     const dd = await this._probeDropdown(item);
                     item.dropdown = dd;
                     if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
@@ -757,7 +824,6 @@ class MenuMapper {
                         probeDurationMs: 0,
                     };
                     this.map.stats.dropdownErrors++;
-                    // Layer 5: 재귀 복구 차단
                     if (!this._recoveryInProgress) {
                         this._recoveryInProgress = true;
                         try { await this._recover(); }
@@ -766,7 +832,9 @@ class MenuMapper {
                 }
 
                 await this._ensureNoPopup();
-                await this._ensureUiHealthy();
+                probeCount++;
+                // 3 probe마다 UI 건강 체크 (전체 건강 검사 매번 불필요)
+                if (probeCount % 3 === 0) await this._ensureUiHealthy();
             }
         }
     }
@@ -952,6 +1020,7 @@ class MenuMapper {
         try { node.className = el.className || ''; } catch (_) {}
         try { node.rect = el.boundingRect; } catch (_) {}
 
+        // rect 포함 — 동일 className/name의 여러 인스턴스 구분 (lazy-load 항목 포함)
         const r = node.rect;
         const key = `${node.className}|${node.name}|${r ? `${r.left},${r.top},${r.right},${r.bottom}` : ''}`;
         if (visited.has(key)) return;
@@ -1605,6 +1674,142 @@ class MenuMapper {
         } finally {
             await this._cleanupChart();
         }
+    }
+
+    // =========================================================================
+    // Step 9: 우클릭 컨텍스트 메뉴 프로빙 (Phase E)
+    // =========================================================================
+
+    async _probeContextMenus() {
+        this.map.contextMenus = this.map.contextMenus || {};
+
+        // 캔버스 중앙 좌표 계산
+        sessionModule.refreshHwpElement();
+        const session = sessionModule.getSession();
+        if (!session.hwpElement) { log('⚠', '  Step 9: HWP element 없음'); return; }
+        const children = session.hwpElement.findAllChildren();
+        let canvas = null;
+        for (const c of children) {
+            try { if (c.className === 'HwpMainEditWnd') { canvas = c; break; } } catch (_) {}
+        }
+        children.filter(c => c !== canvas).forEach(c => { try { c.release(); } catch (_) {} });
+        if (!canvas) { log('⚠', '  Step 9: 캔버스 없음'); return; }
+        const cr = canvas.boundingRect;
+        const cx = Math.round((cr.left + cr.right) / 2);
+        const cy = Math.round((cr.top + cr.bottom) / 2);
+        try { canvas.release(); } catch (_) {}
+
+        // Scenario 1: 캐럿만 (선택 없음) — 문서 끝 커서
+        await this._safeKeys('Ctrl+End');
+        await sleep(DELAY.short);
+        const caretCtx = await this._probeRightClickAt(cx, cy, 'caret');
+        if (caretCtx) {
+            this.map.contextMenus['caret'] = caretCtx;
+            log('📎', `  우클릭 [caret]: ${caretCtx.itemCount}개 항목`);
+        }
+
+        // Scenario 2: 텍스트 전체 선택
+        await this._safeKeys('Ctrl+Home');
+        await sleep(DELAY.short);
+        await this._safeKeys('Ctrl+A');
+        await sleep(DELAY.short);
+        const selCtx = await this._probeRightClickAt(cx, cy, 'text-selected');
+        if (selCtx) {
+            this.map.contextMenus['text-selected'] = selCtx;
+            log('📎', `  우클릭 [text-selected]: ${selCtx.itemCount}개 항목`);
+        }
+    }
+
+    /**
+     * 주어진 좌표에 우클릭하고 등장하는 컨텍스트 메뉴 팝업을 수집.
+     * desktop-level Popup (FrameWindowImpl 형제) 감지 대응.
+     */
+    async _probeRightClickAt(x, y, stateLabel) {
+        const start = Date.now();
+        const result = {
+            state: stateLabel,
+            location: null,
+            popupClass: null,
+            containerClass: null,
+            items: [],
+            itemCount: 0,
+            probeDurationMs: 0,
+            notes: [],
+        };
+
+        sessionModule.refreshHwpElement();
+        let session = sessionModule.getSession();
+        if (!session.hwpElement) {
+            result.notes.push('no-hwp-element');
+            return result;
+        }
+        const beforeFrame = this._snapshotChildren(session.hwpElement);
+        this._releaseAll(beforeFrame.children);
+
+        const uia = sessionModule.getUia();
+        const rootBefore = uia.getRootElement();
+        const beforeRoot = this._snapshotChildren(rootBefore);
+        this._releaseAll(beforeRoot.children);
+        try { rootBefore.release(); } catch (_) {}
+
+        // Right-click
+        await this._ensureForeground();
+        win32.mouseClick(x, y, { rightClick: true });
+        await sleep(DD_LIMITS.popupWaitMs);
+
+        // After snapshots
+        sessionModule.refreshHwpElement();
+        const afterFrame = this._snapshotChildren(sessionModule.getSession().hwpElement);
+        const rootAfter = uia.getRootElement();
+        const afterRoot = this._snapshotChildren(rootAfter);
+
+        const addedFrame = this._findAddedChildren(beforeFrame, afterFrame);
+        const addedRoot = this._findAddedChildren(beforeRoot, afterRoot);
+
+        let popupEl = null;
+        for (const a of addedFrame) {
+            if (a.info.className === 'Popup' && a.info.controlType === 'Window') {
+                popupEl = a.element; result.location = 'frame'; result.popupClass = a.info.className; break;
+            }
+        }
+        if (!popupEl) {
+            for (const a of addedRoot) {
+                if (a.info.className === 'Popup' && a.info.controlType === 'Window') {
+                    popupEl = a.element; result.location = 'desktop'; result.popupClass = a.info.className; break;
+                }
+            }
+        }
+
+        if (popupEl) {
+            try {
+                const visited = new Set();
+                const nodes = [];
+                this._walkPopupTree(popupEl, 0, visited, nodes);
+                if (nodes.length >= DD_LIMITS.popupTreeMaxNodes) result.notes.push('tree-truncated');
+                // ContextMenuImpl 컨테이너 기록
+                const container = nodes.find(n => n.depth === 1 && n.className === 'ContextMenuImpl');
+                if (container) result.containerClass = container.className;
+                result.items = this._summarizeItems(nodes);
+                result.itemCount = nodes.length;
+            } catch (e) {
+                result.notes.push(`walk-error:${e.message}`);
+            }
+        } else {
+            result.notes.push('no-popup-detected');
+        }
+
+        this._releaseAll(afterFrame.children);
+        this._releaseAll(afterRoot.children);
+        try { rootAfter.release(); } catch (_) {}
+
+        // Close — 2회 Escape
+        for (let i = 0; i < 2; i++) {
+            await this._safeKeys('Escape');
+            await sleep(DELAY.short);
+        }
+
+        result.probeDurationMs = Date.now() - start;
+        return result;
     }
 
     // =========================================================================
