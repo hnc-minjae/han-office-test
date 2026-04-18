@@ -8,6 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 const controller = require('./hwp-controller');
 const sessionModule = require('./session');
 const { TreeScope } = require('./uia');
@@ -72,6 +73,7 @@ class MenuMapper {
         this.probeTableTabs = options.probeTableTabs !== false;
         this.probeChartTabs = options.probeChartTabs !== false;
         this.probeContextMenus = options.probeContextMenus !== false;
+        this.probeImageTab = options.probeImageTab !== false;
         this._recoveryInProgress = false; // plan §5 Layer 5
 
         const info = PRODUCTS[this.product];
@@ -221,9 +223,19 @@ class MenuMapper {
             await this._probeChartTabs();
         }
 
-        // Step 9: 우클릭 컨텍스트 메뉴 프로빙 (Phase E)
+        // Step 9: Selection 상태 프로빙 — 그림 컨텍스트 탭 (Phase F)
+        if (this.probeImageTab) {
+            log('▶', 'Step 9: 그림 컨텍스트 탭 프로빙 (Selection 상태)');
+            await this._setForegroundMaximized();
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            await this._probeImageTab();
+        }
+
+        // Step 10: 우클릭 컨텍스트 메뉴 프로빙 (Phase E)
         if (this.probeContextMenus) {
-            log('▶', 'Step 9: 우클릭 컨텍스트 메뉴 프로빙');
+            log('▶', 'Step 10: 우클릭 컨텍스트 메뉴 프로빙');
             await this._setForegroundMaximized();
             await sleep(DELAY.long);
             await this._ensureNoDialog();
@@ -1688,6 +1700,149 @@ class MenuMapper {
             }
         } finally {
             await this._cleanupChart();
+        }
+    }
+
+    // =========================================================================
+    // Step 10: 그림 컨텍스트 탭 프로빙 (Phase F)
+    // =========================================================================
+
+    /**
+     * 클립보드에 PNG 이미지를 올리고 Ctrl+V로 paste한 뒤 F11로 개체 선택.
+     * F11은 HWP의 "개체 선택" 단축키로 paste된 이미지를 선택 모드로 진입시킴.
+     */
+    async _insertImageForProbing() {
+        await this._safeKeys('Ctrl+End');
+        await sleep(DELAY.short);
+
+        // PowerShell로 작은 PNG 이미지를 클립보드에 설정 (STA 필수)
+        const psScript =
+            "Add-Type -AssemblyName System.Windows.Forms;" +
+            "Add-Type -AssemblyName System.Drawing;" +
+            "$bmp = New-Object System.Drawing.Bitmap 200,150;" +
+            "$g = [System.Drawing.Graphics]::FromImage($bmp);" +
+            "$g.FillRectangle([System.Drawing.Brushes]::OrangeRed, 0, 0, 200, 150);" +
+            "$g.Dispose();" +
+            "[System.Windows.Forms.Clipboard]::SetImage($bmp)";
+        const encoded = Buffer.from(psScript, 'utf16le').toString('base64');
+        try {
+            execSync(`powershell -Sta -NoProfile -EncodedCommand ${encoded}`, {
+                timeout: 10000, windowsHide: true, stdio: 'ignore',
+            });
+        } catch (e) {
+            log('⚠', `  이미지 클립보드 설정 실패: ${e.message}`);
+            return false;
+        }
+
+        await this._safeKeys('Ctrl+V');
+        await sleep(DELAY.dialog * 2);
+
+        // F11: 개체 선택 모드 — paste된 이미지가 선택됨
+        await this._safeKeys('F11');
+        await sleep(DELAY.long);
+        return true;
+    }
+
+    async _cleanupImage() {
+        try {
+            await this._safeKeys('Escape');
+            await sleep(DELAY.short);
+            for (let i = 0; i < 6; i++) {
+                await this._safeKeys('Ctrl+Z');
+                await sleep(DELAY.short);
+            }
+        } catch (e) {
+            log('⚠', `  이미지 정리 실패 (무시): ${e.message}`);
+        }
+    }
+
+    async _probeImageTab() {
+        await this._ensureUiHealthy();
+
+        const initialTabs = await this._collectMenuTabs();
+        const initialTabNames = new Set(initialTabs.filter(t => t.isEnabled).map(t => t.name));
+
+        const inserted = await this._insertImageForProbing();
+        if (!inserted) {
+            log('⚠', '  이미지 삽입 실패 — Step 10 스킵');
+            await this._cleanupImage();
+            return;
+        }
+
+        try {
+            const afterTabs = await this._collectMenuTabs();
+            const newTabs = afterTabs.filter(t => t.isEnabled && !initialTabNames.has(t.name));
+            if (newTabs.length === 0) {
+                log('⚠', '  이미지 삽입 후 새 탭 없음');
+                return;
+            }
+            log('ℹ', `  새 컨텍스트 탭: ${newTabs.map(t => t.name).join(', ')}`);
+
+            for (const tabInfo of newTabs) {
+                await this._switchTab(tabInfo);
+                await sleep(DELAY.long);
+                const ribbonItems = await this._collectRibbonItems(tabInfo);
+                for (const it of ribbonItems) it.type = it.hasDropdown ? 'dropdown' : 'action';
+
+                this.map.tabs[tabInfo.name] = {
+                    accessKey: tabInfo.accessKey,
+                    uiaName: tabInfo.uiaName,
+                    ribbonItems,
+                    contextState: 'image-selected',
+                };
+                this.map.stats.totalTabs++;
+                this.map.stats.totalRibbonItems += ribbonItems.length;
+                log('ℹ', `  "${tabInfo.name}" 탭: ${ribbonItems.length}개 리본 항목`);
+
+                const dropdownItems = ribbonItems.filter(i => i.hasDropdown);
+                if (dropdownItems.length === 0) continue;
+                log('▶', `  "${tabInfo.name}" 드롭다운 프로빙 (${dropdownItems.length}개)`);
+                const tabDeadline = Date.now() + DD_LIMITS.perTabBudgetMs;
+                let probeCount = 0;
+
+                for (const item of dropdownItems) {
+                    if (Date.now() > tabDeadline) { log('⏰', `  "${tabInfo.name}" 예산 초과`); break; }
+                    if (this._isDangerousDropdown(item.name)) {
+                        item.dropdown = { classification: 'blacklisted', itemCount: 0, items: [], notes: ['blacklisted'] };
+                        continue;
+                    }
+
+                    if (!(await this._isTabStillActive(tabInfo.name))) {
+                        log('🔁', `    "${tabInfo.name}" 컨텍스트 사라짐 — F11로 재선택`);
+                        await this._safeKeys('F11');
+                        await sleep(DELAY.long);
+                        if (!(await this._isTabStillActive(tabInfo.name))) {
+                            item.dropdown = { classification: 'context-lost', itemCount: 0, items: [], notes: ['context-lost'] };
+                            continue;
+                        }
+                        await this._switchTab(tabInfo);
+                        await sleep(DELAY.long);
+                    }
+
+                    try {
+                        const dd = await this._probeDropdown(item);
+                        item.dropdown = dd;
+                        if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
+                            this.map.stats.totalDropdowns++;
+                            this.map.stats.totalDropdownItems += dd.itemCount;
+                        }
+                        log('📂', `    "${item.name}" → ${dd.classification} (${dd.itemCount}개)`);
+                    } catch (e) {
+                        log('⚠', `    "${item.name}" 실패: ${e.message}`);
+                        item.dropdown = { classification: 'error', itemCount: 0, items: [], notes: [`error:${e.message}`] };
+                        this.map.stats.dropdownErrors++;
+                        if (!this._recoveryInProgress) {
+                            this._recoveryInProgress = true;
+                            try { await this._recover(); } finally { this._recoveryInProgress = false; }
+                        }
+                    }
+                    await this._ensureNoPopup();
+                    probeCount++;
+                    if (probeCount % 3 === 0) await this._ensureUiHealthy();
+                }
+            }
+        } finally {
+            await this._cleanupImage();
         }
     }
 

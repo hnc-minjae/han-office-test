@@ -2,7 +2,7 @@
   "product": "hwp",
   "productName": "한글",
   "version": "2027",
-  "mappedAt": "2026-04-18T06:47:39.946Z",
+  "mappedAt": "2026-04-18T07:11:26.259Z",
   "tabs": {
     "파일": {
       "accessKey": "F",
@@ -61,7 +61,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2225,
+            "probeDurationMs": 2323,
             "notes": []
           }
         },
@@ -575,9 +575,19 @@
                   "className": "RadioButtonImpl"
                 },
                 {
+                  "name": "ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
                   "name": "번호 문단 : ALT+M",
                   "type": "RadioButton",
                   "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
                 },
                 {
                   "name": "글머리표 문단 : ALT+B",
@@ -1000,7 +1010,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2222,
+            "probeDurationMs": 2304,
             "notes": []
           }
         },
@@ -1039,7 +1049,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2186,
+            "probeDurationMs": 2205,
             "notes": []
           }
         },
@@ -1170,7 +1180,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2149,
+            "probeDurationMs": 2281,
             "notes": []
           }
         },
@@ -1307,7 +1317,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2274,
+            "probeDurationMs": 2451,
             "notes": []
           }
         },
@@ -1354,7 +1364,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2274,
+            "probeDurationMs": 2259,
             "notes": []
           }
         },
@@ -1401,7 +1411,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2235,
+            "probeDurationMs": 2192,
             "notes": []
           }
         },
@@ -1862,7 +1872,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2604,
+            "probeDurationMs": 2765,
             "notes": []
           }
         },
@@ -1891,7 +1901,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2188,
+            "probeDurationMs": 2165,
             "notes": []
           }
         },
@@ -1920,7 +1930,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2252,
+            "probeDurationMs": 2151,
             "notes": []
           }
         },
@@ -1961,7 +1971,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2235,
+            "probeDurationMs": 2225,
             "notes": []
           }
         },
@@ -2014,7 +2024,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2494,
+            "probeDurationMs": 2303,
             "notes": []
           }
         },
@@ -2289,7 +2299,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2376,
+            "probeDurationMs": 2245,
             "notes": []
           }
         },
@@ -2336,7 +2346,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2169,
+            "probeDurationMs": 2223,
             "notes": []
           }
         },
@@ -2797,7 +2807,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2721,
+            "probeDurationMs": 2513,
             "notes": []
           }
         },
@@ -2964,7 +2974,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2278,
+            "probeDurationMs": 2420,
             "notes": []
           }
         },
@@ -3029,7 +3039,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2482,
+            "probeDurationMs": 2208,
             "notes": []
           }
         },
@@ -3145,7 +3155,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2226,
+            "probeDurationMs": 2181,
             "notes": []
           }
         },
@@ -3320,7 +3330,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2293,
+            "probeDurationMs": 2252,
             "notes": []
           }
         },
@@ -3619,7 +3629,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2149,
+            "probeDurationMs": 2200,
             "notes": []
           }
         },
@@ -3631,14 +3641,43 @@
           "clickX": 1127,
           "clickY": 92,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2123,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [
+              {
+                "name": "상용구 : ALT+Q",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글자 겹치기 : ALT+W",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "외래어 표기 : ALT+G",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "로마자로 바꾸기 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "로마자 등록 : ALT+I",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2234,
+            "notes": []
           }
         },
         {
@@ -3678,7 +3717,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2210,
+            "probeDurationMs": 2330,
             "notes": []
           }
         },
@@ -4203,7 +4242,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2338,
+            "probeDurationMs": 2505,
             "notes": []
           }
         },
@@ -4292,7 +4331,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2347,
+            "probeDurationMs": 2253,
             "notes": []
           }
         },
@@ -4403,7 +4442,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2346,
+            "probeDurationMs": 2431,
             "notes": []
           }
         },
@@ -4426,7 +4465,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2312,
+            "probeDurationMs": 2282,
             "notes": []
           }
         },
@@ -4442,7 +4481,7 @@
             "popupClass": "Popup",
             "itemCount": 6,
             "items": [],
-            "probeDurationMs": 2252,
+            "probeDurationMs": 2183,
             "notes": []
           }
         },
@@ -4953,7 +4992,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2496,
+            "probeDurationMs": 2241,
             "notes": []
           }
         },
@@ -5005,14 +5044,97 @@
           "clickX": 1179,
           "clickY": 107,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2143,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "scrollable-gallery",
+            "popupClass": "Popup",
+            "itemCount": 20,
+            "items": [
+              {
+                "name": "1. 가. 1) 가) (1) (가) ① ㉮",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "공문서 - 들여 쓰기 없음(1. 가. 1) 가) (1) (가) ① ㉮)",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "I A 1 a (1) (a) ① ⓐ",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "1. 가. ▶ (1) (가) - ① ㉮",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "I. A. 1. a) (1) (a) i)",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "1. 1.1. 1.1.1. 1.1.1.1. ...",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "1. 1.1 1.1.1 1.1.1.1 ...",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "1. 가. 1. 가) (1) (가) i)",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "제1장 제1절 제 1항 - ...",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "● ■ ▶ ...",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "1. 없음 없음 없음 ...",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "없음 없음 없음 없음 ...",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "사용자 정의",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": true
+              },
+              {
+                "name": "개요 번호 모양 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 2367,
+            "notes": []
           }
         },
         {
@@ -5023,14 +5145,37 @@
           "clickX": 1222,
           "clickY": 99,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2348,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "scrollable-gallery",
+            "popupClass": "Popup",
+            "itemCount": 34,
+            "items": [
+              {
+                "name": "(없음)",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "사용자 정의",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": true
+              },
+              {
+                "name": "사용자 정의",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": true
+              },
+              {
+                "name": "글머리표 모양 : ALT+N",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 2448,
+            "notes": []
           }
         },
         {
@@ -5041,14 +5186,31 @@
           "clickX": 1264,
           "clickY": 99,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2452,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "scrollable-gallery",
+            "popupClass": "Popup",
+            "itemCount": 27,
+            "items": [
+              {
+                "name": "(없음)",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "사용자 정의",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": true
+              },
+              {
+                "name": "그림 글머리표 모양 : ALT+N",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 2511,
+            "notes": []
           }
         },
         {
@@ -5059,14 +5221,91 @@
           "clickX": 1222,
           "clickY": 139,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2360,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "scrollable-gallery",
+            "popupClass": "Popup",
+            "itemCount": 19,
+            "items": [
+              {
+                "name": "(없음)",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "1. 가. 1) 가) (1) (가) ① ㉮",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "(1) (가) (a) 1) 가) a) ① ㉮ ⓐ",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "1) 가) a) (1) (가) (a) ① ㉮ ⓐ",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "① (ㄱ) (a) 1) ㄱ) a) -",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "가) a) (1) (가) (a) ① -",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "(ㄱ) (1) (a) 1) a) ① -",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "I. A. 1. i) a) 1) ① ⓐ",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "i a. (i) (a) i) a) -",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "A. 1. 가 (a) (1) (가) ⓐ ① ㉮",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "1. 1.1. 1.1.1. 1.1.1.1. ...",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": false
+              },
+              {
+                "name": "사용자 정의",
+                "controlType": "ListItem",
+                "depth": 3,
+                "isDialogOpener": true
+              },
+              {
+                "name": "문단 번호 모양 : ALT+N",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 2366,
+            "notes": []
           }
         },
         {
@@ -5142,7 +5381,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2245,
+            "probeDurationMs": 2270,
             "notes": []
           }
         },
@@ -5183,7 +5422,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2293,
+            "probeDurationMs": 2182,
             "notes": []
           }
         },
@@ -5296,7 +5535,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2223,
+            "probeDurationMs": 2237,
             "notes": []
           }
         },
@@ -5319,7 +5558,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2340,
+            "probeDurationMs": 2288,
             "notes": []
           }
         },
@@ -5541,7 +5780,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2140,
+            "probeDurationMs": 2439,
             "notes": []
           }
         },
@@ -5618,7 +5857,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2185,
+            "probeDurationMs": 2150,
             "notes": []
           }
         },
@@ -5654,14 +5893,25 @@
           "clickX": 1164,
           "clickY": 106,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2237,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "라벨 문서 만들기 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "라벨 새 쪽 추가하기 : ALT+I",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2234,
+            "notes": []
           }
         },
         {
@@ -6143,7 +6393,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2302,
+            "probeDurationMs": 2248,
             "notes": []
           }
         },
@@ -6294,7 +6544,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2223,
+            "probeDurationMs": 2165,
             "notes": []
           }
         },
@@ -6343,7 +6593,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2142,
+            "probeDurationMs": 2166,
             "notes": []
           }
         },
@@ -6416,7 +6666,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2139,
+            "probeDurationMs": 2195,
             "notes": []
           }
         },
@@ -6457,7 +6707,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2109,
+            "probeDurationMs": 2262,
             "notes": []
           }
         },
@@ -6516,7 +6766,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2276,
+            "probeDurationMs": 2121,
             "notes": []
           }
         }
@@ -6551,7 +6801,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2181,
+            "probeDurationMs": 2224,
             "notes": []
           }
         },
@@ -6592,7 +6842,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2215,
+            "probeDurationMs": 2197,
             "notes": []
           }
         },
@@ -6621,7 +6871,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2094,
+            "probeDurationMs": 2269,
             "notes": []
           }
         },
@@ -6694,7 +6944,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2189,
+            "probeDurationMs": 2224,
             "notes": []
           }
         },
@@ -6718,7 +6968,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2143,
+            "probeDurationMs": 2147,
             "notes": [
               "no-popup-detected"
             ]
@@ -6767,7 +7017,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2196,
+            "probeDurationMs": 2154,
             "notes": []
           }
         },
@@ -6796,7 +7046,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2204,
+            "probeDurationMs": 2255,
             "notes": []
           }
         },
@@ -6837,7 +7087,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2259,
+            "probeDurationMs": 2341,
             "notes": []
           }
         },
@@ -6886,7 +7136,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2235,
+            "probeDurationMs": 2284,
             "notes": []
           }
         },
@@ -6921,7 +7171,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2153,
+            "probeDurationMs": 2160,
             "notes": []
           }
         },
@@ -6962,7 +7212,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2134,
+            "probeDurationMs": 2303,
             "notes": []
           }
         },
@@ -6970,16 +7220,8 @@
           "name": "사용자 설정 : ALT+Z",
           "controlType": "Button",
           "hasDropdown": false,
-          "type": "action",
-          "clickX": 782,
-          "clickY": 106
-        },
-        {
-          "name": "환경 설정 : ALT+U",
-          "controlType": "Button",
-          "hasDropdown": false,
           "type": "dialog",
-          "clickX": 827,
+          "clickX": 782,
           "clickY": 106,
           "dialog": {
             "title": "사용자 설정",
@@ -7266,6 +7508,14 @@
           }
         },
         {
+          "name": "환경 설정 : ALT+U",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 827,
+          "clickY": 106
+        },
+        {
           "name": "개인 정보 바꾸기 : ALT+E",
           "controlType": "MenuItem",
           "hasDropdown": true,
@@ -7290,7 +7540,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2169,
+            "probeDurationMs": 2223,
             "notes": []
           }
         },
@@ -7302,17 +7552,12 @@
           "clickX": 953,
           "clickY": 106,
           "dialog": {
-            "title": "개인 정보 바꾸기",
+            "title": "한컴 애셋",
             "tabs": [
               "(기본)"
             ],
             "controls": {
               "(기본)": [
-                {
-                  "name": "빠른 도움말",
-                  "type": "Button",
-                  "className": "Button"
-                },
                 {
                   "name": "도움말",
                   "type": "Button",
@@ -7324,94 +7569,64 @@
                   "className": "Button"
                 },
                 {
-                  "name": "전화번호 : ALT+E",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "최소화",
+                  "type": "Button",
+                  "className": "WindowsCaptionButton"
                 },
                 {
-                  "name": "전자 우편 : ALT+M",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "최대화",
+                  "type": "Button",
+                  "className": "WindowsCaptionButton"
                 },
                 {
-                  "name": "IP 주소 : ALT+I",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "닫기",
+                  "type": "Button",
+                  "className": "WindowsCaptionButton"
                 },
                 {
-                  "name": "생년월일 : ALT+B",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "filter",
+                  "type": "Button",
+                  "className": "p-right"
                 },
                 {
-                  "name": "주민등록번호 : ALT+U",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "download",
+                  "type": "Button",
+                  "className": ""
                 },
                 {
-                  "name": "외국인등록번호 : ALT+N",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "select-all",
+                  "type": "Button",
+                  "className": ""
                 },
                 {
-                  "name": "신용카드 번호 : ALT+W",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "first seperate",
+                  "type": "Button",
+                  "className": "disabled"
                 },
                 {
-                  "name": "주소 : ALT+D",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "prev",
+                  "type": "Button",
+                  "className": "disabled"
                 },
                 {
-                  "name": "계좌 번호 : ALT+J",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "next seperate",
+                  "type": "Button",
+                  "className": ""
                 },
                 {
-                  "name": "사용자 정의 : ALT+P",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
+                  "name": "last",
+                  "type": "Button",
+                  "className": ""
                 },
                 {
-                  "name": "기타 : ALT+T",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
-                },
-                {
-                  "name": "ALT+O",
+                  "name": "",
                   "type": "Edit",
-                  "className": "EditImplBase"
+                  "className": "ng-pristine ng-untouched ng-valid ng-not-empty"
                 },
                 {
-                  "name": "사용자 정의 설정 : ALT+S",
-                  "type": "Button",
-                  "className": "ButtonImpl"
-                },
-                {
-                  "name": "표시 형식 선택 : ALT+L",
-                  "type": "Button",
-                  "className": "ButtonImpl"
-                },
-                {
-                  "name": "****** : ALT+G",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "~~~~~~ : ALT+K",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "XXXXXX : ALT+X",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "사용자 정의 문자 : ALT+C",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
+                  "name": "",
+                  "type": "Edit",
+                  "className": "ng-pristine ng-untouched ng-valid ng-empty"
                 }
               ]
             }
@@ -7428,14 +7643,14 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 248,
-          "clickY": 110,
+          "clickX": 192,
+          "clickY": 92,
           "dropdown": {
             "classification": "no-popup",
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2270,
+            "probeDurationMs": 2230,
             "notes": [
               "no-popup-detected"
             ]
@@ -7446,24 +7661,24 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 240,
-          "clickY": 136
+          "clickX": 184,
+          "clickY": 118
         },
         {
           "name": "개체 선택 : ALT+L",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 240,
-          "clickY": 162
+          "clickX": 184,
+          "clickY": 144
         },
         {
           "name": "도형 속성 : ALT+P",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 312,
-          "clickY": 124,
+          "clickX": 256,
+          "clickY": 106,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -7494,7 +7709,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2362,
+            "probeDurationMs": 2228,
             "notes": []
           }
         },
@@ -7503,8 +7718,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 398,
-          "clickY": 110,
+          "clickX": 341,
+          "clickY": 92,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -7535,7 +7750,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2417,
+            "probeDurationMs": 2382,
             "notes": []
           }
         },
@@ -7544,8 +7759,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 398,
-          "clickY": 136,
+          "clickX": 341,
+          "clickY": 118,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -7564,7 +7779,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2456,
+            "probeDurationMs": 2213,
             "notes": []
           }
         },
@@ -7573,8 +7788,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 379,
-          "clickY": 162,
+          "clickX": 322,
+          "clickY": 144,
           "dropdown": {
             "classification": "gallery-mixed",
             "popupClass": "Popup",
@@ -7665,7 +7880,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2377,
+            "probeDurationMs": 2388,
             "notes": []
           }
         },
@@ -7674,8 +7889,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 496,
-          "clickY": 124,
+          "clickX": 439,
+          "clickY": 106,
           "dropdown": {
             "classification": "gallery-mixed",
             "popupClass": "Popup",
@@ -7760,7 +7975,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2194,
+            "probeDurationMs": 2464,
             "notes": []
           }
         },
@@ -7769,54 +7984,54 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 566,
-          "clickY": 110
+          "clickX": 509,
+          "clickY": 92
         },
         {
           "name": "그림자 왼쪽으로 이동 : ALT+S4",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 539,
-          "clickY": 136
+          "clickX": 482,
+          "clickY": 118
         },
         {
           "name": "그림자 원점으로 이동 : ALT+S5",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 566,
-          "clickY": 136
+          "clickX": 509,
+          "clickY": 118
         },
         {
           "name": "그림자 오른쪽으로 이동 : ALT+S2",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 592,
-          "clickY": 136
+          "clickX": 536,
+          "clickY": 118
         },
         {
           "name": "그림자 아래로 이동 : ALT+S3",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 566,
-          "clickY": 162
+          "clickX": 509,
+          "clickY": 144
         },
         {
           "name": "글상자 여백 : ALT+Y",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 648,
-          "clickY": 124,
+          "clickX": 592,
+          "clickY": 106,
           "dropdown": {
             "classification": "no-popup",
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2122,
+            "probeDurationMs": 2333,
             "notes": [
               "no-popup-detected"
             ]
@@ -7827,14 +8042,14 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 728,
-          "clickY": 111,
+          "clickX": 671,
+          "clickY": 93,
           "dropdown": {
             "classification": "no-popup",
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2253,
+            "probeDurationMs": 2215,
             "notes": [
               "no-popup-detected"
             ]
@@ -7845,14 +8060,14 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 733,
-          "clickY": 136,
+          "clickX": 676,
+          "clickY": 118,
           "dropdown": {
             "classification": "no-popup",
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2236,
+            "probeDurationMs": 2288,
             "notes": [
               "no-popup-detected"
             ]
@@ -7863,14 +8078,14 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 734,
-          "clickY": 161,
+          "clickX": 677,
+          "clickY": 143,
           "dropdown": {
             "classification": "no-popup",
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2332,
+            "probeDurationMs": 2117,
             "notes": [
               "no-popup-detected"
             ]
@@ -7881,102 +8096,102 @@
           "controlType": "Edit",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 863,
-          "clickY": 110
+          "clickX": 807,
+          "clickY": 92
         },
         {
           "name": "높이 : 30.00 mm ALT+H",
           "controlType": "Edit",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 863,
-          "clickY": 135
+          "clickX": 807,
+          "clickY": 117
         },
         {
           "name": "크기 고정 : ALT+ZF",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 842,
-          "clickY": 163
+          "clickX": 786,
+          "clickY": 145
         },
         {
           "name": "너비를 같게 : ALT+Z1",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 940,
-          "clickY": 109
+          "clickX": 883,
+          "clickY": 91
         },
         {
           "name": "높이를 같게 : ALT+Z2",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 940,
-          "clickY": 134
+          "clickX": 883,
+          "clickY": 116
         },
         {
           "name": "너비 및 높이를 같게 : ALT+Z3",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 940,
-          "clickY": 159
+          "clickX": 883,
+          "clickY": 141
         },
         {
           "name": "글자처럼 취급 : ALT+CT",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1019,
-          "clickY": 111
+          "clickX": 962,
+          "clickY": 93
         },
         {
           "name": "어울림 : ALT+C1",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 980,
-          "clickY": 136
+          "clickX": 923,
+          "clickY": 118
         },
         {
           "name": "자리 차지 : ALT+C2",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1006,
-          "clickY": 136
+          "clickX": 950,
+          "clickY": 118
         },
         {
           "name": "글 앞으로 : ALT+C3",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1033,
-          "clickY": 136
+          "clickX": 976,
+          "clickY": 118
         },
         {
           "name": "글 뒤로 : ALT+C4",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1060,
-          "clickY": 136
+          "clickX": 1003,
+          "clickY": 118
         },
         {
           "name": "그룹 : ALT+G",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1107,
-          "clickY": 124,
+          "clickX": 1050,
+          "clickY": 106,
           "dropdown": {
             "classification": "no-popup",
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2181,
+            "probeDurationMs": 2241,
             "notes": [
               "no-popup-detected"
             ]
@@ -7987,8 +8202,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1152,
-          "clickY": 124,
+          "clickX": 1095,
+          "clickY": 106,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -8007,7 +8222,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2364,
+            "probeDurationMs": 2301,
             "notes": []
           }
         },
@@ -8016,8 +8231,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1197,
-          "clickY": 124,
+          "clickX": 1141,
+          "clickY": 106,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -8036,7 +8251,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2228,
+            "probeDurationMs": 2191,
             "notes": []
           }
         },
@@ -8045,14 +8260,14 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1239,
-          "clickY": 124,
+          "clickX": 1182,
+          "clickY": 106,
           "dropdown": {
             "classification": "no-popup",
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2177,
+            "probeDurationMs": 2332,
             "notes": [
               "no-popup-detected"
             ]
@@ -8063,17 +8278,46 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1280,
-          "clickY": 124,
+          "clickX": 1223,
+          "clickY": 106,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2388,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [
+              {
+                "name": "개체 회전 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽으로 90도 회전 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽으로 90도 회전 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "좌우 대칭 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "상하 대칭 : ALT+V",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2450,
+            "notes": []
           }
         },
         {
@@ -8081,17 +8325,70 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1335,
-          "clickY": 124,
+          "clickX": 1278,
+          "clickY": 106,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2403,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 10,
+            "items": [
+              {
+                "name": "위 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 위 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 가운데 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 아래 : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 위 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 가운데 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 아래 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "아래 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "캡션 없음 : ALT+X",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2433,
+            "notes": []
           }
         },
         {
@@ -8099,17 +8396,28 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1385,
-          "clickY": 124,
+          "clickX": 1328,
+          "clickY": 106,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2392,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "개체 보호하기 : ALT+K",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "모든 보호 개체 해제하기 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2424,
+            "notes": []
           }
         }
       ],
@@ -8138,8 +8446,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 118,
-          "clickY": 124,
+          "clickX": 61,
+          "clickY": 106,
           "dropdown": {
             "classification": "visual-grid",
             "popupClass": "Popup",
@@ -8176,7 +8484,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2178,
+            "probeDurationMs": 2210,
             "notes": []
           }
         },
@@ -8185,40 +8493,40 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 166,
-          "clickY": 109
+          "clickX": 110,
+          "clickY": 91
         },
         {
           "name": "표 지우개 : ALT+E",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 166,
-          "clickY": 135
+          "clickX": 110,
+          "clickY": 117
         },
         {
           "name": "차트 만들기 : ALT+C",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 218,
-          "clickY": 124
+          "clickX": 162,
+          "clickY": 106
         },
         {
           "name": "표 속성 : ALT+P",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 264,
-          "clickY": 124
+          "clickX": 207,
+          "clickY": 106
         },
         {
           "name": "표 채우기 : ALT+I",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1006,
-          "clickY": 110,
+          "clickX": 950,
+          "clickY": 92,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -8237,7 +8545,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2301,
+            "probeDurationMs": 2282,
             "notes": []
           }
         },
@@ -8246,8 +8554,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1111,
-          "clickY": 110,
+          "clickX": 1054,
+          "clickY": 92,
           "dropdown": {
             "classification": "gallery-pure",
             "popupClass": "Popup",
@@ -8326,7 +8634,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2443,
+            "probeDurationMs": 2421,
             "notes": []
           }
         },
@@ -8335,8 +8643,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 999,
-          "clickY": 136,
+          "clickX": 943,
+          "clickY": 118,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -8415,7 +8723,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2218,
+            "probeDurationMs": 2293,
             "notes": []
           }
         },
@@ -8424,8 +8732,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1111,
-          "clickY": 136,
+          "clickX": 1054,
+          "clickY": 118,
           "dropdown": {
             "classification": "gallery-pure",
             "popupClass": "Popup",
@@ -8528,7 +8836,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2254,
+            "probeDurationMs": 2384,
             "notes": []
           }
         },
@@ -8537,8 +8845,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1000,
-          "clickY": 162,
+          "clickX": 944,
+          "clickY": 144,
           "dropdown": {
             "classification": "gallery-mixed",
             "popupClass": "Popup",
@@ -8629,7 +8937,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2219,
+            "probeDurationMs": 2430,
             "notes": []
           }
         },
@@ -8638,14 +8946,14 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1106,
-          "clickY": 161,
+          "clickX": 1049,
+          "clickY": 143,
           "dropdown": {
             "classification": "unknown",
             "popupClass": "Popup",
             "itemCount": 6,
             "items": [],
-            "probeDurationMs": 2191,
+            "probeDurationMs": 2186,
             "notes": []
           }
         }
@@ -8661,104 +8969,104 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 103,
-          "clickY": 124
+          "clickX": 46,
+          "clickY": 106
         },
         {
           "name": "줄/칸 추가하기 : ALT+I",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 168,
-          "clickY": 124
+          "clickX": 112,
+          "clickY": 106
         },
         {
           "name": "위에 줄 추가하기 : ALT+H",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 238,
-          "clickY": 109
+          "clickX": 181,
+          "clickY": 91
         },
         {
           "name": "왼쪽에 칸 추가하기 : ALT+Q",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 212,
-          "clickY": 135
+          "clickX": 156,
+          "clickY": 117
         },
         {
           "name": "오른쪽에 칸 추가하기 : ALT+K",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 263,
-          "clickY": 135
+          "clickX": 206,
+          "clickY": 117
         },
         {
           "name": "아래에 줄 추가하기 : ALT+B",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 238,
-          "clickY": 160
+          "clickX": 181,
+          "clickY": 142
         },
         {
           "name": "칸 지우기 : ALT+U",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 290,
-          "clickY": 109
+          "clickX": 233,
+          "clickY": 91
         },
         {
           "name": "줄 지우기 : ALT+W",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 290,
-          "clickY": 135
+          "clickX": 233,
+          "clickY": 117
         },
         {
           "name": "셀 나누기 : ALT+V",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 341,
-          "clickY": 124
+          "clickX": 284,
+          "clickY": 106
         },
         {
           "name": "셀 합치기 : ALT+J",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 392,
-          "clickY": 124
+          "clickX": 335,
+          "clickY": 106
         },
         {
           "name": "셀 너비를 같게 : ALT+C",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 463,
-          "clickY": 124
+          "clickX": 406,
+          "clickY": 106
         },
         {
           "name": "셀 높이를 같게 : ALT+R",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 527,
-          "clickY": 124
+          "clickX": 470,
+          "clickY": 106
         },
         {
           "name": "글자 방향 : ALT+D",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 602,
-          "clickY": 124,
+          "clickX": 545,
+          "clickY": 106,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -8783,7 +9091,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2254,
+            "probeDurationMs": 2253,
             "notes": []
           }
         },
@@ -8792,8 +9100,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 661,
-          "clickY": 124,
+          "clickX": 604,
+          "clickY": 106,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -8812,7 +9120,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2410,
+            "probeDurationMs": 2112,
             "notes": []
           }
         },
@@ -8821,8 +9129,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 734,
-          "clickY": 124,
+          "clickX": 677,
+          "clickY": 106,
           "dropdown": {
             "classification": "scrollable-gallery",
             "popupClass": "Popup",
@@ -8883,7 +9191,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2214,
+            "probeDurationMs": 2151,
             "notes": []
           }
         },
@@ -8892,32 +9200,32 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 789,
-          "clickY": 124
+          "clickX": 732,
+          "clickY": 106
         },
         {
           "name": "표 나누기 : ALT+A",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 828,
-          "clickY": 109
+          "clickX": 771,
+          "clickY": 91
         },
         {
           "name": "표 붙이기 : ALT+Z",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 828,
-          "clickY": 135
+          "clickX": 771,
+          "clickY": 117
         },
         {
           "name": "채우기 : ALT+L",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 876,
-          "clickY": 109,
+          "clickX": 819,
+          "clickY": 91,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -8942,7 +9250,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2202,
+            "probeDurationMs": 2114,
             "notes": []
           }
         },
@@ -8951,14 +9259,14 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 918,
-          "clickY": 109,
+          "clickX": 862,
+          "clickY": 91,
           "dropdown": {
             "classification": "no-popup",
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2269,
+            "probeDurationMs": 2085,
             "notes": [
               "no-popup-detected"
             ]
@@ -8969,8 +9277,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 876,
-          "clickY": 135,
+          "clickX": 819,
+          "clickY": 117,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
@@ -9037,7 +9345,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2287,
+            "probeDurationMs": 2154,
             "notes": []
           }
         },
@@ -9046,81 +9354,134 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 910,
-          "clickY": 135
+          "clickX": 854,
+          "clickY": 117
         },
         {
           "name": "표를 문자열로 : ALT+X",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 984,
-          "clickY": 124
+          "clickX": 928,
+          "clickY": 106
         },
         {
           "name": "문자열을 표로 : ALT+E",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1045,
-          "clickY": 124
+          "clickX": 988,
+          "clickY": 106
         },
         {
           "name": "글자처럼 취급 : ALT+CT",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1141,
-          "clickY": 110
+          "clickX": 1085,
+          "clickY": 92
         },
         {
           "name": "어울림 : ALT+C1",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1102,
-          "clickY": 135
+          "clickX": 1046,
+          "clickY": 117
         },
         {
           "name": "자리 차지 : ALT+C2",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1129,
-          "clickY": 135
+          "clickX": 1072,
+          "clickY": 117
         },
         {
           "name": "글 앞으로 : ALT+C3",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1156,
-          "clickY": 135
+          "clickX": 1099,
+          "clickY": 117
         },
         {
           "name": "글 뒤로 : ALT+C4",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1182,
-          "clickY": 135
+          "clickX": 1126,
+          "clickY": 117
         },
         {
           "name": "캡션 : ALT+M",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1229,
-          "clickY": 124,
+          "clickX": 1173,
+          "clickY": 106,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2169,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 10,
+            "items": [
+              {
+                "name": "위 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 위 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 가운데 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 아래 : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 위 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 가운데 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 아래 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "아래 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "캡션 없음 : ALT+X",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2137,
+            "notes": []
           }
         }
       ],
@@ -9135,8 +9496,8 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 125,
-          "clickY": 124,
+          "clickX": 68,
+          "clickY": 106,
           "dropdown": {
             "classification": "scrollable-gallery",
             "popupClass": "Popup",
@@ -9587,7 +9948,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2519,
+            "probeDurationMs": 2589,
             "notes": []
           }
         },
@@ -9596,76 +9957,15 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 223,
-          "clickY": 124,
+          "clickX": 167,
+          "clickY": 106,
           "dropdown": {
-            "classification": "menu",
-            "popupClass": "Popup",
-            "itemCount": 11,
-            "items": [
-              {
-                "name": "축 : ALT+A",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "축 제목 : ALT+B",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "차트 제목 : ALT+C",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "데이터 레이블 : ALT+D",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "눈금선 : ALT+E",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "범례 : ALT+F",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "추세선 : ALT+G",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "오차 막대 : ALT+H",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "선 : ALT+I",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "양선/음선 : ALT+J",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              }
-            ],
-            "probeDurationMs": 2298,
-            "notes": []
+            "classification": "context-lost",
+            "itemCount": 0,
+            "items": [],
+            "notes": [
+              "context-lost"
+            ]
           }
         },
         {
@@ -9673,82 +9973,15 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 308,
-          "clickY": 124,
+          "clickX": 251,
+          "clickY": 106,
           "dropdown": {
-            "classification": "gallery-pure",
-            "popupClass": "Popup",
-            "itemCount": 13,
-            "items": [
-              {
-                "name": "레이아웃1",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃2",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃3",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃4",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃5",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃6",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃7",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃8",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃9",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃10",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "레이아웃11",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              }
-            ],
-            "probeDurationMs": 2317,
-            "notes": []
+            "classification": "context-lost",
+            "itemCount": 0,
+            "items": [],
+            "notes": [
+              "context-lost"
+            ]
           }
         },
         {
@@ -9756,112 +9989,15 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 399,
-          "clickY": 124,
+          "clickX": 342,
+          "clickY": 106,
           "dropdown": {
-            "classification": "scrollable-gallery",
-            "popupClass": "Popup",
-            "itemCount": 23,
-            "items": [
-              {
-                "name": "색1",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색2",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색3",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색4",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색5",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색6",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색7",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색8",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색9",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색10",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색11",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색12",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색13",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색14",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색15",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              },
-              {
-                "name": "색16",
-                "controlType": "ListItem",
-                "depth": 4,
-                "isDialogOpener": false
-              }
-            ],
-            "probeDurationMs": 2270,
-            "notes": []
+            "classification": "context-lost",
+            "itemCount": 0,
+            "items": [],
+            "notes": [
+              "context-lost"
+            ]
           }
         },
         {
@@ -9869,16 +10005,16 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1252,
-          "clickY": 124
+          "clickX": 1195,
+          "clickY": 106
         },
         {
           "name": "차트 데이터 편집 : ALT+D",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1313,
-          "clickY": 124
+          "clickX": 1256,
+          "clickY": 106
         }
       ],
       "contextState": "chart-selected"
@@ -9888,194 +10024,169 @@
       "uiaName": "차트 서식 X7",
       "ribbonItems": [
         {
-          "name": "차트 요소",
-          "controlType": "Text",
-          "hasDropdown": false,
-          "type": "action",
-          "clickX": 110,
-          "clickY": 110
-        },
-        {
-          "name": "차트 요소 : ALT+E",
-          "controlType": "ComboBox",
-          "hasDropdown": false,
-          "type": "action",
-          "clickX": 145,
-          "clickY": 135
-        },
-        {
-          "name": "선택 영역 서식 : ALT+M",
+          "name": "한애드온즈",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 137,
-          "clickY": 162
-        },
+          "clickX": 62,
+          "clickY": 106
+        }
+      ],
+      "contextState": "chart-selected"
+    },
+    "그림": {
+      "accessKey": "X4",
+      "uiaName": "그림 X4",
+      "ribbonItems": [
         {
-          "name": "도형 : ALT+S",
+          "name": "그림 : ALT+U",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 244,
-          "clickY": 124,
+          "clickX": 46,
+          "clickY": 106,
           "dropdown": {
-            "classification": "gallery-mixed",
+            "classification": "menu",
             "popupClass": "Popup",
-            "itemCount": 25,
+            "itemCount": 6,
             "items": [
               {
-                "name": "가로 글상자",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "세로 글상자",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "직사각형",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "타원",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "직선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "호",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "다각형",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "곡선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "자유선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "직선 연결선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "직선 화살표 연결선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "직선 양쪽 화살표 연결선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "꺾인 연결선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "꺾인 화살표 연결선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "꺾인 양쪽 화살표 연결선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "구부러진 연결선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "구부러진 화살표 연결선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "구부러진 양쪽 화살표 연결선",
-                "controlType": "ListItem",
-                "depth": 2,
-                "isDialogOpener": false
-              },
-              {
-                "name": "다른 그리기 조각 : ALT+V",
+                "name": "그림 : ALT+I",
                 "controlType": "MenuItem",
                 "depth": 1,
                 "isDialogOpener": false
               },
               {
-                "name": "새 그리기 속성 : ALT+P",
+                "name": "그리기마당 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "스크린 샷 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "연결 그림 새로 고침 : ALT+U",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "그림에서 글자 가져오기 : ALT+A",
                 "controlType": "MenuItem",
                 "depth": 1,
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2403,
+            "probeDurationMs": 2330,
             "notes": []
           }
         },
         {
-          "name": "도형 속성 : ALT+P",
-          "controlType": "Button",
-          "hasDropdown": false,
-          "type": "action",
-          "clickX": 299,
-          "clickY": 124
-        },
-        {
-          "name": "도형 윤곽선 : ALT+U",
+          "name": "줄이기 : ALT+S",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 580,
-          "clickY": 110,
+          "clickX": 88,
+          "clickY": 92,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
-            "itemCount": 10,
+            "itemCount": 4,
             "items": [
               {
-                "name": "없음 : ALT+S",
+                "name": "모든 그림에 바로 적용 : ALT+S",
                 "controlType": "MenuItem",
                 "depth": 1,
                 "isDialogOpener": false
               },
               {
-                "name": "선 종류 : ALT+A",
+                "name": "선택한 그림에만 바로 적용 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "용량 줄이기 설정 : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 2420,
+            "notes": []
+          }
+        },
+        {
+          "name": "원래 그림으로 : ALT+V",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 123,
+          "clickY": 92
+        },
+        {
+          "name": "바꾸기/저장 : ALT+N",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 88,
+          "clickY": 118,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "그림 바꾸기 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "삽입 그림 저장하기 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2312,
+            "notes": []
+          }
+        },
+        {
+          "name": "개체 선택 : ALT+L",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 123,
+          "clickY": 118
+        },
+        {
+          "name": "그림 속성 : ALT+P",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 170,
+          "clickY": 106
+        },
+        {
+          "name": "그림 테두리 : ALT+D",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 449,
+          "clickY": 92,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 11,
+            "items": [
+              {
+                "name": "없음 : ALT+O",
                 "controlType": "MenuItem",
                 "depth": 1,
                 "isDialogOpener": false
@@ -10087,182 +10198,27 @@
                 "isDialogOpener": false
               },
               {
-                "name": "화살표 모양 : ALT+C",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": true
-              }
-            ],
-            "probeDurationMs": 2336,
-            "notes": []
-          }
-        },
-        {
-          "name": "도형 채우기 : ALT+I",
-          "controlType": "MenuItem",
-          "hasDropdown": true,
-          "type": "dropdown",
-          "clickX": 580,
-          "clickY": 136,
-          "dropdown": {
-            "classification": "menu",
-            "popupClass": "Popup",
-            "itemCount": 14,
-            "items": [
-              {
-                "name": "없음 : ALT+S",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "그림 : ALT+F",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "그러데이션 : ALT+A",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "질감 : ALT+B",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "무늬 : ALT+C",
+                "name": "선 종류 : ALT+C",
                 "controlType": "MenuItem",
                 "depth": 1,
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2319,
+            "probeDurationMs": 2345,
             "notes": []
           }
         },
         {
-          "name": "도형 효과 : ALT+C",
+          "name": "그림 효과 : ALT+E",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 574,
-          "clickY": 162,
-          "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2253,
-            "notes": [
-              "no-popup-detected"
-            ]
-          }
-        },
-        {
-          "name": "글자 속성 : ALT+X",
-          "controlType": "Button",
-          "hasDropdown": false,
-          "type": "action",
-          "clickX": 668,
-          "clickY": 124
-        },
-        {
-          "name": "글자 윤곽선 : ALT+G",
-          "controlType": "MenuItem",
-          "hasDropdown": true,
-          "type": "dropdown",
-          "clickX": 950,
-          "clickY": 110,
+          "clickX": 443,
+          "clickY": 118,
           "dropdown": {
             "classification": "menu",
             "popupClass": "Popup",
-            "itemCount": 9,
-            "items": [
-              {
-                "name": "없음 : ALT+T",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "윤곽선 굵기 : ALT+A",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "윤곽선 종류 : ALT+B",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              }
-            ],
-            "probeDurationMs": 2289,
-            "notes": []
-          }
-        },
-        {
-          "name": "글자 채우기 : ALT+J",
-          "controlType": "MenuItem",
-          "hasDropdown": true,
-          "type": "dropdown",
-          "clickX": 950,
-          "clickY": 136,
-          "dropdown": {
-            "classification": "menu",
-            "popupClass": "Popup",
-            "itemCount": 14,
-            "items": [
-              {
-                "name": "없음 : ALT+T",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "그림 : ALT+A",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "그러데이션 : ALT+B",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "질감 : ALT+C",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "무늬 : ALT+D",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              }
-            ],
-            "probeDurationMs": 2374,
-            "notes": []
-          }
-        },
-        {
-          "name": "글자 효과 : ALT+T",
-          "controlType": "MenuItem",
-          "hasDropdown": true,
-          "type": "dropdown",
-          "clickX": 944,
-          "clickY": 162,
-          "dropdown": {
-            "classification": "menu",
-            "popupClass": "Popup",
-            "itemCount": 13,
+            "itemCount": 16,
             "items": [
               {
                 "name": "그림자 : ALT+A",
@@ -10281,92 +10237,457 @@
                 "controlType": "MenuItem",
                 "depth": 1,
                 "isDialogOpener": false
+              },
+              {
+                "name": "옅은 테두리 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2541,
+            "probeDurationMs": 2387,
             "notes": []
           }
         },
         {
-          "name": "너비 : 113.77 mm ALT+W",
-          "controlType": "Edit",
-          "hasDropdown": false,
-          "type": "action",
-          "clickX": 1079,
-          "clickY": 110
+          "name": "색조 조정 : ALT+T",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 547,
+          "clickY": 106,
+          "dropdown": {
+            "classification": "gallery-pure",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [
+              {
+                "name": "효과 없음",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "회색조",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "흑백",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "워터마크",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2207,
+            "notes": []
+          }
         },
         {
-          "name": "높이 : 66.15 mm ALT+H",
+          "name": "밝기 : ALT+I",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 597,
+          "clickY": 106,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 19,
+            "items": [
+              {
+                "name": "+5%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+10%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+20%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+30%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+40%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+50%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-5%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-10%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-20%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-30%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-40%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-50%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "밝기 없음 : ALT+N",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "밝기 설정 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 2390,
+            "notes": []
+          }
+        },
+        {
+          "name": "대비 : ALT+F",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 639,
+          "clickY": 106,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 19,
+            "items": [
+              {
+                "name": "+5%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+10%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+20%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+30%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+40%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "+50%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-5%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-10%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-20%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-30%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-40%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "-50%",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "대비 없음 : ALT+N",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "대비 설정 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 2437,
+            "notes": []
+          }
+        },
+        {
+          "name": "여백 : ALT+J",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 680,
+          "clickY": 106,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 7,
+            "items": [
+              {
+                "name": "없음",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "보통",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "넓게",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "좁게",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "그림 여백 설정 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 2403,
+            "notes": []
+          }
+        },
+        {
+          "name": "사진 편집 : ALT+Q",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 721,
+          "clickY": 106
+        },
+        {
+          "name": "너비 : 52.92 mm ALT+W",
           "controlType": "Edit",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1079,
-          "clickY": 135
+          "clickX": 817,
+          "clickY": 92
+        },
+        {
+          "name": "높이 : 39.79 mm ALT+H",
+          "controlType": "Edit",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 817,
+          "clickY": 117
         },
         {
           "name": "크기 고정 : ALT+ZF",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1058,
-          "clickY": 163
+          "clickX": 796,
+          "clickY": 145
         },
         {
-          "name": "글자처럼 취급 : ALT+N",
+          "name": "너비를 같게 : ALT+Z1",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 893,
+          "clickY": 91
+        },
+        {
+          "name": "높이를 같게 : ALT+Z2",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 893,
+          "clickY": 116
+        },
+        {
+          "name": "너비 및 높이를 같게 : ALT+Z3",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 893,
+          "clickY": 141
+        },
+        {
+          "name": "자르기 : ALT+C",
+          "controlType": "Button",
+          "hasDropdown": false,
+          "type": "action",
+          "clickX": 930,
+          "clickY": 106
+        },
+        {
+          "name": "글자처럼 취급 : ALT+CT",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1208,
-          "clickY": 111
+          "clickX": 1021,
+          "clickY": 93
         },
         {
-          "name": "어울림 : ALT+Q",
+          "name": "어울림 : ALT+C1",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1169,
-          "clickY": 136
+          "clickX": 982,
+          "clickY": 118
         },
         {
-          "name": "자리 차지 : ALT+V",
+          "name": "자리 차지 : ALT+C2",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1196,
-          "clickY": 136
+          "clickX": 1009,
+          "clickY": 118
         },
         {
-          "name": "글 앞으로 : ALT+R",
+          "name": "글 앞으로 : ALT+C3",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1222,
-          "clickY": 136
+          "clickX": 1036,
+          "clickY": 118
         },
         {
-          "name": "글 뒤로 : ALT+D",
+          "name": "글 뒤로 : ALT+C4",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1249,
-          "clickY": 136
+          "clickX": 1062,
+          "clickY": 118
+        },
+        {
+          "name": "그룹 : ALT+G",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1096,
+          "clickY": 106,
+          "dropdown": {
+            "classification": "no-popup",
+            "popupClass": null,
+            "itemCount": 0,
+            "items": [],
+            "probeDurationMs": 2285,
+            "notes": [
+              "no-popup-detected"
+            ]
+          }
         },
         {
           "name": "앞으로 : ALT+O",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1300,
-          "clickY": 124,
+          "clickX": 1141,
+          "clickY": 106,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2286,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "앞으로 : ALT+F",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "맨 앞으로 : ALT+U",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2242,
+            "notes": []
           }
         },
         {
@@ -10374,21 +10695,197 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1345,
-          "clickY": 124,
+          "clickX": 1187,
+          "clickY": 106,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "뒤로 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "맨 뒤로 : ALT+N",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2408,
+            "notes": []
+          }
+        },
+        {
+          "name": "맞춤 : ALT+A",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1228,
+          "clickY": 106,
           "dropdown": {
             "classification": "no-popup",
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2381,
+            "probeDurationMs": 2316,
             "notes": [
               "no-popup-detected"
             ]
           }
+        },
+        {
+          "name": "회전 : ALT+R",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1269,
+          "clickY": 106,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [
+              {
+                "name": "개체 회전 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽으로 90도 회전 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽으로 90도 회전 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "좌우 대칭 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "상하 대칭 : ALT+V",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2255,
+            "notes": []
+          }
+        },
+        {
+          "name": "캡션 : ALT+M",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1324,
+          "clickY": 106,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 10,
+            "items": [
+              {
+                "name": "위 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 위 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 가운데 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 아래 : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 위 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 가운데 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 아래 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "아래 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "캡션 없음 : ALT+X",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2328,
+            "notes": []
+          }
+        },
+        {
+          "name": "개체 보호 : ALT+K",
+          "controlType": "MenuItem",
+          "hasDropdown": true,
+          "type": "dropdown",
+          "clickX": 1374,
+          "clickY": 106,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "개체 보호하기 : ALT+K",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "모든 보호 개체 해제하기 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2165,
+            "notes": []
+          }
         }
       ],
-      "contextState": "chart-selected"
+      "contextState": "image-selected"
     }
   },
   "toolbar": [
@@ -10556,12 +11053,12 @@
     }
   ],
   "stats": {
-    "totalTabs": 14,
-    "totalRibbonItems": 272,
+    "totalTabs": 15,
+    "totalRibbonItems": 283,
     "totalDialogs": 21,
-    "totalControls": 515,
-    "totalDropdowns": 79,
-    "totalDropdownItems": 1003,
+    "totalControls": 510,
+    "totalDropdowns": 94,
+    "totalDropdownItems": 1125,
     "dropdownErrors": 0,
     "errors": 0
   },
@@ -10664,7 +11161,7 @@
         }
       ],
       "itemCount": 17,
-      "probeDurationMs": 2890,
+      "probeDurationMs": 2740,
       "notes": []
     },
     "text-selected": {
@@ -10765,7 +11262,7 @@
         }
       ],
       "itemCount": 17,
-      "probeDurationMs": 2679,
+      "probeDurationMs": 2617,
       "notes": []
     }
   }
