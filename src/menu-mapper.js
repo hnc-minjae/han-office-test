@@ -69,6 +69,7 @@ class MenuMapper {
         this.probeDialogs = options.probeDialogs !== false;
         this.probeDropdowns = options.probeDropdowns !== false;
         this.probeShapeTab = options.probeShapeTab !== false;
+        this.probeTableTabs = options.probeTableTabs !== false;
         this._recoveryInProgress = false; // plan §5 Layer 5
 
         const info = PRODUCTS[this.product];
@@ -182,6 +183,16 @@ class MenuMapper {
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
             await this._probeShapeTab();
+        }
+
+        // Step 7: Selection 상태 프로빙 — 표 컨텍스트 탭 (Phase B)
+        if (this.probeTableTabs) {
+            log('▶', 'Step 7: 표 컨텍스트 탭 프로빙 (Selection 상태)');
+            try { await controller.setForeground(); } catch (_) {}
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            await this._probeTableTabs();
         }
 
         log('▶', '완료!');
@@ -1231,6 +1242,170 @@ class MenuMapper {
             const menuTabs = await this._collectMenuTabs();
             const shapeTab = menuTabs.find(t => t.name === '도형');
             return !!(shapeTab && shapeTab.isEnabled);
+        } catch (_) { return false; }
+    }
+
+    // =========================================================================
+    // Step 7: 표 컨텍스트 탭 프로빙 (Selection Phase B)
+    // =========================================================================
+
+    /**
+     * 입력 → 표 → 표 만들기 → Enter(기본값)로 표 삽입.
+     * 표가 삽입되면 표 디자인/표 레이아웃 2개 컨텍스트 탭이 활성화됨.
+     */
+    async _insertTableForProbing() {
+        await this._safeKeys('Ctrl+End');
+        await sleep(DELAY.short);
+
+        const menuTabs = await this._collectMenuTabs();
+        const inputTab = menuTabs.find(t => t.name === '입력');
+        if (!inputTab) { log('⚠', '  입력 탭 없음'); return false; }
+        await this._switchTab(inputTab);
+        await sleep(DELAY.long);
+
+        const tableBtn = this._refreshItem('표 : ALT+T');
+        if (!tableBtn) { log('⚠', '  "입력/표" 드롭다운 버튼 없음'); return false; }
+        const tr = tableBtn.rect;
+        const bx = Math.round(tr.left + (tr.right - tr.left) * 0.8);
+        const by = Math.round(tr.top + (tr.bottom - tr.top) * 0.8);
+        try { tableBtn.element.release(); } catch (_) {}
+
+        await this._safeClick(bx, by);
+        await sleep(DD_LIMITS.popupWaitMs);
+
+        sessionModule.refreshHwpElement();
+        const session = sessionModule.getSession();
+        if (!session.hwpElement) return false;
+
+        const target = this._findInLatestPopup(session.hwpElement, '표 만들기 : ALT+T');
+        if (!target) {
+            await this._safeKeys('Escape');
+            log('⚠', '  드롭다운에서 "표 만들기" 없음');
+            return false;
+        }
+
+        const rcx = Math.round((target.rect.left + target.rect.right) / 2);
+        const rcy = Math.round((target.rect.top + target.rect.bottom) / 2);
+        await this._safeClick(rcx, rcy);
+        await sleep(DELAY.dialog);
+
+        // 표 만들기 다이얼로그 — Enter로 기본값(5×5) 삽입
+        await this._safeKeys('Enter');
+        await sleep(DELAY.dialog);
+        return true;
+    }
+
+    async _cleanupTable() {
+        try {
+            await this._safeKeys('Escape');
+            await sleep(DELAY.short);
+            for (let i = 0; i < 6; i++) {
+                await this._safeKeys('Ctrl+Z');
+                await sleep(DELAY.short);
+            }
+        } catch (e) {
+            log('⚠', `  표 정리 실패 (무시): ${e.message}`);
+        }
+    }
+
+    /**
+     * 표 삽입 후 새로 등장한 컨텍스트 탭을 모두 프로빙.
+     * HWP 2027 기준: "표 디자인", "표 레이아웃" 2개 등장.
+     */
+    async _probeTableTabs() {
+        await this._ensureUiHealthy();
+
+        // 초기 활성 탭 목록 기록 (diff 기준)
+        const initialTabs = await this._collectMenuTabs();
+        const initialTabNames = new Set(initialTabs.filter(t => t.isEnabled).map(t => t.name));
+
+        const inserted = await this._insertTableForProbing();
+        if (!inserted) {
+            log('⚠', '  표 삽입 실패 — Step 7 스킵');
+            await this._cleanupTable();
+            return;
+        }
+
+        try {
+            const afterTabs = await this._collectMenuTabs();
+            const newTabs = afterTabs.filter(t => t.isEnabled && !initialTabNames.has(t.name));
+            if (newTabs.length === 0) {
+                log('⚠', '  표 삽입 후 새 탭 없음 — 프로빙 스킵');
+                return;
+            }
+            log('ℹ', `  새 컨텍스트 탭: ${newTabs.map(t => t.name).join(', ')}`);
+
+            for (const tabInfo of newTabs) {
+                await this._switchTab(tabInfo);
+                await sleep(DELAY.long);
+                const ribbonItems = await this._collectRibbonItems(tabInfo);
+                for (const it of ribbonItems) it.type = it.hasDropdown ? 'dropdown' : 'action';
+
+                this.map.tabs[tabInfo.name] = {
+                    accessKey: tabInfo.accessKey,
+                    uiaName: tabInfo.uiaName,
+                    ribbonItems,
+                    contextState: 'table-inside',
+                };
+                this.map.stats.totalTabs++;
+                this.map.stats.totalRibbonItems += ribbonItems.length;
+                log('ℹ', `  "${tabInfo.name}" 탭: ${ribbonItems.length}개 리본 항목`);
+
+                const dropdownItems = ribbonItems.filter(i => i.hasDropdown);
+                if (dropdownItems.length === 0) continue;
+                log('▶', `  "${tabInfo.name}" 드롭다운 프로빙 (${dropdownItems.length}개)`);
+                const tabDeadline = Date.now() + DD_LIMITS.perTabBudgetMs;
+
+                for (const item of dropdownItems) {
+                    if (Date.now() > tabDeadline) { log('⏰', `  "${tabInfo.name}" 탭 예산 초과`); break; }
+                    if (this._isDangerousDropdown(item.name)) {
+                        item.dropdown = { classification: 'blacklisted', itemCount: 0, items: [], notes: ['blacklisted'] };
+                        continue;
+                    }
+
+                    // 표 컨텍스트 탭이 아직 활성인지 확인 (표 밖으로 나가면 사라짐)
+                    if (!(await this._isTabStillActive(tabInfo.name))) {
+                        log('🔁', `    "${tabInfo.name}" 컨텍스트 사라짐 — Ctrl+End로 재진입`);
+                        await this._safeKeys('Ctrl+End');
+                        await sleep(DELAY.medium);
+                        await this._switchTab(tabInfo);
+                        await sleep(DELAY.long);
+                        if (!(await this._isTabStillActive(tabInfo.name))) {
+                            item.dropdown = { classification: 'context-lost', itemCount: 0, items: [], notes: ['context-lost'] };
+                            continue;
+                        }
+                    }
+
+                    try {
+                        const dd = await this._probeDropdown(item);
+                        item.dropdown = dd;
+                        if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
+                            this.map.stats.totalDropdowns++;
+                            this.map.stats.totalDropdownItems += dd.itemCount;
+                        }
+                        log('📂', `    "${item.name}" → ${dd.classification} (${dd.itemCount}개)`);
+                    } catch (e) {
+                        log('⚠', `    "${item.name}" 실패: ${e.message}`);
+                        item.dropdown = { classification: 'error', itemCount: 0, items: [], notes: [`error:${e.message}`] };
+                        this.map.stats.dropdownErrors++;
+                        if (!this._recoveryInProgress) {
+                            this._recoveryInProgress = true;
+                            try { await this._recover(); } finally { this._recoveryInProgress = false; }
+                        }
+                    }
+                    await this._ensureNoPopup();
+                }
+            }
+        } finally {
+            await this._cleanupTable();
+        }
+    }
+
+    async _isTabStillActive(tabName) {
+        try {
+            const tabs = await this._collectMenuTabs();
+            const t = tabs.find(x => x.name === tabName);
+            return !!(t && t.isEnabled);
         } catch (_) { return false; }
     }
 
