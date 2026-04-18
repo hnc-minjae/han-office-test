@@ -70,6 +70,7 @@ class MenuMapper {
         this.probeDropdowns = options.probeDropdowns !== false;
         this.probeShapeTab = options.probeShapeTab !== false;
         this.probeTableTabs = options.probeTableTabs !== false;
+        this.probeChartTabs = options.probeChartTabs !== false;
         this._recoveryInProgress = false; // plan §5 Layer 5
 
         const info = PRODUCTS[this.product];
@@ -193,6 +194,16 @@ class MenuMapper {
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
             await this._probeTableTabs();
+        }
+
+        // Step 8: Selection 상태 프로빙 — 차트 컨텍스트 탭 (Phase D)
+        if (this.probeChartTabs) {
+            log('▶', 'Step 8: 차트 컨텍스트 탭 프로빙 (Selection 상태)');
+            try { await controller.setForeground(); } catch (_) {}
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            await this._probeChartTabs();
         }
 
         log('▶', '완료!');
@@ -1417,6 +1428,183 @@ class MenuMapper {
             const t = tabs.find(x => x.name === tabName);
             return !!(t && t.isEnabled);
         } catch (_) { return false; }
+    }
+
+    // =========================================================================
+    // Step 8: 차트 컨텍스트 탭 프로빙 (Selection Phase D)
+    // =========================================================================
+
+    async _insertChartForProbing() {
+        await this._safeKeys('Ctrl+End');
+        await sleep(DELAY.short);
+
+        const menuTabs = await this._collectMenuTabs();
+        const inputTab = menuTabs.find(t => t.name === '입력');
+        if (!inputTab) { log('⚠', '  입력 탭 없음'); return null; }
+        await this._switchTab(inputTab);
+        await sleep(DELAY.long);
+
+        const chartBtn = this._refreshItem('차트 : ALT+C');
+        if (!chartBtn) { log('⚠', '  "입력/차트" 버튼 없음'); return null; }
+        const cr = chartBtn.rect;
+        const rW = cr.right - cr.left;
+        const rH = cr.bottom - cr.top;
+        const bx = rW > rH ? cr.right - 8 : Math.round(cr.left + rW * 0.8);
+        const by = rW > rH ? Math.round(cr.top + rH * 0.5) : Math.round(cr.top + rH * 0.8);
+        try { chartBtn.element.release(); } catch (_) {}
+
+        await this._safeClick(bx, by);
+        await sleep(DD_LIMITS.popupWaitMs);
+
+        sessionModule.refreshHwpElement();
+        let session = sessionModule.getSession();
+        if (!session.hwpElement) return null;
+
+        const target = this._findInLatestPopup(session.hwpElement, '묶은 가로 막대형');
+        if (!target) {
+            await this._safeKeys('Escape');
+            log('⚠', '  드롭다운에서 "묶은 가로 막대형" 없음');
+            return null;
+        }
+
+        const rcx = Math.round((target.rect.left + target.rect.right) / 2);
+        const rcy = Math.round((target.rect.top + target.rect.bottom) / 2);
+        await this._safeClick(rcx, rcy);
+        await sleep(DELAY.dialog * 2);
+
+        // 데이터 편집 다이얼로그가 있으면 Escape로 닫음 (기본 데이터 사용)
+        await this._safeKeys('Escape');
+        await sleep(DELAY.medium);
+
+        // 재선택용 캔버스 중앙 좌표 반환 (차트는 커서 위치에 삽입됨 → 대략 캔버스 중앙)
+        sessionModule.refreshHwpElement();
+        session = sessionModule.getSession();
+        if (!session.hwpElement) return null;
+        const children = session.hwpElement.findAllChildren();
+        let canvas = null;
+        for (const c of children) {
+            try { if (c.className === 'HwpMainEditWnd') { canvas = c; break; } } catch (_) {}
+        }
+        children.filter(c => c !== canvas).forEach(c => { try { c.release(); } catch (_) {} });
+        if (!canvas) return { clickX: null, clickY: null };
+        const cvRect = canvas.boundingRect;
+        try { canvas.release(); } catch (_) {}
+        return {
+            clickX: Math.round((cvRect.left + cvRect.right) / 2),
+            clickY: Math.round((cvRect.top + cvRect.bottom) / 2),
+        };
+    }
+
+    async _cleanupChart() {
+        try {
+            await this._safeKeys('Escape');
+            await sleep(DELAY.short);
+            for (let i = 0; i < 8; i++) {
+                await this._safeKeys('Ctrl+Z');
+                await sleep(DELAY.short);
+            }
+        } catch (e) {
+            log('⚠', `  차트 정리 실패 (무시): ${e.message}`);
+        }
+    }
+
+    async _probeChartTabs() {
+        await this._ensureUiHealthy();
+
+        const initialTabs = await this._collectMenuTabs();
+        const initialTabNames = new Set(initialTabs.filter(t => t.isEnabled).map(t => t.name));
+
+        const chartLoc = await this._insertChartForProbing();
+        if (!chartLoc) {
+            log('⚠', '  차트 삽입 실패 — Step 8 스킵');
+            await this._cleanupChart();
+            return;
+        }
+
+        // 차트 컨텍스트 사라졌을 때 재선택
+        const reselectChart = async (expectedTabName) => {
+            if (chartLoc.clickX == null) return false;
+            await this._safeClick(chartLoc.clickX, chartLoc.clickY);
+            await sleep(DELAY.long);
+            return await this._isTabStillActive(expectedTabName);
+        };
+
+        try {
+            const afterTabs = await this._collectMenuTabs();
+            const newTabs = afterTabs.filter(t => t.isEnabled && !initialTabNames.has(t.name));
+            if (newTabs.length === 0) {
+                log('⚠', '  차트 삽입 후 새 탭 없음');
+                return;
+            }
+            log('ℹ', `  새 컨텍스트 탭: ${newTabs.map(t => t.name).join(', ')}`);
+
+            for (const tabInfo of newTabs) {
+                // 탭별 진입 시 차트 선택 상태 보장
+                if (!(await this._isTabStillActive(tabInfo.name))) {
+                    log('🔁', `    "${tabInfo.name}" 진입 전 차트 재선택`);
+                    await reselectChart(tabInfo.name);
+                }
+                await this._switchTab(tabInfo);
+                await sleep(DELAY.long);
+                const ribbonItems = await this._collectRibbonItems(tabInfo);
+                for (const it of ribbonItems) it.type = it.hasDropdown ? 'dropdown' : 'action';
+
+                this.map.tabs[tabInfo.name] = {
+                    accessKey: tabInfo.accessKey,
+                    uiaName: tabInfo.uiaName,
+                    ribbonItems,
+                    contextState: 'chart-selected',
+                };
+                this.map.stats.totalTabs++;
+                this.map.stats.totalRibbonItems += ribbonItems.length;
+                log('ℹ', `  "${tabInfo.name}" 탭: ${ribbonItems.length}개 리본 항목`);
+
+                const dropdownItems = ribbonItems.filter(i => i.hasDropdown);
+                if (dropdownItems.length === 0) continue;
+                log('▶', `  "${tabInfo.name}" 드롭다운 프로빙 (${dropdownItems.length}개)`);
+                const tabDeadline = Date.now() + DD_LIMITS.perTabBudgetMs;
+
+                for (const item of dropdownItems) {
+                    if (Date.now() > tabDeadline) { log('⏰', `  "${tabInfo.name}" 예산 초과`); break; }
+                    if (this._isDangerousDropdown(item.name)) {
+                        item.dropdown = { classification: 'blacklisted', itemCount: 0, items: [], notes: ['blacklisted'] };
+                        continue;
+                    }
+
+                    if (!(await this._isTabStillActive(tabInfo.name))) {
+                        log('🔁', `    "${tabInfo.name}" 컨텍스트 사라짐 — 차트 재선택`);
+                        const ok = await reselectChart(tabInfo.name);
+                        if (!ok) {
+                            item.dropdown = { classification: 'context-lost', itemCount: 0, items: [], notes: ['context-lost'] };
+                            continue;
+                        }
+                        await this._switchTab(tabInfo);
+                        await sleep(DELAY.long);
+                    }
+
+                    try {
+                        const dd = await this._probeDropdown(item);
+                        item.dropdown = dd;
+                        if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
+                            this.map.stats.totalDropdowns++;
+                            this.map.stats.totalDropdownItems += dd.itemCount;
+                        }
+                        log('📂', `    "${item.name}" → ${dd.classification} (${dd.itemCount}개)`);
+                    } catch (e) {
+                        log('⚠', `    "${item.name}" 실패: ${e.message}`);
+                        item.dropdown = { classification: 'error', itemCount: 0, items: [], notes: [`error:${e.message}`] };
+                        this.map.stats.dropdownErrors++;
+                        if (!this._recoveryInProgress) {
+                            this._recoveryInProgress = true;
+                            try { await this._recover(); } finally { this._recoveryInProgress = false; }
+                        }
+                    }
+                    await this._ensureNoPopup();
+                }
+            }
+        } finally {
+            await this._cleanupChart();
+        }
     }
 
     // =========================================================================
