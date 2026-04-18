@@ -784,8 +784,18 @@ class MenuMapper {
         let clickX, clickY;
         if (fresh) {
             const r = fresh.rect;
-            clickX = Math.round(r.left + (r.right - r.left) * 0.8);
-            clickY = Math.round(r.top + (r.bottom - r.top) * 0.8);
+            const rW = r.right - r.left;
+            const rH = r.bottom - r.top;
+            // Aspect-ratio 적응 클릭 — split-button 드롭다운 화살표는
+            //   - Wide(가로형): 오른쪽 끝에 화살표 → (right-8, center-y)
+            //   - Tall(세로형): 하단에 화살표 → (0.8, 0.8)
+            if (rW > rH) {
+                clickX = r.right - 8;
+                clickY = Math.round(r.top + rH * 0.5);
+            } else {
+                clickX = Math.round(r.left + rW * 0.8);
+                clickY = Math.round(r.top + rH * 0.8);
+            }
             try { fresh.element.release(); } catch (_) {}
         } else {
             clickX = item.clickX;

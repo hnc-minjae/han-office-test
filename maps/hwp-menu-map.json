@@ -2,7 +2,7 @@
   "product": "hwp",
   "productName": "한글",
   "version": "2027",
-  "mappedAt": "2026-04-18T04:31:44.558Z",
+  "mappedAt": "2026-04-18T04:53:10.091Z",
   "tabs": {
     "파일": {
       "accessKey": "F",
@@ -61,7 +61,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4173,
+            "probeDurationMs": 4145,
             "notes": []
           }
         },
@@ -1010,7 +1010,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4146,
+            "probeDurationMs": 4135,
             "notes": []
           }
         },
@@ -1049,7 +1049,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4002,
+            "probeDurationMs": 4125,
             "notes": []
           }
         },
@@ -1180,7 +1180,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4027,
+            "probeDurationMs": 4082,
             "notes": []
           }
         },
@@ -1317,7 +1317,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4105,
+            "probeDurationMs": 4143,
             "notes": []
           }
         },
@@ -1364,7 +1364,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4102,
+            "probeDurationMs": 4152,
             "notes": []
           }
         },
@@ -1411,7 +1411,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4052,
+            "probeDurationMs": 4094,
             "notes": []
           }
         },
@@ -1872,7 +1872,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4395,
+            "probeDurationMs": 4329,
             "notes": []
           }
         },
@@ -1901,7 +1901,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4090,
+            "probeDurationMs": 4030,
             "notes": []
           }
         },
@@ -1930,7 +1930,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4118,
+            "probeDurationMs": 4095,
             "notes": []
           }
         },
@@ -1971,7 +1971,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4074,
+            "probeDurationMs": 4132,
             "notes": []
           }
         },
@@ -2024,7 +2024,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 3913,
+            "probeDurationMs": 4011,
             "notes": []
           }
         },
@@ -2299,7 +2299,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4182,
+            "probeDurationMs": 4089,
             "notes": []
           }
         },
@@ -2346,7 +2346,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4065,
+            "probeDurationMs": 4032,
             "notes": []
           }
         },
@@ -2807,7 +2807,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4483,
+            "probeDurationMs": 4473,
             "notes": []
           }
         },
@@ -2974,7 +2974,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4203,
+            "probeDurationMs": 4080,
             "notes": []
           }
         },
@@ -3039,7 +3039,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4180,
+            "probeDurationMs": 4088,
             "notes": []
           }
         },
@@ -3155,7 +3155,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4105,
+            "probeDurationMs": 4061,
             "notes": []
           }
         },
@@ -3330,7 +3330,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4215,
+            "probeDurationMs": 4164,
             "notes": []
           }
         },
@@ -3629,7 +3629,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4108,
+            "probeDurationMs": 4051,
             "notes": []
           }
         },
@@ -3676,7 +3676,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4243,
+            "probeDurationMs": 3999,
             "notes": []
           }
         },
@@ -3688,14 +3688,37 @@
           "clickX": 1158,
           "clickY": 136,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 4125,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "한자로 바꾸기 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "한자 단어 등록 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "한자 부수/총획수 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "한자 새김 입력 : ALT+J",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4124,
+            "notes": []
           }
         },
         {
@@ -4219,7 +4242,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4281,
+            "probeDurationMs": 3999,
             "notes": []
           }
         },
@@ -4308,7 +4331,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4047,
+            "probeDurationMs": 4162,
             "notes": []
           }
         },
@@ -4419,7 +4442,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4065,
+            "probeDurationMs": 3624,
             "notes": []
           }
         },
@@ -4442,7 +4465,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4138,
+            "probeDurationMs": 4187,
             "notes": []
           }
         },
@@ -4458,7 +4481,7 @@
             "popupClass": "Popup",
             "itemCount": 6,
             "items": [],
-            "probeDurationMs": 4162,
+            "probeDurationMs": 4164,
             "notes": []
           }
         },
@@ -4969,7 +4992,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4180,
+            "probeDurationMs": 4301,
             "notes": []
           }
         },
@@ -5025,7 +5048,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4100,
+            "probeDurationMs": 4122,
             "notes": [
               "no-popup-detected"
             ]
@@ -5043,7 +5066,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4474,
+            "probeDurationMs": 4409,
             "notes": [
               "no-popup-detected"
             ]
@@ -5061,7 +5084,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4397,
+            "probeDurationMs": 4268,
             "notes": [
               "no-popup-detected"
             ]
@@ -5079,7 +5102,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4407,
+            "probeDurationMs": 4335,
             "notes": [
               "no-popup-detected"
             ]
@@ -5158,7 +5181,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4073,
+            "probeDurationMs": 4084,
             "notes": []
           }
         },
@@ -5199,7 +5222,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4134,
+            "probeDurationMs": 3986,
             "notes": []
           }
         },
@@ -5242,7 +5265,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4074,
+            "probeDurationMs": 4093,
             "notes": []
           }
         },
@@ -5265,7 +5288,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4208,
+            "probeDurationMs": 4182,
             "notes": []
           }
         },
@@ -5487,7 +5510,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4190,
+            "probeDurationMs": 4021,
             "notes": []
           }
         },
@@ -5564,7 +5587,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4171,
+            "probeDurationMs": 4048,
             "notes": []
           }
         },
@@ -5604,7 +5627,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4222,
+            "probeDurationMs": 4117,
             "notes": [
               "no-popup-detected"
             ]
@@ -6089,7 +6112,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4325,
+            "probeDurationMs": 4107,
             "notes": []
           }
         },
@@ -6240,7 +6263,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4129,
+            "probeDurationMs": 4046,
             "notes": []
           }
         },
@@ -6289,7 +6312,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4074,
+            "probeDurationMs": 4146,
             "notes": []
           }
         },
@@ -6362,7 +6385,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4063,
+            "probeDurationMs": 4007,
             "notes": []
           }
         },
@@ -6403,7 +6426,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4154,
+            "probeDurationMs": 4004,
             "notes": []
           }
         },
@@ -6462,7 +6485,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4053,
+            "probeDurationMs": 4141,
             "notes": []
           }
         }
@@ -6497,7 +6520,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4074,
+            "probeDurationMs": 4106,
             "notes": []
           }
         },
@@ -6538,7 +6561,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4037,
+            "probeDurationMs": 4124,
             "notes": []
           }
         },
@@ -6567,7 +6590,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4217,
+            "probeDurationMs": 4213,
             "notes": []
           }
         },
@@ -6640,7 +6663,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4227,
+            "probeDurationMs": 4124,
             "notes": []
           }
         },
@@ -6677,7 +6700,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4231,
+            "probeDurationMs": 4083,
             "notes": []
           }
         },
@@ -6724,7 +6747,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4046,
+            "probeDurationMs": 4053,
             "notes": []
           }
         },
@@ -6753,7 +6776,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4077,
+            "probeDurationMs": 4093,
             "notes": []
           }
         },
@@ -6794,7 +6817,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4111,
+            "probeDurationMs": 4072,
             "notes": []
           }
         },
@@ -6843,7 +6866,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4034,
+            "probeDurationMs": 4077,
             "notes": []
           }
         },
@@ -6878,7 +6901,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4091,
+            "probeDurationMs": 4013,
             "notes": []
           }
         },
@@ -6919,7 +6942,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4049,
+            "probeDurationMs": 3998,
             "notes": []
           }
         },
@@ -7247,7 +7270,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4144,
+            "probeDurationMs": 4029,
             "notes": []
           }
         },
@@ -7357,7 +7380,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 3968,
+            "probeDurationMs": 4138,
             "notes": [
               "no-popup-detected"
             ]
@@ -7416,7 +7439,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4095,
+            "probeDurationMs": 4221,
             "notes": []
           }
         },
@@ -7428,14 +7451,37 @@
           "clickX": 398,
           "clickY": 110,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 4137,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 12,
+            "items": [
+              {
+                "name": "없음 : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "선 굵기 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "선 종류 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "화살표 모양 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 4161,
+            "notes": []
           }
         },
         {
@@ -7446,14 +7492,25 @@
           "clickX": 398,
           "clickY": 136,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 4183,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 10,
+            "items": [
+              {
+                "name": "없음 : ALT+F",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "다른 채우기 : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4250,
+            "notes": []
           }
         },
         {
@@ -7553,7 +7610,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4307,
+            "probeDurationMs": 4271,
             "notes": []
           }
         },
@@ -7648,7 +7705,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4250,
+            "probeDurationMs": 4136,
             "notes": []
           }
         },
@@ -7704,7 +7761,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 3983,
+            "probeDurationMs": 4136,
             "notes": [
               "no-popup-detected"
             ]
@@ -7722,7 +7779,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4140,
+            "probeDurationMs": 4134,
             "notes": [
               "no-popup-detected"
             ]
@@ -7740,7 +7797,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4193,
+            "probeDurationMs": 4031,
             "notes": [
               "no-popup-detected"
             ]
@@ -7758,7 +7815,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 3893,
+            "probeDurationMs": 4106,
             "notes": [
               "no-popup-detected"
             ]
@@ -7864,7 +7921,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4193,
+            "probeDurationMs": 4080,
             "notes": [
               "no-popup-detected"
             ]
@@ -7895,7 +7952,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4243,
+            "probeDurationMs": 4140,
             "notes": []
           }
         },
@@ -7924,7 +7981,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4188,
+            "probeDurationMs": 4290,
             "notes": []
           }
         },
@@ -7940,7 +7997,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4171,
+            "probeDurationMs": 3911,
             "notes": [
               "no-popup-detected"
             ]
@@ -7958,7 +8015,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4347,
+            "probeDurationMs": 4395,
             "notes": [
               "no-popup-detected"
             ]
@@ -7976,7 +8033,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4523,
+            "probeDurationMs": 4340,
             "notes": [
               "no-popup-detected"
             ]
@@ -7994,7 +8051,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4388,
+            "probeDurationMs": 4346,
             "notes": [
               "no-popup-detected"
             ]
@@ -8064,7 +8121,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 3981,
+            "probeDurationMs": 4152,
             "notes": []
           }
         },
@@ -8108,14 +8165,25 @@
           "clickX": 1006,
           "clickY": 110,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 4009,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 8,
+            "items": [
+              {
+                "name": "없음 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "다른 채우기 : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4170,
+            "notes": []
           }
         },
         {
@@ -8203,7 +8271,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4181,
+            "probeDurationMs": 4053,
             "notes": []
           }
         },
@@ -8215,14 +8283,85 @@
           "clickX": 999,
           "clickY": 136,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 4036,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 13,
+            "items": [
+              {
+                "name": "테두리 없음 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "모든 테두리 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "바깥쪽 테두리 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "안쪽 테두리 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "위쪽 테두리 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "아래쪽 테두리 : ALT+E",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 테두리 : ALT+F",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 테두리 : ALT+G",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "안쪽 가로 테두리 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "안쪽 세로 테두리 : ALT+I",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "대각선 하향 테두리 : ALT+J",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "대각선 상향 테두리 : ALT+K",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4054,
+            "notes": []
           }
         },
         {
@@ -8334,7 +8473,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4186,
+            "probeDurationMs": 4201,
             "notes": []
           }
         },
@@ -8435,7 +8574,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4157,
+            "probeDurationMs": 4168,
             "notes": []
           }
         },
@@ -8447,14 +8586,12 @@
           "clickX": 1106,
           "clickY": 161,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
+            "classification": "unknown",
+            "popupClass": "Popup",
+            "itemCount": 6,
             "items": [],
-            "probeDurationMs": 4013,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "probeDurationMs": 4046,
+            "notes": []
           }
         }
       ],
@@ -8591,7 +8728,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4120,
+            "probeDurationMs": 4070,
             "notes": []
           }
         },
@@ -8620,7 +8757,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4151,
+            "probeDurationMs": 4094,
             "notes": []
           }
         },
@@ -8691,7 +8828,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 4079,
+            "probeDurationMs": 3955,
             "notes": []
           }
         },
@@ -8766,7 +8903,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4138,
+            "probeDurationMs": 4073,
             "notes": [
               "no-popup-detected"
             ]
@@ -8845,7 +8982,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 4130,
+            "probeDurationMs": 4207,
             "notes": []
           }
         },
@@ -8925,7 +9062,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 4044,
+            "probeDurationMs": 4145,
             "notes": [
               "no-popup-detected"
             ]
@@ -9100,8 +9237,8 @@
     "totalRibbonItems": 244,
     "totalDialogs": 20,
     "totalControls": 498,
-    "totalDropdowns": 65,
-    "totalDropdownItems": 737,
+    "totalDropdowns": 71,
+    "totalDropdownItems": 791,
     "dropdownErrors": 0,
     "errors": 0
   }
