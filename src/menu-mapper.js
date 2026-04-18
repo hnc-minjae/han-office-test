@@ -43,7 +43,7 @@ const DD_LIMITS = {
     popupTreeMaxDepth: 8,
     popupWaitMs: 1500,
     perDropdownBudgetMs: 10_000,
-    perTabBudgetMs: 120_000,
+    perTabBudgetMs: 180_000,         // 일반 탭 3 min. 도형 탭은 재선택 오버헤드 감안.
     totalProbingBudgetMs: 900_000,
 };
 
@@ -68,6 +68,7 @@ class MenuMapper {
         this.product = options.product || 'hwp';
         this.probeDialogs = options.probeDialogs !== false;
         this.probeDropdowns = options.probeDropdowns !== false;
+        this.probeShapeTab = options.probeShapeTab !== false;
         this._recoveryInProgress = false; // plan §5 Layer 5
 
         const info = PRODUCTS[this.product];
@@ -171,6 +172,16 @@ class MenuMapper {
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
             await this._probeAllDropdowns();
+        }
+
+        // Step 6: Selection 상태 프로빙 — 도형 탭 (plan-selection Phase A)
+        if (this.probeShapeTab) {
+            log('▶', 'Step 6: 도형 탭 프로빙 (Selection 상태)');
+            try { await controller.setForeground(); } catch (_) {}
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            await this._probeShapeTab();
         }
 
         log('▶', '완료!');
@@ -987,6 +998,240 @@ class MenuMapper {
     _isDangerousDropdown(name) {
         if (!name) return false;
         return DANGEROUS_DROPDOWN_PATTERNS.some(pat => pat.test(name));
+    }
+
+    // =========================================================================
+    // Step 6: 도형 탭 프로빙 (Selection-dependent 컨텍스트 탭)
+    // =========================================================================
+
+    /**
+     * 편집 탭의 "도형" 드롭다운을 열고 "직사각형"을 선택한 뒤 캔버스를 단일 클릭
+     * 하여 기본 크기 도형을 삽입. 삽입 후 자동 선택됨.
+     * @returns {{clickX:number, clickY:number}|null} 삽입 위치 (재선택용) 또는 실패 시 null
+     */
+    async _insertShapeForProbing() {
+        await this._safeKeys('Ctrl+End');
+        await sleep(DELAY.short);
+
+        // 편집 탭으로 전환
+        const menuTabs = await this._collectMenuTabs();
+        const editTab = menuTabs.find(t => t.name === '편집');
+        if (!editTab) { log('⚠', '  편집 탭 없음'); return null; }
+        await this._switchTab(editTab);
+        await sleep(DELAY.long);
+
+        // 도형 드롭다운 버튼 rect 재수집 (pre-built 좌표가 stale 할 수 있음)
+        const shapeBtn = this._refreshItem('도형 : ALT+H');
+        if (!shapeBtn) { log('⚠', '  "도형" 드롭다운 버튼 없음'); return null; }
+        const sr = shapeBtn.rect;
+        const bx = Math.round(sr.left + (sr.right - sr.left) * 0.8);
+        const by = Math.round(sr.top + (sr.bottom - sr.top) * 0.8);
+        try { shapeBtn.element.release(); } catch (_) {}
+
+        // 드롭다운 열기
+        await this._safeClick(bx, by);
+        await sleep(DD_LIMITS.popupWaitMs);
+
+        // "직사각형" 아이템 찾기
+        sessionModule.refreshHwpElement();
+        const session = sessionModule.getSession();
+        if (!session.hwpElement) { log('⚠', '  HWP element 없음'); return null; }
+
+        const target = this._findInLatestPopup(session.hwpElement, '직사각형');
+        if (!target) {
+            await this._safeKeys('Escape');
+            await sleep(DELAY.short);
+            log('⚠', '  드롭다운에서 "직사각형" 찾지 못함');
+            return null;
+        }
+
+        const rcx = Math.round((target.rect.left + target.rect.right) / 2);
+        const rcy = Math.round((target.rect.top + target.rect.bottom) / 2);
+        await this._safeClick(rcx, rcy);
+        await sleep(DELAY.long);
+
+        // 캔버스(HwpMainEditWnd) 중앙 찾기
+        sessionModule.refreshHwpElement();
+        const frame = sessionModule.getSession().hwpElement;
+        const children = frame.findAllChildren();
+        let canvas = null;
+        for (const c of children) {
+            try { if (c.className === 'HwpMainEditWnd') { canvas = c; break; } } catch (_) {}
+        }
+        children.filter(c => c !== canvas).forEach(c => { try { c.release(); } catch (_) {} });
+        if (!canvas) { log('⚠', '  캔버스 없음'); return null; }
+
+        const cr = canvas.boundingRect;
+        const canvasCx = Math.round((cr.left + cr.right) / 2);
+        const canvasCy = Math.round((cr.top + cr.bottom) / 2);
+        try { canvas.release(); } catch (_) {}
+
+        // 단일 클릭으로 기본 크기 도형 삽입 (HWP 기본 동작)
+        await this._safeClick(canvasCx, canvasCy);
+        await sleep(DELAY.dialog);
+
+        return { clickX: canvasCx, clickY: canvasCy };
+    }
+
+    /**
+     * 가장 큰 Popup 자식 내부를 descendants 탐색하여 name으로 요소 검색.
+     * (baseline Popup은 32×32로 작으므로 크기로 구분)
+     * @returns {{rect: object}|null}
+     */
+    _findInLatestPopup(frame, targetName) {
+        const topChildren = frame.findAllChildren();
+        let largest = null;
+        let largestArea = 0;
+        for (const c of topChildren) {
+            try {
+                if (c.className === 'Popup' && c.controlTypeName === 'Window') {
+                    const r = c.boundingRect;
+                    const area = (r.right - r.left) * (r.bottom - r.top);
+                    if (area > largestArea) {
+                        if (largest) largest.release();
+                        largest = c;
+                        largestArea = area;
+                        continue;
+                    }
+                }
+            } catch (_) {}
+            try { c.release(); } catch (_) {}
+        }
+        if (!largest) return null;
+
+        const descs = largest.findAll(TreeScope.Descendants);
+        let hit = null;
+        for (const el of descs) {
+            try {
+                const name = (el.name || '').trim();
+                if (name === targetName) {
+                    hit = { rect: el.boundingRect };
+                    break;
+                }
+            } catch (_) {}
+        }
+        descs.forEach(el => { try { el.release(); } catch (_) {} });
+        largest.release();
+        return hit;
+    }
+
+    /**
+     * 삽입한 도형을 Escape + Ctrl+Z×4로 롤백. 실패해도 조용히 종료.
+     */
+    async _cleanupShape() {
+        try {
+            await this._safeKeys('Escape');
+            await sleep(DELAY.short);
+            for (let i = 0; i < 4; i++) {
+                await this._safeKeys('Ctrl+Z');
+                await sleep(DELAY.short);
+            }
+        } catch (e) {
+            log('⚠', `  도형 정리 실패 (무시): ${e.message}`);
+        }
+    }
+
+    /**
+     * 도형 탭(컨텍스트 탭) 프로빙.
+     * 도형 삽입 → 탭 활성화 확인 → 리본 수집 → 드롭다운 프로빙 → 정리.
+     */
+    async _probeShapeTab() {
+        await this._ensureUiHealthy();
+
+        const shapeLoc = await this._insertShapeForProbing();
+        if (!shapeLoc) {
+            log('⚠', '  도형 삽입 실패 — Step 6 스킵');
+            await this._cleanupShape();
+            return;
+        }
+
+        try {
+            const menuTabs = await this._collectMenuTabs();
+            const shapeTab = menuTabs.find(t => t.name === '도형');
+            if (!shapeTab || !shapeTab.isEnabled) {
+                log('⚠', '  도형 탭 비활성 — 프로빙 스킵');
+                return;
+            }
+
+            // 도형 탭으로 전환 + 리본 수집
+            await this._switchTab(shapeTab);
+            await sleep(DELAY.long);
+            const ribbonItems = await this._collectRibbonItems(shapeTab);
+            for (const it of ribbonItems) it.type = it.hasDropdown ? 'dropdown' : 'action';
+
+            // map 업데이트 (기존 'disabled' note 덮어쓰기)
+            this.map.tabs['도형'] = {
+                accessKey: shapeTab.accessKey,
+                uiaName: shapeTab.uiaName,
+                ribbonItems,
+                contextState: 'shape-selected',
+            };
+            this.map.stats.totalTabs++;
+            this.map.stats.totalRibbonItems += ribbonItems.length;
+            log('ℹ', `  도형 탭: ${ribbonItems.length}개 리본 항목 수집`);
+
+            // 드롭다운 프로빙
+            const dropdownItems = ribbonItems.filter(i => i.hasDropdown);
+            if (dropdownItems.length === 0) return;
+            log('▶', `  도형 탭 드롭다운 프로빙 (${dropdownItems.length}개)`);
+            const tabDeadline = Date.now() + DD_LIMITS.perTabBudgetMs;
+
+            for (const item of dropdownItems) {
+                if (Date.now() > tabDeadline) { log('⏰', '  도형 탭 예산 초과'); break; }
+                if (this._isDangerousDropdown(item.name)) {
+                    log('🚫', `    "${item.name}" 블랙리스트`);
+                    item.dropdown = { classification: 'blacklisted', itemCount: 0, items: [], notes: ['blacklisted'] };
+                    continue;
+                }
+
+                // 도형 선택이 유지되는지 확인 — 풀리면 재선택
+                if (!(await this._isShapeTabActive())) {
+                    log('🔁', '    도형 선택 풀림 — 재선택');
+                    await this._safeClick(shapeLoc.clickX, shapeLoc.clickY);
+                    await sleep(DELAY.long);
+                    if (!(await this._isShapeTabActive())) {
+                        log('⚠', `    "${item.name}" 도형 재선택 실패 — 스킵`);
+                        item.dropdown = { classification: 'shape-deselected', itemCount: 0, items: [], notes: ['shape-deselected'] };
+                        continue;
+                    }
+                    await this._switchTab(shapeTab);
+                    await sleep(DELAY.long);
+                }
+
+                try {
+                    const dd = await this._probeDropdown(item);
+                    item.dropdown = dd;
+                    if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
+                        this.map.stats.totalDropdowns++;
+                        this.map.stats.totalDropdownItems += dd.itemCount;
+                    }
+                    log('📂', `    "${item.name}" → ${dd.classification} (${dd.itemCount}개)`);
+                } catch (e) {
+                    log('⚠', `    "${item.name}" 실패: ${e.message}`);
+                    item.dropdown = { classification: 'error', itemCount: 0, items: [], notes: [`error:${e.message}`] };
+                    this.map.stats.dropdownErrors++;
+                    if (!this._recoveryInProgress) {
+                        this._recoveryInProgress = true;
+                        try { await this._recover(); } finally { this._recoveryInProgress = false; }
+                    }
+                }
+
+                await this._ensureNoPopup();
+            }
+        } finally {
+            await this._cleanupShape();
+        }
+    }
+
+    /**
+     * 현재 도형 탭이 활성 상태인지 빠르게 확인.
+     */
+    async _isShapeTabActive() {
+        try {
+            const menuTabs = await this._collectMenuTabs();
+            const shapeTab = menuTabs.find(t => t.name === '도형');
+            return !!(shapeTab && shapeTab.isEnabled);
+        } catch (_) { return false; }
     }
 
     // =========================================================================
