@@ -53,6 +53,24 @@ const DANGEROUS_DROPDOWN_PATTERNS = [
     // Discovery 후 필요 시 추가
 ];
 
+// Phase H: 파일 Backstage 카테고리 블랙리스트.
+// 현재 구현은 카테고리 "이름/좌표만" 수집하고 내부로 진입하지 않으므로 실제 클릭 위험은 없음.
+// 이 리스트는 향후 선택적 진입 Phase에서 "클릭하면 위험한" 카테고리를 표시하기 위한 플래그 용.
+const DANGEROUS_BACKSTAGE_CATEGORIES = [
+    /^인쇄$/,                           // 실제 인쇄 실행
+    /^끝$/,                             // 앱 종료
+    /^문서 닫기$/,                      // 현재 문서 닫기 (저장 확인 대화상자)
+    /^불러오기$/,                       // 파일 열기 대화상자
+    /^저장하기$/,                       // 새 문서의 경우 파일 저장 대화상자
+    /^다른 이름으로 저장하기$/,
+    /^PDF로 저장하기$/,
+    /^모바일 최적화 문서로 저장하기$/,
+    /^보내기$/,                         // 이메일/메신저 연동
+    /^미리 보기$/,                      // 미리보기 모드 진입
+    /^PDF를 오피스 문서로 변환하기$/,
+    /^그림을 오피스 문서로 변환하기$/,
+];
+
 // Dialog-opener 판정 (plan §3에서 갱신: 한글 UI는 '...' 대신 '설정/모양/사용자 정의')
 const DIALOG_OPENER_RE = /설정\s*:|사용자 정의|모양\s*:/;
 
@@ -74,6 +92,7 @@ class MenuMapper {
         this.probeChartTabs = options.probeChartTabs !== false;
         this.probeContextMenus = options.probeContextMenus !== false;
         this.probeImageTab = options.probeImageTab !== false;
+        this.probeFileBackstage = options.probeFileBackstage !== false;
         this._recoveryInProgress = false; // plan §5 Layer 5
 
         const info = PRODUCTS[this.product];
@@ -95,6 +114,7 @@ class MenuMapper {
                 totalControls: 0,
                 totalDropdowns: 0,
                 totalDropdownItems: 0,
+                totalBackstageCategories: 0,
                 dropdownErrors: 0,
                 errors: 0,
             },
@@ -241,6 +261,23 @@ class MenuMapper {
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
             await this._probeContextMenus();
+        }
+
+        // Step 11: 파일 Backstage 프로빙 (Phase H)
+        if (this.probeFileBackstage) {
+            log('▶', 'Step 11: 파일 Backstage 프로빙');
+            await this._setForegroundMaximized();
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            try {
+                await this._probeFileBackstage();
+            } catch (e) {
+                log('⚠', `  Step 11 실패: ${e.message}`);
+                this.map.stats.errors++;
+                // 실패해도 Escape로 복귀 시도 (Backstage가 열린 상태로 남으면 안 됨)
+                try { await this._safeKeys('Escape'); } catch (_) {}
+            }
         }
 
         log('▶', '완료!');
@@ -2031,6 +2068,168 @@ class MenuMapper {
 
         result.probeDurationMs = Date.now() - start;
         return result;
+    }
+
+    // =========================================================================
+    // Step 11: 파일 Backstage 프로빙 (Phase H)
+    // =========================================================================
+
+    /**
+     * 파일 탭 클릭 → 새로 등장한 대형 Popup 감지 → MenuItem 카테고리 수집 → Escape 복귀.
+     * Discovery 결과에 따르면 Backstage는 전체화면 패널이 아닌 393×706 Popup|Window로 구현됨.
+     * 기존 _probeDropdown 인프라(_snapshotChildren / _findAddedChildren / _walkPopupTree) 재사용.
+     *
+     * 현재 구현은 "카테고리 이름/좌표/단축키만" 수집하고 어떤 카테고리도 클릭하지 않는다.
+     * 카테고리 내부의 서브 UI(편집 용지 다이얼로그, 옵션, 인쇄 설정 등)는 향후 Phase에서
+     * DANGEROUS_BACKSTAGE_CATEGORIES 블랙리스트를 참고해 선택적으로 진입한다.
+     */
+    async _probeFileBackstage() {
+        const menuTabs = await this._collectMenuTabs();
+        const fileTab = menuTabs.find(t => t.name === '파일');
+        if (!fileTab) { log('⚠', '  파일 탭 없음 — Step 11 스킵'); return; }
+
+        const start = Date.now();
+        // Backstage 로드는 일반 드롭다운보다 무거우므로 예산 3배
+        const deadline = start + DD_LIMITS.perDropdownBudgetMs * 3;
+        const check = () => { if (Date.now() > deadline) throw new Error('BudgetExceeded'); };
+
+        const backstage = {
+            classification: 'backstage',
+            popupClass: null,
+            popupRect: null,
+            itemCount: 0,
+            items: [],
+            probeDurationMs: 0,
+            notes: [],
+        };
+
+        // Before snapshot
+        check();
+        sessionModule.refreshHwpElement();
+        const session = sessionModule.getSession();
+        if (!session.hwpElement) {
+            backstage.notes.push('no-hwp-element');
+            this.map.tabs['파일'] = { ...(this.map.tabs['파일'] || {}), note: 'backstage', backstage };
+            return;
+        }
+        const before = this._snapshotChildren(session.hwpElement);
+        this._releaseAll(before.children);
+
+        // 파일 탭 클릭 — 첫 번째 탭이므로 _switchTab 대신 _safeClick로 포커스 선행 보장
+        check();
+        await this._safeClick(fileTab.clickX, fileTab.clickY);
+        await sleep(DD_LIMITS.popupWaitMs + 500); // Backstage 로드 여유
+
+        // After snapshot
+        check();
+        sessionModule.refreshHwpElement();
+        const frameAfter = sessionModule.getSession().hwpElement;
+        if (!frameAfter) {
+            backstage.notes.push('no-hwp-element-after');
+            try { await this._safeKeys('Escape'); } catch (_) {}
+            this.map.tabs['파일'] = { ...(this.map.tabs['파일'] || {}), note: 'backstage', backstage };
+            return;
+        }
+        const after = this._snapshotChildren(frameAfter);
+
+        // 새 대형 Popup 감지 — baseline 32×32 팝업과 구별 (Discovery: Backstage는 393×706)
+        const added = this._findAddedChildren(before, after);
+        let popupEl = null, popupInfo = null;
+        for (const a of added) {
+            if (a.info.className !== 'Popup' || a.info.controlType !== 'Window') continue;
+            const r = a.info.rect;
+            if (!r) continue;
+            const area = (r.right - r.left) * (r.bottom - r.top);
+            if (area < 10_000) continue; // baseline popup 제외 (32×32 = 1024, 여유 포함)
+            popupEl = a.element;
+            popupInfo = a.info;
+            break;
+        }
+
+        if (popupEl) {
+            check();
+            backstage.popupClass = popupInfo.className;
+            backstage.popupRect = popupInfo.rect;
+            try {
+                const visited = new Set();
+                const nodes = [];
+                this._walkPopupTree(popupEl, 0, visited, nodes);
+                if (nodes.length >= DD_LIMITS.popupTreeMaxNodes) backstage.notes.push('tree-truncated');
+
+                // MenuItem 카테고리 추출 — name+rect 재dedupe (d=2/d=3 이중 노출 대응)
+                // 최근 문서(절대경로) 는 개인정보 노출 방지를 위해 카운트만 기록, 이름은 저장 안 함.
+                const seen = new Set();
+                const categories = [];
+                let recentDocumentCount = 0;
+                const RECENT_DOC_RE = /^[A-Za-z]:[\\/]/; // Windows absolute path
+                for (const n of nodes) {
+                    if (n.controlType !== 'MenuItem' || !n.name) continue;
+                    const r = n.rect;
+                    const rectKey = r ? `${r.left},${r.top},${r.right},${r.bottom}` : '';
+                    const dedupKey = `${n.name}|${rectKey}`;
+                    if (seen.has(dedupKey)) continue;
+                    seen.add(dedupKey);
+
+                    // 최근 문서 — 이름은 기록하지 않고 카운트만
+                    if (RECENT_DOC_RE.test(n.name)) {
+                        recentDocumentCount++;
+                        continue;
+                    }
+
+                    // "새 문서 : ALT+N" → name="새 문서", accessKey="N"
+                    const match = n.name.match(/^(.+?)\s*:\s*ALT\+([A-Z0-9]+)$/i);
+                    const cleanName = match ? match[1].trim() : n.name.trim();
+                    const isDangerous = this._isDangerousBackstage(cleanName);
+
+                    categories.push({
+                        name: cleanName,
+                        accessKey: match ? match[2] : null,
+                        uiaName: n.name,
+                        controlType: n.controlType,
+                        depth: n.depth,
+                        rect: r,
+                        clickX: r ? Math.round((r.left + r.right) / 2) : null,
+                        clickY: r ? Math.round((r.top + r.bottom) / 2) : null,
+                        isDangerous,
+                    });
+                }
+                backstage.itemCount = categories.length;
+                backstage.items = categories;
+                backstage.recentDocumentCount = recentDocumentCount;
+                backstage.classification = 'backstage';
+                this.map.stats.totalBackstageCategories = categories.length;
+            } catch (e) {
+                backstage.notes.push(`walk-error:${e.message}`);
+                backstage.classification = 'error';
+            }
+        } else {
+            backstage.notes.push('no-popup-detected');
+            backstage.classification = 'no-popup';
+        }
+
+        this._releaseAll(after.children);
+
+        // 닫기 — Discovery에서 Escape 1회로 복귀 검증됨. 안전마진 포함 2회.
+        for (let i = 0; i < 2; i++) {
+            try { await this._safeKeys('Escape'); } catch (_) {}
+            await sleep(DELAY.medium);
+        }
+
+        backstage.probeDurationMs = Date.now() - start;
+
+        this.map.tabs['파일'] = {
+            ...(this.map.tabs['파일'] || {}),
+            note: 'backstage',
+            backstage,
+        };
+
+        const dangerCount = backstage.items.filter(i => i.isDangerous).length;
+        log('📂', `  파일 Backstage: ${backstage.itemCount}개 카테고리 (위험 ${dangerCount})`);
+    }
+
+    _isDangerousBackstage(name) {
+        if (!name) return false;
+        return DANGEROUS_BACKSTAGE_CATEGORIES.some(p => p.test(name));
     }
 
     // =========================================================================
