@@ -1853,23 +1853,11 @@ class MenuMapper {
     async _probeContextMenus() {
         this.map.contextMenus = this.map.contextMenus || {};
 
-        // 캔버스 중앙 좌표 계산
-        sessionModule.refreshHwpElement();
-        const session = sessionModule.getSession();
-        if (!session.hwpElement) { log('⚠', '  Step 9: HWP element 없음'); return; }
-        const children = session.hwpElement.findAllChildren();
-        let canvas = null;
-        for (const c of children) {
-            try { if (c.className === 'HwpMainEditWnd') { canvas = c; break; } } catch (_) {}
-        }
-        children.filter(c => c !== canvas).forEach(c => { try { c.release(); } catch (_) {} });
-        if (!canvas) { log('⚠', '  Step 9: 캔버스 없음'); return; }
-        const cr = canvas.boundingRect;
-        const cx = Math.round((cr.left + cr.right) / 2);
-        const cy = Math.round((cr.top + cr.bottom) / 2);
-        try { canvas.release(); } catch (_) {}
+        const canvasCenter = this._findCanvasCenter();
+        if (!canvasCenter) { log('⚠', '  Step 10: 캔버스 없음'); return; }
+        const { x: cx, y: cy } = canvasCenter;
 
-        // Scenario 1: 캐럿만 (선택 없음) — 문서 끝 커서
+        // Scenario 1: 캐럿만 (선택 없음)
         await this._safeKeys('Ctrl+End');
         await sleep(DELAY.short);
         const caretCtx = await this._probeRightClickAt(cx, cy, 'caret');
@@ -1887,6 +1875,69 @@ class MenuMapper {
         if (selCtx) {
             this.map.contextMenus['text-selected'] = selCtx;
             log('📎', `  우클릭 [text-selected]: ${selCtx.itemCount}개 항목`);
+        }
+
+        // 객체별 우클릭 메뉴 — 도형/표/차트/그림 (Phase G)
+        await this._probeObjectContextMenu('shape-selected',
+            this._insertShapeForProbing.bind(this),
+            this._cleanupShape.bind(this));
+        await this._probeObjectContextMenu('table-inside',
+            this._insertTableForProbing.bind(this),
+            this._cleanupTable.bind(this));
+        await this._probeObjectContextMenu('chart-selected',
+            this._insertChartForProbing.bind(this),
+            this._cleanupChart.bind(this));
+        await this._probeObjectContextMenu('image-selected',
+            this._insertImageForProbing.bind(this),
+            this._cleanupImage.bind(this));
+    }
+
+    _findCanvasCenter() {
+        sessionModule.refreshHwpElement();
+        const session = sessionModule.getSession();
+        if (!session.hwpElement) return null;
+        const children = session.hwpElement.findAllChildren();
+        let canvas = null;
+        for (const c of children) {
+            try { if (c.className === 'HwpMainEditWnd') { canvas = c; break; } } catch (_) {}
+        }
+        children.filter(c => c !== canvas).forEach(c => { try { c.release(); } catch (_) {} });
+        if (!canvas) return null;
+        const cr = canvas.boundingRect;
+        try { canvas.release(); } catch (_) {}
+        return {
+            x: Math.round((cr.left + cr.right) / 2),
+            y: Math.round((cr.top + cr.bottom) / 2),
+        };
+    }
+
+    async _probeObjectContextMenu(label, insertFn, cleanupFn) {
+        try {
+            await this._ensureUiHealthy();
+            const result = await insertFn();
+            if (result === false || result === null) {
+                log('⚠', `  우클릭 [${label}]: 삽입 실패 — 스킵`);
+                return;
+            }
+            // 삽입 직후 UI 안정화 대기
+            await sleep(DELAY.medium);
+
+            const canvas = this._findCanvasCenter();
+            if (!canvas) { log('⚠', `  우클릭 [${label}]: 캔버스 없음`); return; }
+
+            const ctx = await this._probeRightClickAt(canvas.x, canvas.y, label);
+            if (ctx && ctx.itemCount > 0) {
+                this.map.contextMenus[label] = ctx;
+                log('📎', `  우클릭 [${label}]: ${ctx.itemCount}개 항목`);
+            } else {
+                log('⚠', `  우클릭 [${label}]: 팝업 미감지`);
+            }
+        } catch (e) {
+            log('⚠', `  우클릭 [${label}] 실패: ${e.message}`);
+        } finally {
+            try { await cleanupFn(); } catch (_) {}
+            await this._ensureNoDialog();
+            await sleep(DELAY.medium);
         }
     }
 
