@@ -184,7 +184,7 @@ class MenuMapper {
         if (this.probeDropdowns) {
             log('▶', 'Step 5: 드롭다운 프로빙');
             // Step 4 직후 HWP 포그라운드가 불안정할 수 있음 — 복구 단계
-            try { await controller.setForeground(); } catch (_) {}
+            await this._setForegroundMaximized();
             await sleep(DELAY.long);
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
@@ -194,7 +194,7 @@ class MenuMapper {
         // Step 6: Selection 상태 프로빙 — 도형 탭 (plan-selection Phase A)
         if (this.probeShapeTab) {
             log('▶', 'Step 6: 도형 탭 프로빙 (Selection 상태)');
-            try { await controller.setForeground(); } catch (_) {}
+            await this._setForegroundMaximized();
             await sleep(DELAY.long);
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
@@ -204,7 +204,7 @@ class MenuMapper {
         // Step 7: Selection 상태 프로빙 — 표 컨텍스트 탭 (Phase B)
         if (this.probeTableTabs) {
             log('▶', 'Step 7: 표 컨텍스트 탭 프로빙 (Selection 상태)');
-            try { await controller.setForeground(); } catch (_) {}
+            await this._setForegroundMaximized();
             await sleep(DELAY.long);
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
@@ -214,7 +214,7 @@ class MenuMapper {
         // Step 8: Selection 상태 프로빙 — 차트 컨텍스트 탭 (Phase D)
         if (this.probeChartTabs) {
             log('▶', 'Step 8: 차트 컨텍스트 탭 프로빙 (Selection 상태)');
-            try { await controller.setForeground(); } catch (_) {}
+            await this._setForegroundMaximized();
             await sleep(DELAY.long);
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
@@ -224,7 +224,7 @@ class MenuMapper {
         // Step 9: 우클릭 컨텍스트 메뉴 프로빙 (Phase E)
         if (this.probeContextMenus) {
             log('▶', 'Step 9: 우클릭 컨텍스트 메뉴 프로빙');
-            try { await controller.setForeground(); } catch (_) {}
+            await this._setForegroundMaximized();
             await sleep(DELAY.long);
             await this._ensureNoDialog();
             await this._ensureUiHealthy();
@@ -716,18 +716,33 @@ class MenuMapper {
         await sleep(DELAY.dialog * 3);
     }
 
+    /**
+     * setForeground + 재최대화 조합. setForeground 내부의 SW_RESTORE가 창을 축소시키므로
+     * 항상 뒤이어 maximizeWindow 호출이 필요.
+     */
+    async _setForegroundMaximized() {
+        try { await controller.setForeground(); } catch (_) {}
+        try {
+            const hwnd = sessionModule.getSession().hwpProcess.hwnd;
+            if (hwnd) win32.maximizeWindow(hwnd);
+        } catch (_) {}
+    }
+
     async _ensureForeground() {
-        const expectedPid = sessionModule.getSession().hwpProcess.pid;
+        const sess = sessionModule.getSession();
+        const expectedPid = sess.hwpProcess.pid;
         if (!expectedPid) return;
         const fg = win32.getForegroundPid();
         if (fg === expectedPid) return;
         log('🔆', `  foreground=${fg} ≠ HWP=${expectedPid} — 복원 중`);
         try { await controller.setForeground(); } catch (_) {}
+        // setForeground는 내부적으로 SW_RESTORE를 호출해 창을 복원함 — 재최대화 필수
+        try { if (sess.hwpProcess.hwnd) win32.maximizeWindow(sess.hwpProcess.hwnd); } catch (_) {}
         await sleep(DELAY.medium);
         const fg2 = win32.getForegroundPid();
         if (fg2 !== expectedPid) {
-            // 한 번 더 시도
             try { await controller.setForeground(); } catch (_) {}
+            try { if (sess.hwpProcess.hwnd) win32.maximizeWindow(sess.hwpProcess.hwnd); } catch (_) {}
             await sleep(DELAY.long);
             const fg3 = win32.getForegroundPid();
             if (fg3 !== expectedPid) {
@@ -1817,12 +1832,16 @@ class MenuMapper {
     // =========================================================================
 
     async _recover() {
-        // 포커스 먼저 복원 — Escape가 잘못된 앱으로 가지 않도록
+        // 포커스 먼저 복원 + 재최대화 — Escape가 잘못된 앱으로 가지 않도록
         try { await controller.setForeground(); } catch (_) {}
+        try {
+            const hwnd = sessionModule.getSession().hwpProcess.hwnd;
+            if (hwnd) win32.maximizeWindow(hwnd);
+        } catch (_) {}
         await sleep(DELAY.medium);
         for (let i = 0; i < 5; i++) {
             try { await this._safeKeys('Escape'); }
-            catch (_) { break; } // foreground 회복 불가 시 조용히 종료
+            catch (_) { break; }
             await sleep(DELAY.short);
         }
         await sleep(DELAY.long);
