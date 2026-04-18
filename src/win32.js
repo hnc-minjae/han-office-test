@@ -279,6 +279,21 @@ function forceSetForeground(hwnd) {
 }
 
 /**
+ * Return the PID of the process that owns the currently-foreground window.
+ * Used to verify that input events will land in the intended target process
+ * (e.g. HWP) before dispatching mouse/keyboard actions.
+ * @returns {number} Foreground window's process ID, or 0 if no window has focus.
+ */
+function getForegroundPid() {
+    const apis = getApis();
+    const hwnd = apis.GetForegroundWindow();
+    if (!hwnd) return 0;
+    const pidBuf = Buffer.alloc(4);
+    apis.GetWindowThreadProcessId(hwnd, pidBuf);
+    return pidBuf.readUInt32LE(0);
+}
+
+/**
  * Search the UIA desktop tree for the top-level window belonging to a PID.
  * Matches windows with className 'FrameWindowImpl' (HWP main window class).
  * @param {import('./uia').UIAutomation} uia - Initialized UIAutomation instance
@@ -434,6 +449,7 @@ module.exports = {
     // Window messaging
     postKey,
     forceSetForeground,
+    getForegroundPid,
     // UIA helpers
     findWindowByPid,
     getHwnd,

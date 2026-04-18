@@ -2,7 +2,7 @@
   "product": "hwp",
   "productName": "한글",
   "version": "2027",
-  "mappedAt": "2026-04-17T12:43:35.606Z",
+  "mappedAt": "2026-04-18T03:01:08.522Z",
   "tabs": {
     "파일": {
       "accessKey": "F",
@@ -19,40 +19,67 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1040,
-          "clickY": 210
+          "clickX": 103,
+          "clickY": 124
         },
         {
           "name": "복사하기 : ALT+C",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1091,
-          "clickY": 210
+          "clickX": 154,
+          "clickY": 124
         },
         {
           "name": "붙이기 : ALT+P",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1146,
-          "clickY": 210
+          "clickX": 209,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 4,
+            "items": [
+              {
+                "name": "붙이기 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "골라 붙이기 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "클립보드 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4096,
+            "notes": []
+          }
         },
         {
           "name": "모양 복사 : ALT+A",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1191,
-          "clickY": 210
+          "clickX": 253,
+          "clickY": 124
         },
         {
           "name": "조판 부호 지우기 : ALT+Y",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1244,
-          "clickY": 210,
+          "clickX": 307,
+          "clickY": 124,
           "dialog": {
             "title": "조판 부호 지우기",
             "tabs": [
@@ -89,8 +116,8 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1309,
-          "clickY": 210,
+          "clickX": 372,
+          "clickY": 124,
           "dialog": {
             "title": "글자 모양",
             "tabs": [
@@ -116,7 +143,7 @@
                   "className": "Button"
                 },
                 {
-                  "name": "기준 크기 : 10.0 pt ALT+Z",
+                  "name": "기준 크기 : pt ALT+Z",
                   "type": "ComboBox",
                   "className": "SpinComboImpl"
                 },
@@ -131,27 +158,27 @@
                   "className": "ComboImpl"
                 },
                 {
-                  "name": "함초롬바탕",
+                  "name": "",
                   "type": "Edit",
                   "className": "EditImplBase"
                 },
                 {
-                  "name": "상대크기 : 100 % ALT+R",
+                  "name": "상대크기 : % ALT+R",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "장평 : 100 % ALT+W",
+                  "name": "장평 : % ALT+W",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "글자 위치 : 0 % ALT+F",
+                  "name": "글자 위치 : % ALT+F",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "자간 : 0 % ALT+P",
+                  "name": "자간 : % ALT+P",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
@@ -253,12 +280,12 @@
                   "className": "RadioButtonImpl"
                 },
                 {
-                  "name": "X 방향 : 10 % ALT+X",
+                  "name": "X 방향 : % ALT+X",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "Y 방향 : 10 % ALT+Y",
+                  "name": "Y 방향 : % ALT+Y",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
@@ -383,8 +410,8 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1351,
-          "clickY": 210,
+          "clickX": 413,
+          "clickY": 124,
           "dialog": {
             "title": "문단 모양",
             "tabs": [
@@ -441,12 +468,12 @@
                   "className": "ButtonImpl"
                 },
                 {
-                  "name": "왼쪽 : 0.0 pt ALT+F",
+                  "name": "왼쪽 : pt ALT+F",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "오른쪽 : 0.0 pt ALT+O",
+                  "name": "오른쪽 : pt ALT+O",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
@@ -466,7 +493,7 @@
                   "className": "RadioButtonImpl"
                 },
                 {
-                  "name": "0.0 pt ALT+J",
+                  "name": "pt ALT+J",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
@@ -476,17 +503,17 @@
                   "className": "ComboImpl"
                 },
                 {
-                  "name": "줄 간격 : 160 % ALT+K",
+                  "name": "줄 간격 : % ALT+K",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "문단 위 : 0.0 pt ALT+U",
+                  "name": "문단 위 : pt ALT+U",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "문단 아래 : 0.0 pt ALT+V",
+                  "name": "문단 아래 : pt ALT+V",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
@@ -506,7 +533,7 @@
                   "className": "ComboImpl"
                 },
                 {
-                  "name": "최소 공백 : 100 % ALT+I",
+                  "name": "최소 공백 : % ALT+I",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
@@ -548,19 +575,9 @@
                   "className": "RadioButtonImpl"
                 },
                 {
-                  "name": "ALT+L",
-                  "type": "ComboBox",
-                  "className": "ComboImpl"
-                },
-                {
                   "name": "번호 문단 : ALT+M",
                   "type": "RadioButton",
                   "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "",
-                  "type": "ComboBox",
-                  "className": "ComboImpl"
                 },
                 {
                   "name": "글머리표 문단 : ALT+B",
@@ -782,22 +799,22 @@
                   "className": "ComboImpl"
                 },
                 {
-                  "name": "왼쪽 : 0.00 mm ALT+E",
+                  "name": "왼쪽 : mm ALT+E",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "오른쪽 : 0.00 mm ALT+R",
+                  "name": "오른쪽 : mm ALT+R",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "위쪽 : 0.00 mm ALT+U",
+                  "name": "위쪽 : mm ALT+U",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
                 {
-                  "name": "아래쪽 : 0.00 mm ALT+V",
+                  "name": "아래쪽 : mm ALT+V",
                   "type": "Edit",
                   "className": "SpinImpl"
                 },
@@ -825,40 +842,214 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1397,
-          "clickY": 210
+          "clickX": 459,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 27,
+            "items": [
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 없음\n다음 스타일 : 바탕글",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 15 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 없음\n다음 스타일 : 본문",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 10 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 1",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 20 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 2",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 30 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 3",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 40 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 4",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 50 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 5",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 60 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 6",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 70 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 7",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 80 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 8",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 90 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 9",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 100 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 개요\n다음 스타일 : 개요 10",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬돋움,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 없음",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 160 %,  문단 종류 : 없음",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬돋움,  크기 : 9 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 150 %,  문단 종류 : 없음\n다음 스타일 : 머리말",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 9 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 내어쓰기,  정렬 방식 : 양쪽\n줄간격 : 130 %,  문단 종류 : 없음\n다음 스타일 : 각주",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 9 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 내어쓰기,  정렬 방식 : 양쪽\n줄간격 : 130 %,  문단 종류 : 없음\n다음 스타일 : 미주",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬돋움,  크기 : 9 pt\n장평 : 100 %,  자간 : -5 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 왼쪽\n줄간격 : 130 %,  문단 종류 : 없음\n다음 스타일 : 메모",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬돋움,  크기 : 16 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 왼쪽\n줄간격 : 160 %,  문단 종류 : 없음\n다음 스타일 : 차례 제목",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬돋움,  크기 : 11 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 왼쪽\n줄간격 : 160 %,  문단 종류 : 없음\n다음 스타일 : 차례 1",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬돋움,  크기 : 11 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 11 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 왼쪽\n줄간격 : 160 %,  문단 종류 : 없음\n다음 스타일 : 차례 2",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬돋움,  크기 : 11 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 22 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 왼쪽\n줄간격 : 160 %,  문단 종류 : 없음\n다음 스타일 : 차례 3",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글꼴 : 함초롬바탕,  크기 : 10 pt\n장평 : 100 %,  자간 : 0 %\n왼쪽 여백 : 0 pt,  오른쪽 여백 : 0 pt\n첫 줄 : 보통,  정렬 방식 : 양쪽\n줄간격 : 150 %,  문단 종류 : 없음\n다음 스타일 : 캡션",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "스타일 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "스타일 작업 창 : ALT+W",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4227,
+            "notes": []
+          }
         },
         {
           "name": "세로 : ALT+G",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1455,
-          "clickY": 210
+          "clickX": 517,
+          "clickY": 124
         },
         {
           "name": "가로 : ALT+D",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1496,
-          "clickY": 210
+          "clickX": 559,
+          "clickY": 124
         },
         {
           "name": "쪽 여백 : ALT+J",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1547,
-          "clickY": 210
+          "clickX": 610,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 9,
+            "items": [
+              {
+                "name": "쪽 여백 설정 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 4232,
+            "notes": []
+          }
         },
         {
           "name": "바탕쪽 : ALT+E",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1601,
-          "clickY": 210,
+          "clickX": 664,
+          "clickY": 124,
           "dialog": {
             "title": "바탕쪽",
             "tabs": [
@@ -935,208 +1126,913 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1647,
-          "clickY": 210
+          "clickX": 709,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 7,
+            "items": [
+              {
+                "name": "하나 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "둘 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "셋 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "단 설정 : ALT+E",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 4062,
+            "notes": []
+          }
         },
         {
           "name": "도형 : ALT+H",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1701,
-          "clickY": 210
+          "clickX": 764,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 25,
+            "items": [
+              {
+                "name": "가로 글상자",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "세로 글상자",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "직사각형",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "타원",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "직선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "호",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "다각형",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "곡선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "자유선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "직선 연결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "직선 화살표 연결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "직선 양쪽 화살표 연결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "꺾인 연결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "꺾인 화살표 연결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "꺾인 양쪽 화살표 연결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "구부러진 연결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "구부러진 화살표 연결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "구부러진 양쪽 화살표 연결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "다른 그리기 조각 : ALT+V",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "새 그리기 속성 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4241,
+            "notes": []
+          }
         },
         {
           "name": "그림 : ALT+I",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1743,
-          "clickY": 210
+          "clickX": 805,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [
+              {
+                "name": "그림 : ALT+I",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "그리기마당 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "스크린 샷 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "연결 그림 새로 고침 : ALT+U",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "그림에서 글자 가져오기 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4115,
+            "notes": []
+          }
         },
         {
           "name": "표 : ALT+B",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1784,
-          "clickY": 210
+          "clickX": 847,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "visual-grid",
+            "popupClass": "Popup",
+            "itemCount": 7,
+            "items": [
+              {
+                "name": "표 만들기 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표 그리기 : ALT+W",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표 지우개 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "문자열을 표로 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표를 문자열로 : ALT+X",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 3972,
+            "notes": []
+          }
         },
         {
           "name": "차트 : ALT+R",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1825,
-          "clickY": 210
+          "clickX": 888,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "scrollable-gallery",
+            "popupClass": "Popup",
+            "itemCount": 89,
+            "items": [
+              {
+                "name": "묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 피라미드형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "누적 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "100% 기준 누적 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식이 있는 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식이 있는 누적 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식이 있는 100% 기준 누적 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "누적 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "100% 기준 누적 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 누적 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 100% 기준 누적 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "2차원 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "쪼개진 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원형 대 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원형 대 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 쪼개진 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "도넛형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "쪼개진 도넛형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식만 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "곡선 및 표식이 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "곡선이 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "직선 및 표식이 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "직선이 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "거품형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 거품형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "고가-저가-종가",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "시가-고가-저가-종가",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "거래량-고가-저가-종가",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "거래량-시가-고가-저가-종가",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "방사형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식이 있는 방사형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채워진 방사형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 표면형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 표면형(골격형)",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 표면형(조감도)",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 표면형(골격형 조감도)",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "트리맵 차트",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4419,
+            "notes": []
+          }
         },
         {
           "name": "개체 선택 : ALT+V",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1889,
-          "clickY": 210
+          "clickX": 952,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "개체 선택 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "모두 선택 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4033,
+            "notes": []
+          }
         },
         {
           "name": "개체 보호 : ALT+K",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1948,
-          "clickY": 210
+          "clickX": 1011,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "개체 보호하기 : ALT+K",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "모든 보호 개체 해제하기 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 3943,
+            "notes": []
+          }
         },
         {
           "name": "찾기 : ALT+F",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2012,
-          "clickY": 210
+          "clickX": 1075,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "찾기 : ALT+F",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "찾아 바꾸기 : ALT+E",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "다시 찾기 : ALT+X",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "찾아가기 : ALT+G",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4009,
+            "notes": []
+          }
         },
         {
           "name": "글자 바꾸기 : ALT+N",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2068,
-          "clickY": 210
+          "clickX": 1131,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 7,
+            "items": [
+              {
+                "name": "한자로 바꾸기 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "한글로 바꾸기 : ALT+K",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "대문자/소문자 바꾸기 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "전각/반각 바꾸기 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "일어 바꾸기 : ALT+J",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "간체/번체 바꾸기 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4152,
+            "notes": []
+          }
         },
         {
           "name": "정렬 : ALT+O",
           "controlType": "Button",
           "hasDropdown": false,
-          "type": "dialog",
-          "clickX": 2124,
-          "clickY": 210,
-          "dialog": {
-            "title": "정렬",
-            "tabs": [
-              "(기본)"
-            ],
-            "controls": {
-              "(기본)": [
-                {
-                  "name": "빠른 도움말",
-                  "type": "Button",
-                  "className": "Button"
-                },
-                {
-                  "name": "도움말",
-                  "type": "Button",
-                  "className": "Button"
-                },
-                {
-                  "name": "",
-                  "type": "Button",
-                  "className": "Button"
-                },
-                {
-                  "name": "ALT+L",
-                  "type": "ComboBox",
-                  "className": "ComboImpl"
-                },
-                {
-                  "name": "ALT+M",
-                  "type": "ComboBox",
-                  "className": "ComboImpl"
-                },
-                {
-                  "name": "ALT+N",
-                  "type": "ComboBox",
-                  "className": "ComboImpl"
-                },
-                {
-                  "name": "ALT+O",
-                  "type": "ComboBox",
-                  "className": "ComboImpl"
-                },
-                {
-                  "name": "ALT+P",
-                  "type": "ComboBox",
-                  "className": "ComboImpl"
-                },
-                {
-                  "name": "ALT+Q",
-                  "type": "ComboBox",
-                  "className": "ComboImpl"
-                },
-                {
-                  "name": "탭 : ALT+T",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "쉼표 : ALT+C",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "빈칸 : ALT+S",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "기호 : ALT+H",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "기호 : ALT+R",
-                  "type": "Edit",
-                  "className": "EditImplBase"
-                },
-                {
-                  "name": "연속된 구분 기호 무시 : ALT+I",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
-                },
-                {
-                  "name": "고어 정렬 : ALT+G",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
-                },
-                {
-                  "name": "뒤부터 앞으로 비교 : ALT+B",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
-                },
-                {
-                  "name": "종성/중성/초성 순으로 비교 : ALT+J",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
-                },
-                {
-                  "name": "각 문단별 단어 정렬 : ALT+E",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
-                },
-                {
-                  "name": "두 자리 연도기준 적용 : ALT+Y",
-                  "type": "CheckBox",
-                  "className": "CheckBoxImpl"
-                },
-                {
-                  "name": "두 자리 연도기준 적용 : 1930 ALT+A",
-                  "type": "Edit",
-                  "className": "SpinImpl"
-                },
-                {
-                  "name": "2029 ALT+F",
-                  "type": "Edit",
-                  "className": "EditImplBase"
-                }
-              ]
-            }
-          }
+          "type": "action",
+          "clickX": 1187,
+          "clickY": 124
         },
         {
           "name": "어시스턴트",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2181,
-          "clickY": 210
+          "clickX": 1244,
+          "clickY": 124
         }
       ]
     },
@@ -1149,200 +2045,200 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1040,
-          "clickY": 210
+          "clickX": 103,
+          "clickY": 124
         },
         {
           "name": "문서 보기 색 : ALT+C",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1112,
-          "clickY": 210
+          "clickX": 174,
+          "clickY": 124
         },
         {
           "name": "문단 부호 : ALT+H",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1203,
-          "clickY": 196
+          "clickX": 266,
+          "clickY": 110
         },
         {
           "name": "그림 : ALT+I",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1273,
-          "clickY": 196
+          "clickX": 335,
+          "clickY": 110
         },
         {
           "name": "형광펜 : ALT+Y",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1351,
-          "clickY": 196
+          "clickX": 413,
+          "clickY": 110
         },
         {
           "name": "조판 부호 : ALT+R",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1203,
-          "clickY": 221
+          "clickX": 266,
+          "clickY": 136
         },
         {
           "name": "투명 선 : ALT+T",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1281,
-          "clickY": 221
+          "clickX": 343,
+          "clickY": 136
         },
         {
           "name": "교정 부호 : ALT+F",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1203,
-          "clickY": 246
+          "clickX": 266,
+          "clickY": 161
         },
         {
           "name": "메모 : ALT+M",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1273,
-          "clickY": 246
+          "clickX": 335,
+          "clickY": 161
         },
         {
           "name": "상황 선 : ALT+S",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1434,
-          "clickY": 196
+          "clickX": 497,
+          "clickY": 110
         },
         {
           "name": "문서 탭 : ALT+A",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1434,
-          "clickY": 221
+          "clickX": 497,
+          "clickY": 136
         },
         {
           "name": "눈금자 : ALT+X",
           "controlType": "CheckBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1432,
-          "clickY": 246
+          "clickX": 495,
+          "clickY": 161
         },
         {
           "name": "격자 : ALT+G",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1490,
-          "clickY": 210
+          "clickX": 553,
+          "clickY": 124
         },
         {
           "name": "안내선 : ALT+D",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1535,
-          "clickY": 210
+          "clickX": 598,
+          "clickY": 124
         },
         {
           "name": "한자 발음 표시 : ALT+P",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1616,
-          "clickY": 210
+          "clickX": 679,
+          "clickY": 124
         },
         {
           "name": "작업 창 : ALT+W",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1697,
-          "clickY": 210
+          "clickX": 759,
+          "clickY": 124
         },
         {
           "name": "편집 화면 나누기 : ALT+B",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1769,
-          "clickY": 210
+          "clickX": 832,
+          "clickY": 124
         },
         {
           "name": "창 배열 : ALT+O",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1834,
-          "clickY": 210
+          "clickX": 896,
+          "clickY": 124
         },
         {
           "name": "창 전환 : ALT+K",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1893,
-          "clickY": 210
+          "clickX": 956,
+          "clickY": 124
         },
         {
           "name": "새 창 : ALT+Q",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1943,
-          "clickY": 210
+          "clickX": 1005,
+          "clickY": 124
         },
         {
           "name": "축소 : ALT+U",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1997,
-          "clickY": 210
+          "clickX": 1060,
+          "clickY": 124
         },
         {
           "name": "확대 : ALT+N",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2039,
-          "clickY": 210
+          "clickX": 1101,
+          "clickY": 124
         },
         {
           "name": "100% : ALT+J",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2097,
-          "clickY": 210
+          "clickX": 1160,
+          "clickY": 124
         },
         {
           "name": "쪽 맞춤 : ALT+E",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2158,
-          "clickY": 195
+          "clickX": 1221,
+          "clickY": 109
         },
         {
           "name": "폭 맞춤 : ALT+V",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2158,
-          "clickY": 220
+          "clickX": 1221,
+          "clickY": 135
         }
       ]
     },
@@ -1355,56 +2251,803 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1185,
-          "clickY": 210
+          "clickX": 247,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [
+              {
+                "name": "그림 : ALT+I",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "그리기마당 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "스크린 샷 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "연결 그림 새로 고침 : ALT+U",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "그림에서 글자 가져오기 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4046,
+            "notes": []
+          }
         },
         {
           "name": "표 : ALT+T",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1226,
-          "clickY": 210
+          "clickX": 289,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "visual-grid",
+            "popupClass": "Popup",
+            "itemCount": 7,
+            "items": [
+              {
+                "name": "표 만들기 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표 그리기 : ALT+W",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표 지우개 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "문자열을 표로 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표를 문자열로 : ALT+X",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 3998,
+            "notes": []
+          }
         },
         {
           "name": "차트 : ALT+C",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1267,
-          "clickY": 210
+          "clickX": 330,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "scrollable-gallery",
+            "popupClass": "Popup",
+            "itemCount": 89,
+            "items": [
+              {
+                "name": "묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 묶은 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 100% 기준 누적 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원통형 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원뿔형 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 묶은 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "피라미드형 100% 기준 누적 세로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 피라미드형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "누적 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "100% 기준 누적 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식이 있는 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식이 있는 누적 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식이 있는 100% 기준 누적 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 꺾은선형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "누적 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "100% 기준 누적 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 누적 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 100% 기준 누적 영역형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "2차원 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "쪼개진 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원형 대 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원형 대 가로 막대형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 쪼개진 원형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "도넛형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "쪼개진 도넛형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식만 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "곡선 및 표식이 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "곡선이 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "직선 및 표식이 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "직선이 있는 분산형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "거품형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 거품형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "고가-저가-종가",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "시가-고가-저가-종가",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "거래량-고가-저가-종가",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "거래량-시가-고가-저가-종가",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "방사형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표식이 있는 방사형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채워진 방사형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 표면형",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 표면형(골격형)",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 표면형(조감도)",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "3차원 표면형(골격형 조감도)",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              },
+              {
+                "name": "트리맵 차트",
+                "controlType": "ListItem",
+                "depth": 4,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4334,
+            "notes": []
+          }
         },
         {
           "name": "글맵시 : ALT+W",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1313,
-          "clickY": 210
+          "clickX": 375,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "gallery-pure",
+            "popupClass": "Popup",
+            "itemCount": 27,
+            "items": [
+              {
+                "name": "채우기 - 회색 선, 연한 회색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 연한 회색 그러데이션, 회색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 회색 채우기, 진한 회색 사선 무늬, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 회색 두 줄 선, 회색 그러데이션, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 진한 회색 그러데이션, 연한 회색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 진한 파란색 선, 연한 파란색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 진한 파란색 선, 연한 파란색 그러데이션, 진한 파란색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 파란색 채우기, 하늘색 사선 무늬, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 파랑 초록 그러데이션, 하늘색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 탁한 파란색 그러데이션, 회색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 진한 초록색 선, 연한 초록색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 초록색 그러데이션, 진한 초록색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 진한 초록색 점선, 초록색 그러데이션, 진한 회색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 초록색 선, 초록색 그러데이션, 연한 초록색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 연한 초록색 선, 초록색 그러데이션, 연한 회색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 진한 분홍색 선, 연한 분홍색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 분홍색 그러데이션, 어두운 분홍색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 보라색 점선, 연보라 채우기, 분홍색 마름모 패턴 무늬, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 진한 보라색 선, 분홍색 그러데이션, 연한 회색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 분홍색 그러데이션, 연한 분홍색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 진한 갈색 선, 연한 갈색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 밝은 주황 그러데이션, 어두운 주황 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 검정 점선, 주황색 그러데이션, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 진한 갈색 선, 갈색 그러데이션, 진한 갈색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "채우기 - 갈색 그러데이션, 연한 회색 그림자, 직사각형 모양",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4134,
+            "notes": []
+          }
         },
         {
           "name": "수식 : ALT+E",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1358,
-          "clickY": 210
+          "clickX": 421,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 9,
+            "items": [
+              {
+                "name": "일반 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "분수/지수 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "도형 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "기타 공식 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "수식 매크로 : ALT+F",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "한컴 수식 입력 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "LaTeX 수식 입력 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "수식 편집기 : ALT+E",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4085,
+            "notes": []
+          }
         },
         {
           "name": "OLE 개체 : ALT+O",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1399,
-          "clickY": 210
+          "clickX": 461,
+          "clickY": 124
         },
         {
           "name": "동영상",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1444,
-          "clickY": 210,
+          "clickX": 507,
+          "clickY": 124,
           "dialog": {
             "title": "동영상 넣기",
             "tabs": [
@@ -1446,114 +3089,256 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1512,
-          "clickY": 210
+          "clickX": 575,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 9,
+            "items": [
+              {
+                "name": "명령 단추 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "선택 상자 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "콤보 상자 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "라디오 단추 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "입력 상자 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "속성 보이기/숨기기 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "코드 보이기/숨기기 : ALT+V",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "양식 편집 상태 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4149,
+            "notes": []
+          }
         },
         {
           "name": "누름틀 : ALT+K",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1567,
-          "clickY": 210
+          "clickX": 629,
+          "clickY": 124
         },
         {
           "name": "각주 : ALT+F",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1625,
-          "clickY": 210
+          "clickX": 688,
+          "clickY": 124
         },
         {
           "name": "미주 : ALT+D",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1667,
-          "clickY": 210
+          "clickX": 729,
+          "clickY": 124
         },
         {
           "name": "메모 : ALT+M",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1708,
-          "clickY": 210
+          "clickX": 771,
+          "clickY": 124
         },
         {
           "name": "교정 부호 : ALT+R",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1758,
-          "clickY": 210
+          "clickX": 821,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "gallery-pure",
+            "popupClass": "Popup",
+            "itemCount": 23,
+            "items": [
+              {
+                "name": "띄움표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "넣음표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "부호 넣음표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 바꿈표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 비움표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "메모 고침표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "고침표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "뺌표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "지움표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "붙임표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 붙임표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 이음표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "톱니표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "생각표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "칭찬표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "자리 바꿈표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 서로 바꿈표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른 자리 옮김표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼 자리 옮김표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "자료 연결",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4127,
+            "notes": []
+          }
         },
         {
           "name": "책갈피 : ALT+B",
           "controlType": "Button",
           "hasDropdown": false,
-          "type": "dialog",
-          "clickX": 1825,
-          "clickY": 210,
-          "dialog": {
-            "title": "책갈피",
-            "tabs": [
-              "(기본)"
-            ],
-            "controls": {
-              "(기본)": [
-                {
-                  "name": "빠른 도움말",
-                  "type": "Button",
-                  "className": "Button"
-                },
-                {
-                  "name": "도움말",
-                  "type": "Button",
-                  "className": "Button"
-                },
-                {
-                  "name": "",
-                  "type": "Button",
-                  "className": "Button"
-                },
-                {
-                  "name": "ALT+N",
-                  "type": "Edit",
-                  "className": "EditImplBase"
-                },
-                {
-                  "name": "이름 : ALT+A",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "위치 : ALT+P",
-                  "type": "RadioButton",
-                  "className": "RadioButtonImpl"
-                },
-                {
-                  "name": "책갈피 이름 바꾸기 : ALT+E",
-                  "type": "Button",
-                  "className": "ButtonImpl"
-                },
-                {
-                  "name": "삭제 : ALT+Y",
-                  "type": "Button",
-                  "className": "ButtonImpl"
-                }
-              ]
-            }
-          }
+          "type": "action",
+          "clickX": 888,
+          "clickY": 124
         },
         {
           "name": "상호 참조 : ALT+U",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1871,
-          "clickY": 210,
+          "clickX": 933,
+          "clickY": 124,
           "dialog": {
             "title": "상호 참조",
             "tabs": [
@@ -1635,8 +3420,8 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1941,
-          "clickY": 210,
+          "clickX": 1004,
+          "clickY": 124,
           "dialog": {
             "title": "하이퍼링크",
             "tabs": [
@@ -1804,48 +3589,112 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1991,
-          "clickY": 195
+          "clickX": 1054,
+          "clickY": 109
         },
         {
           "name": "하이퍼링크 다음",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1991,
-          "clickY": 220
+          "clickX": 1054,
+          "clickY": 135
         },
         {
           "name": "문자표 : ALT+S",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2042,
-          "clickY": 210
+          "clickX": 1105,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "문자표 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4018,
+            "notes": []
+          }
         },
         {
           "name": "입력 도우미 : ALT+N",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2121,
-          "clickY": 195
+          "clickX": 1184,
+          "clickY": 110,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [
+              {
+                "name": "상용구 : ALT+Q",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글자 겹치기 : ALT+W",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "외래어 표기 : ALT+G",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "로마자로 바꾸기 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "로마자 등록 : ALT+I",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 3928,
+            "notes": []
+          }
         },
         {
           "name": "한자 입력 : ALT+H",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2116,
-          "clickY": 221
+          "clickX": 1179,
+          "clickY": 136,
+          "dropdown": {
+            "classification": "no-popup",
+            "popupClass": null,
+            "itemCount": 0,
+            "items": [],
+            "probeDurationMs": 4056,
+            "notes": [
+              "no-popup-detected"
+            ]
+          }
         },
         {
           "name": "다른 문서 활용",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2221,
-          "clickY": 210
+          "clickX": 1284,
+          "clickY": 124
         }
       ]
     },
@@ -1858,16 +3707,16 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1459,
-          "clickY": 203
+          "clickX": 522,
+          "clickY": 117
         },
         {
           "name": "스타일마당 : ALT+T",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1459,
-          "clickY": 243,
+          "clickX": 522,
+          "clickY": 157,
           "dialog": {
             "title": "스타일마당",
             "tabs": [
@@ -1934,8 +3783,8 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1505,
-          "clickY": 211,
+          "clickX": 568,
+          "clickY": 125,
           "dialog": {
             "title": "글자 모양",
             "tabs": [
@@ -2228,120 +4077,404 @@
           "controlType": "ComboBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1583,
-          "clickY": 202
+          "clickX": 646,
+          "clickY": 116
         },
         {
           "name": "함초롬바탕",
           "controlType": "ComboBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1722,
-          "clickY": 202
+          "clickX": 785,
+          "clickY": 116
         },
         {
           "name": "글자 크기 : 10.0 pt ALT+Z",
           "controlType": "ComboBox",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1874,
-          "clickY": 202
+          "clickX": 937,
+          "clickY": 116
         },
         {
           "name": "진하게 : ALT+B",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1554,
-          "clickY": 243
+          "clickX": 616,
+          "clickY": 157
         },
         {
           "name": "기울임 : ALT+I",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1580,
-          "clickY": 243
+          "clickX": 643,
+          "clickY": 157
         },
         {
           "name": "밑줄 : ALT+U",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1615,
-          "clickY": 243
+          "clickX": 678,
+          "clickY": 157,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 16,
+            "items": [
+              {
+                "name": "실선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "파선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "점선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "일점쇄선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "이점쇄선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "긴 파선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원형 점선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "이중 실선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "얇고 굵은 이중선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "굵고 얇은 이중선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "얇고 굵고 얇은 삼중선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "물결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "이중 물결선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "밑줄 색 : ALT+U",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4124,
+            "notes": []
+          }
         },
         {
           "name": "취소선 : ALT+K",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1658,
-          "clickY": 243
+          "clickX": 720,
+          "clickY": 157,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 14,
+            "items": [
+              {
+                "name": "실선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "파선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "점선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "일점쇄선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "이점쇄선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "긴 파선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원형 점선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "이중 실선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "얇고 굵은 이중선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "굵고 얇은 이중선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "얇고 굵고 얇은 삼중선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "취소선 색 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4140,
+            "notes": []
+          }
         },
         {
           "name": "아래 첨자 : ALT+5",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1692,
-          "clickY": 243
+          "clickX": 755,
+          "clickY": 157
         },
         {
           "name": "위 첨자 : ALT+6",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1719,
-          "clickY": 243
+          "clickX": 782,
+          "clickY": 157
         },
         {
           "name": "글자 테두리 : ALT+D",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1759,
-          "clickY": 243
+          "clickX": 822,
+          "clickY": 157,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 15,
+            "items": [
+              {
+                "name": "없음",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "실선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "파선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "점선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "일점쇄선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "이점쇄선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "긴 파선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "원형 점선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "이중 실선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "얇고 굵은 이중선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "굵고 얇은 이중선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "얇고 굵고 얇은 삼중선",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "테두리 색 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4108,
+            "notes": []
+          }
         },
         {
           "name": "형광펜 : ALT+H",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1802,
-          "clickY": 243
+          "clickX": 864,
+          "clickY": 157,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 7,
+            "items": [
+              {
+                "name": "없음 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4135,
+            "notes": []
+          }
         },
         {
           "name": "글자 색 : ALT+C",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1844,
-          "clickY": 243
+          "clickX": 907,
+          "clickY": 157,
+          "dropdown": {
+            "classification": "unknown",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [],
+            "probeDurationMs": 4185,
+            "notes": []
+          }
         },
         {
           "name": "글자 자간 좁게 : ALT+R",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1884,
-          "clickY": 243
+          "clickX": 947,
+          "clickY": 157
         },
         {
           "name": "글자 자간 넓게 : ALT+J",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1911,
-          "clickY": 243
+          "clickX": 974,
+          "clickY": 157
         },
         {
           "name": "문단 모양 : ALT+P",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1965,
-          "clickY": 211,
+          "clickX": 1028,
+          "clickY": 125,
           "dialog": {
             "title": "문단 모양",
             "tabs": [
@@ -2782,104 +4915,189 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2030,
-          "clickY": 211
+          "clickX": 1092,
+          "clickY": 125,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 7,
+            "items": [
+              {
+                "name": "양쪽 정렬 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 정렬 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "가운데 정렬 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 정렬 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "배분 정렬 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "나눔 정렬 : ALT+E",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4198,
+            "notes": []
+          }
         },
         {
           "name": "왼쪽 여백 줄이기 : ALT+A1",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2073,
-          "clickY": 203
+          "clickX": 1136,
+          "clickY": 117
         },
         {
           "name": "왼쪽 여백 늘리기 : ALT+A2",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2100,
-          "clickY": 203
+          "clickX": 1162,
+          "clickY": 117
         },
         {
           "name": "문단 첫 글자 장식 : ALT+A3",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2126,
-          "clickY": 203
+          "clickX": 1189,
+          "clickY": 117
         },
         {
           "name": "첫 줄 들여쓰기 : ALT+A5",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2073,
-          "clickY": 243
+          "clickX": 1136,
+          "clickY": 157
         },
         {
           "name": "첫 줄 내어쓰기 : ALT+A4",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2100,
-          "clickY": 243
+          "clickX": 1162,
+          "clickY": 157
         },
         {
           "name": "개요 : ALT+M",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2173,
-          "clickY": 211
+          "clickX": 1236,
+          "clickY": 125,
+          "dropdown": {
+            "classification": "no-popup",
+            "popupClass": null,
+            "itemCount": 0,
+            "items": [],
+            "probeDurationMs": 4028,
+            "notes": [
+              "no-popup-detected"
+            ]
+          }
         },
         {
           "name": "글머리표 : ALT+L",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2216,
-          "clickY": 203
+          "clickX": 1278,
+          "clickY": 117,
+          "dropdown": {
+            "classification": "no-popup",
+            "popupClass": null,
+            "itemCount": 0,
+            "items": [],
+            "probeDurationMs": 4493,
+            "notes": [
+              "no-popup-detected"
+            ]
+          }
         },
         {
           "name": "그림 글머리표 : ALT+E",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2258,
-          "clickY": 203
+          "clickX": 1321,
+          "clickY": 117,
+          "dropdown": {
+            "classification": "no-popup",
+            "popupClass": null,
+            "itemCount": 0,
+            "items": [],
+            "probeDurationMs": 4314,
+            "notes": [
+              "no-popup-detected"
+            ]
+          }
         },
         {
           "name": "문단 번호 : ALT+N",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2216,
-          "clickY": 242
+          "clickX": 1278,
+          "clickY": 157,
+          "dropdown": {
+            "classification": "no-popup",
+            "popupClass": null,
+            "itemCount": 0,
+            "items": [],
+            "probeDurationMs": 4432,
+            "notes": [
+              "no-popup-detected"
+            ]
+          }
         },
         {
           "name": "문단 번호 새 번호로 시작 : ALT+V",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2251,
-          "clickY": 241
+          "clickX": 1314,
+          "clickY": 156
         },
         {
           "name": "한 수준 증가 : ALT+W",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2306,
-          "clickY": 203
+          "clickX": 1369,
+          "clickY": 117
         },
         {
           "name": "한 수준 감소 : ALT+X",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2306,
-          "clickY": 243
+          "clickX": 1369,
+          "clickY": 157
         }
       ]
     },
@@ -2892,48 +5110,96 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1040,
-          "clickY": 210
+          "clickX": 103,
+          "clickY": 124
         },
         {
           "name": "세로 : ALT+O",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1081,
-          "clickY": 210
+          "clickX": 144,
+          "clickY": 124
         },
         {
           "name": "가로 : ALT+Y",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1123,
-          "clickY": 210
+          "clickX": 185,
+          "clickY": 124
         },
         {
           "name": "쪽 여백 : ALT+Z",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1173,
-          "clickY": 210
+          "clickX": 236,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 9,
+            "items": [
+              {
+                "name": "쪽 여백 설정 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 4051,
+            "notes": []
+          }
         },
         {
           "name": "글자 방향 : ALT+C",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1246,
-          "clickY": 210
+          "clickX": 308,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "가로쓰기 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "세로쓰기(영문 눕힘) : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "세로쓰기(영문 세움) : ALT+U",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글자 방향 설정 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 3993,
+            "notes": []
+          }
         },
         {
           "name": "바탕쪽 : ALT+F",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1313,
-          "clickY": 210,
+          "clickX": 376,
+          "clickY": 124,
           "dialog": {
             "title": "바탕쪽",
             "tabs": [
@@ -3010,32 +5276,74 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1363,
-          "clickY": 210
+          "clickX": 425,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 4,
+            "items": [
+              {
+                "name": "위쪽 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽/오른쪽 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "머리말/꼬리말 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4077,
+            "notes": []
+          }
         },
         {
           "name": "꼬리말 : ALT+T",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1412,
-          "clickY": 210
+          "clickX": 475,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "gallery-mixed",
+            "popupClass": "Popup",
+            "itemCount": 27,
+            "items": [
+              {
+                "name": "머리말/꼬리말 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4183,
+            "notes": []
+          }
         },
         {
           "name": "쪽 테두리/배경 : ALT+B",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1471,
-          "clickY": 210
+          "clickX": 534,
+          "clickY": 124
         },
         {
           "name": "쪽 번호 매기기 : ALT+G",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1533,
-          "clickY": 210,
+          "clickX": 595,
+          "clickY": 124,
           "dialog": {
             "title": "쪽 번호 매기기",
             "tabs": [
@@ -3137,8 +5445,8 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1591,
-          "clickY": 210,
+          "clickX": 653,
+          "clickY": 124,
           "dialog": {
             "title": "새 번호로 시작",
             "tabs": [
@@ -3205,88 +5513,170 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1655,
-          "clickY": 210
+          "clickX": 717,
+          "clickY": 124
         },
         {
           "name": "줄 번호 : ALT+M",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1716,
-          "clickY": 210
+          "clickX": 779,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 4,
+            "items": [
+              {
+                "name": "줄 번호 표시 : ALT+V",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "현재 문단 건너뜀 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 번호 설정 : ALT+G",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 4082,
+            "notes": []
+          }
         },
         {
           "name": "쪽 나누기 : ALT+P",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1785,
-          "clickY": 210
+          "clickX": 848,
+          "clickY": 124
         },
         {
           "name": "단 나누기 : ALT+D",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1836,
-          "clickY": 210
+          "clickX": 898,
+          "clickY": 124
         },
         {
           "name": "쪽 지우기 : ALT+R",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1886,
-          "clickY": 210
+          "clickX": 949,
+          "clickY": 124
         },
         {
           "name": "단 : ALT+U",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1945,
-          "clickY": 210
+          "clickX": 1008,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 7,
+            "items": [
+              {
+                "name": "하나 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "둘 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "셋 : ALT+B",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "단 설정 : ALT+E",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 4140,
+            "notes": []
+          }
         },
         {
           "name": "단 설정 나누기 : ALT+N",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1993,
-          "clickY": 210
+          "clickX": 1055,
+          "clickY": 124
         },
         {
           "name": "구역 설정 : ALT+E",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2052,
-          "clickY": 210
+          "clickX": 1115,
+          "clickY": 124
         },
         {
           "name": "구역 나누기 : ALT+S",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2098,
-          "clickY": 210
+          "clickX": 1161,
+          "clickY": 124
         },
         {
           "name": "라벨 : ALT+L",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 2158,
-          "clickY": 210
+          "clickX": 1221,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "no-popup",
+            "popupClass": null,
+            "itemCount": 0,
+            "items": [],
+            "probeDurationMs": 3987,
+            "notes": [
+              "no-popup-detected"
+            ]
+          }
         },
         {
           "name": "원고지 : ALT+A",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 2203,
-          "clickY": 210
+          "clickX": 1265,
+          "clickY": 124
         }
       ]
     },
@@ -3299,8 +5689,8 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1052,
-          "clickY": 210,
+          "clickX": 115,
+          "clickY": 124,
           "dialog": {
             "title": "열기/쓰기 암호 설정",
             "tabs": [
@@ -3352,16 +5742,16 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1118,
-          "clickY": 210
+          "clickX": 181,
+          "clickY": 124
         },
         {
           "name": "배포용 문서로 저장 : ALT+B",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1203,
-          "clickY": 210,
+          "clickX": 266,
+          "clickY": 124,
           "dialog": {
             "title": "배포용 문서로 저장",
             "tabs": [
@@ -3413,32 +5803,32 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1275,
-          "clickY": 210
+          "clickX": 337,
+          "clickY": 124
         },
         {
           "name": "배포용 문서 암호 변경/해제 : ALT+H",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1354,
-          "clickY": 210
+          "clickX": 417,
+          "clickY": 124
         },
         {
           "name": "선택 글자 보호 : ALT+T",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1447,
-          "clickY": 210
+          "clickX": 509,
+          "clickY": 124
         },
         {
           "name": "개인 정보 찾아서 보호 : ALT+P",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1518,
-          "clickY": 210,
+          "clickX": 581,
+          "clickY": 124,
           "dialog": {
             "title": "개인 정보 보호하기",
             "tabs": [
@@ -3560,24 +5950,24 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1588,
-          "clickY": 210
+          "clickX": 651,
+          "clickY": 124
         },
         {
           "name": "개인 정보 보호 암호 변경 : ALT+A",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1666,
-          "clickY": 210
+          "clickX": 729,
+          "clickY": 124
         },
         {
           "name": "문서 보안 설정 : ALT+S",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1759,
-          "clickY": 210,
+          "clickX": 821,
+          "clickY": 124,
           "dialog": {
             "title": "문서 보안 설정",
             "tabs": [
@@ -3625,16 +6015,151 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1049,
-          "clickY": 210
+          "clickX": 112,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "gallery-pure",
+            "popupClass": "Popup",
+            "itemCount": 23,
+            "items": [
+              {
+                "name": "띄움표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "넣음표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "부호 넣음표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 바꿈표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 비움표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "메모 고침표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "고침표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "뺌표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "지움표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "붙임표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 붙임표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 이음표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "톱니표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "생각표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "칭찬표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "자리 바꿈표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "줄 서로 바꿈표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른 자리 옮김표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼 자리 옮김표",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "자료 연결",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4213,
+            "notes": []
+          }
         },
         {
           "name": "문서 이력 관리 : ALT+V",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1124,
-          "clickY": 210,
+          "clickX": 187,
+          "clickY": 124,
           "dialog": {
             "title": "문서 이력 관리",
             "tabs": [
@@ -3691,8 +6216,8 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "dialog",
-          "clickX": 1177,
-          "clickY": 210,
+          "clickX": 240,
+          "clickY": 124,
           "dialog": {
             "title": "문서 비교",
             "tabs": [
@@ -3749,104 +6274,257 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1255,
-          "clickY": 210
+          "clickX": 317,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 4,
+            "items": [
+              {
+                "name": "변경 내용 추적 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "사용자 이름 변경 : ALT+N",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "변경 내용 보호 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4022,
+            "notes": []
+          }
         },
         {
           "name": "안내문에 표시 : ALT+H",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1327,
-          "clickY": 210
+          "clickX": 390,
+          "clickY": 124
         },
         {
           "name": "변경 내용 보기 : ALT+S",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1401,
-          "clickY": 210
+          "clickX": 463,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "삽입 및 삭제 : ALT+I",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "서식 : ALT+F",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "검토자 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "변경 내용 표시 설정 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              }
+            ],
+            "probeDurationMs": 4017,
+            "notes": []
+          }
         },
         {
           "name": "원본 : ALT+O",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1477,
-          "clickY": 210
+          "clickX": 540,
+          "clickY": 124
         },
         {
           "name": "원본 및 변경 내용 : ALT+U",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1531,
-          "clickY": 210
+          "clickX": 593,
+          "clickY": 124
         },
         {
           "name": "최종본 및 변경 내용 : ALT+I",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1596,
-          "clickY": 210
+          "clickX": 659,
+          "clickY": 124
         },
         {
           "name": "최종본 : ALT+F",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1653,
-          "clickY": 210
+          "clickX": 716,
+          "clickY": 124
         },
         {
           "name": "적용 : ALT+A",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1712,
-          "clickY": 210
+          "clickX": 775,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "적용 후 다음으로 이동 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "변경 내용 적용 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표시된 변경 내용 모두 적용 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "문서에서 변경 내용 모두 적용 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4160,
+            "notes": []
+          }
         },
         {
           "name": "적용 안 함 : ALT+J",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1764,
-          "clickY": 210
+          "clickX": 827,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "취소 후 다음으로 이동 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "변경 내용 취소 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "표시된 변경 내용 모두 취소 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "문서에서 변경 내용 모두 취소 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4067,
+            "notes": []
+          }
         },
         {
           "name": "이전 : ALT+P",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1809,
-          "clickY": 195
+          "clickX": 872,
+          "clickY": 109
         },
         {
           "name": "다음 : ALT+N",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1809,
-          "clickY": 220
+          "clickX": 872,
+          "clickY": 135
         },
         {
           "name": "새 메모 : ALT+M",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1856,
-          "clickY": 210
+          "clickX": 919,
+          "clickY": 124
         },
         {
           "name": "메모 : ALT+T",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1897,
-          "clickY": 210
+          "clickX": 960,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 4,
+            "items": [
+              {
+                "name": "모든 메모 표시 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "메모 안내선 표시 : ALT+L",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "메모 내용 보기 : ALT+V",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4022,
+            "notes": []
+          }
         }
       ]
     },
@@ -3859,144 +6537,867 @@
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1040,
-          "clickY": 210
+          "clickX": 103,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "색인 만들기 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "색인 표시 : ALT+I",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4126,
+            "notes": []
+          }
         },
         {
           "name": "제목 차례 : ALT+T",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1090,
-          "clickY": 210
+          "clickX": 153,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "차례 만들기 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "차례 새로 고침 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "제목 차례 표시 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "차례 숨기기 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4216,
+            "notes": []
+          }
         },
         {
           "name": "인용 : ALT+I",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1154,
-          "clickY": 210
+          "clickX": 217,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "참고 문헌 추가하기 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "참고 문헌 관리 : ALT+M",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4106,
+            "notes": []
+          }
         },
         {
           "name": "참고 문헌 삽입 : ALT+B",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1188,
-          "clickY": 195
+          "clickX": 251,
+          "clickY": 109
         },
         {
           "name": "참고 문헌 스타일 : ALT+Y",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1196,
-          "clickY": 220
+          "clickX": 259,
+          "clickY": 135,
+          "dropdown": {
+            "classification": "gallery-pure",
+            "popupClass": "Popup",
+            "itemCount": 10,
+            "items": [
+              {
+                "name": "APA : 6 년",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "Chicago : 15 년",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "Harvard-Anglia : 2008 ",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "IEEE : 2006 ",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "ISO690 : (name and date) ",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "ISO690 : (numeric) ",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "MLA : 7 년",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "Turabian : 6 년",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4138,
+            "notes": []
+          }
         },
         {
           "name": "참고 문헌 새로 고침 : ALT+F",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1188,
-          "clickY": 245
+          "clickX": 251,
+          "clickY": 160
         },
         {
           "name": "블록 계산 : ALT+L",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1260,
-          "clickY": 210
+          "clickX": 323,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "블록 합계 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "블록 평균 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4036,
+            "notes": []
+          }
         },
         {
           "name": "스크립트 매크로 : ALT+R",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1339,
-          "clickY": 210
+          "clickX": 402,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [
+              {
+                "name": "매크로 정의 : ALT+E",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "매크로 일시 중지 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "매크로 중지 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "매크로 보안 설정 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              },
+              {
+                "name": "매크로 실행 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 3970,
+            "notes": []
+          }
         },
         {
           "name": "맞춤법 : ALT+S",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1412,
-          "clickY": 210
+          "clickX": 475,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "맞춤법 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "맞춤법 도우미 동작 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4186,
+            "notes": []
+          }
         },
         {
           "name": "빠른 교정 : ALT+Q",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1466,
-          "clickY": 210
+          "clickX": 529,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "빠른 교정 내용 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "빠른 교정 동작 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "입력어 자동 실행 : ALT+I",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "빠른 교정 효과음 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4128,
+            "notes": []
+          }
         },
         {
           "name": "한컴 사전 : ALT+A",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1516,
-          "clickY": 210
+          "clickX": 579,
+          "clickY": 124
         },
         {
           "name": "번역 : ALT+D",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1571,
-          "clickY": 210
+          "clickX": 634,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "문서 번역 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "문단 번역 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "선택 영역 번역 : ALT+T",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "번역 언어 선택 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4167,
+            "notes": []
+          }
         },
         {
           "name": "프레젠테이션 : ALT+P",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1647,
-          "clickY": 210
+          "clickX": 710,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 4,
+            "items": [
+              {
+                "name": "프레젠테이션 실행 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "프레젠테이션 설정 : ALT+R",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": true
+              },
+              {
+                "name": "프레젠테이션 범위 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 3988,
+            "notes": []
+          }
         },
         {
           "name": "글자판 : ALT+K",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1727,
-          "clickY": 210
+          "clickX": 789,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "글자판 바꾸기 : ALT+K",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글자판 보기 : ALT+V",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "언어 선택 사항 : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "글자판 자동 변경 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4142,
+            "notes": []
+          }
         },
         {
           "name": "사용자 설정 : ALT+Z",
           "controlType": "Button",
           "hasDropdown": false,
-          "type": "action",
-          "clickX": 1776,
-          "clickY": 210
+          "type": "dialog",
+          "clickX": 839,
+          "clickY": 124,
+          "dialog": {
+            "title": "사용자 설정",
+            "tabs": [
+              "메뉴 및 도구 상자",
+              "단축키"
+            ],
+            "controls": {
+              "메뉴 및 도구 상자": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "테마 : ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+S",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+E",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "추가 : ALT+A",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "삭제 : ALT+Y",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "메뉴 및 기본 도구 상자 : ALT+M",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "서식 도구 상자 : ALT+F",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "ALT+J",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "새 탭 : ALT+N",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "구분 기호 추가 : ALT+I",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "이름 바꾸기 : ALT+G",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "위로 이동 : ALT+Q",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "아래로 이동 : ALT+W",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "처음 값으로 : ALT+R",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ],
+              "단축키": [
+                {
+                  "name": "빠른 도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "테마 : ALT+T",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+S",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "ALT+E",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "삭제 : ALT+Y",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "ALT+N",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "추가 : ALT+A",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "ALT+M",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "ALT+P",
+                  "type": "Edit",
+                  "className": "EditImplBase"
+                },
+                {
+                  "name": "처음 값으로 : ALT+R",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                }
+              ]
+            }
+          }
         },
         {
           "name": "환경 설정 : ALT+U",
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1821,
-          "clickY": 210
+          "clickX": 884,
+          "clickY": 124
         },
         {
           "name": "개인 정보 바꾸기 : ALT+E",
           "controlType": "MenuItem",
           "hasDropdown": true,
           "type": "dropdown",
-          "clickX": 1891,
-          "clickY": 210
+          "clickX": 954,
+          "clickY": 124,
+          "dropdown": {
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 3,
+            "items": [
+              {
+                "name": "바로 바꾸기 : ALT+A",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "찾아서 바꾸기 : ALT+S",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 4069,
+            "notes": []
+          }
         },
         {
           "name": "한컴 애셋 : ALT+H",
           "controlType": "Button",
           "hasDropdown": false,
-          "type": "action",
-          "clickX": 1947,
-          "clickY": 210
+          "type": "dialog",
+          "clickX": 1009,
+          "clickY": 124,
+          "dialog": {
+            "title": "한컴 애셋",
+            "tabs": [
+              "(기본)"
+            ],
+            "controls": {
+              "(기본)": [
+                {
+                  "name": "도움말",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "최소화",
+                  "type": "Button",
+                  "className": "WindowsCaptionButton"
+                },
+                {
+                  "name": "최대화",
+                  "type": "Button",
+                  "className": "WindowsCaptionButton"
+                },
+                {
+                  "name": "닫기",
+                  "type": "Button",
+                  "className": "WindowsCaptionButton"
+                },
+                {
+                  "name": "filter",
+                  "type": "Button",
+                  "className": "p-right"
+                },
+                {
+                  "name": "download",
+                  "type": "Button",
+                  "className": ""
+                },
+                {
+                  "name": "select-all",
+                  "type": "Button",
+                  "className": ""
+                },
+                {
+                  "name": "first seperate",
+                  "type": "Button",
+                  "className": "disabled"
+                },
+                {
+                  "name": "prev",
+                  "type": "Button",
+                  "className": "disabled"
+                },
+                {
+                  "name": "next seperate",
+                  "type": "Button",
+                  "className": ""
+                },
+                {
+                  "name": "last",
+                  "type": "Button",
+                  "className": ""
+                },
+                {
+                  "name": "",
+                  "type": "Edit",
+                  "className": "ng-pristine ng-untouched ng-valid ng-not-empty"
+                },
+                {
+                  "name": "",
+                  "type": "Edit",
+                  "className": "ng-pristine ng-untouched ng-valid ng-empty"
+                }
+              ]
+            }
+          }
         }
       ]
     },
@@ -4015,8 +7416,8 @@
           "controlType": "Button",
           "hasDropdown": false,
           "type": "action",
-          "clickX": 1056,
-          "clickY": 210
+          "clickX": 119,
+          "clickY": 124
         }
       ]
     }
@@ -4109,18 +7510,86 @@
     {
       "name": "나눔 정렬 : ALT+6",
       "controlType": "Button"
-    },
-    {
-      "name": "줄 간격 : 160 % ALT+7",
-      "controlType": "ComboBox"
     }
   ],
-  "statusbar": [],
+  "statusbar": [
+    {
+      "name": "1/1쪽",
+      "controlType": "Button"
+    },
+    {
+      "name": "1단",
+      "controlType": "Button"
+    },
+    {
+      "name": "1줄",
+      "controlType": "Button"
+    },
+    {
+      "name": "1칸",
+      "controlType": "Button"
+    },
+    {
+      "name": "0글자",
+      "controlType": "Button"
+    },
+    {
+      "name": "문자 입력",
+      "controlType": "Button"
+    },
+    {
+      "name": "1/1 구역",
+      "controlType": "Button"
+    },
+    {
+      "name": "삽입",
+      "controlType": "Button"
+    },
+    {
+      "name": "변경 내용 [기록 중지]",
+      "controlType": "Button"
+    },
+    {
+      "name": "타수 : 0타",
+      "controlType": "Button"
+    },
+    {
+      "name": "쪽 윤곽",
+      "controlType": "Button"
+    },
+    {
+      "name": "폭 맞춤",
+      "controlType": "Button"
+    },
+    {
+      "name": "쪽 맞춤",
+      "controlType": "Button"
+    },
+    {
+      "name": "축소",
+      "controlType": "Button"
+    },
+    {
+      "name": "확대/축소 슬라이더 : 270.3125 ",
+      "controlType": "Slider"
+    },
+    {
+      "name": "확대",
+      "controlType": "Button"
+    },
+    {
+      "name": "125%",
+      "controlType": "Button"
+    }
+  ],
   "stats": {
     "totalTabs": 9,
     "totalRibbonItems": 168,
     "totalDialogs": 21,
-    "totalControls": 472,
+    "totalControls": 508,
+    "totalDropdowns": 51,
+    "totalDropdownItems": 593,
+    "dropdownErrors": 0,
     "errors": 0
   }
 }

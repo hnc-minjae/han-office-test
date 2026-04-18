@@ -33,6 +33,28 @@ const DANGEROUS_ITEM_PATTERNS = [
 const MAIN_CLASSES = ['HwpMainEditWnd', 'FrameWindowImpl', 'HwpRulerWnd', 'Popup',
     'ToolBoxImpl', 'ToolBarImpl', 'StatusBarImpl', 'MenuBarImpl'];
 
+// =============================================================================
+// Dropdown probing — plan §5, 7계층 방어
+// =============================================================================
+
+const DD_LIMITS = {
+    closeAttempts: 5,
+    popupTreeMaxNodes: 500,
+    popupTreeMaxDepth: 8,
+    popupWaitMs: 1500,
+    perDropdownBudgetMs: 10_000,
+    perTabBudgetMs: 120_000,
+    totalProbingBudgetMs: 900_000,
+};
+
+// 드롭다운 이름이 이 패턴 중 하나와 일치하면 프로빙 전체 스킵
+const DANGEROUS_DROPDOWN_PATTERNS = [
+    // Discovery 후 필요 시 추가
+];
+
+// Dialog-opener 판정 (plan §3에서 갱신: 한글 UI는 '...' 대신 '설정/모양/사용자 정의')
+const DIALOG_OPENER_RE = /설정\s*:|사용자 정의|모양\s*:/;
+
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 function log(icon, msg) { process.stderr.write(`${icon} ${msg}\n`); }
@@ -45,6 +67,8 @@ class MenuMapper {
     constructor(options = {}) {
         this.product = options.product || 'hwp';
         this.probeDialogs = options.probeDialogs !== false;
+        this.probeDropdowns = options.probeDropdowns !== false;
+        this._recoveryInProgress = false; // plan §5 Layer 5
 
         const info = PRODUCTS[this.product];
         if (!info) throw new Error(`Unknown product: "${this.product}"`);
@@ -58,7 +82,16 @@ class MenuMapper {
             tabs: {},
             toolbar: [],
             statusbar: [],
-            stats: { totalTabs: 0, totalRibbonItems: 0, totalDialogs: 0, totalControls: 0, errors: 0 },
+            stats: {
+                totalTabs: 0,
+                totalRibbonItems: 0,
+                totalDialogs: 0,
+                totalControls: 0,
+                totalDropdowns: 0,
+                totalDropdownItems: 0,
+                dropdownErrors: 0,
+                errors: 0,
+            },
         };
     }
 
@@ -127,6 +160,17 @@ class MenuMapper {
         if (this.probeDialogs) {
             log('▶', 'Step 4: 다이얼로그 프로빙');
             await this._probeAllDialogs();
+        }
+
+        // Step 5: 드롭다운 프로빙 (plan §6.4)
+        if (this.probeDropdowns) {
+            log('▶', 'Step 5: 드롭다운 프로빙');
+            // Step 4 직후 HWP 포그라운드가 불안정할 수 있음 — 복구 단계
+            try { await controller.setForeground(); } catch (_) {}
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            await this._probeAllDropdowns();
         }
 
         log('▶', '완료!');
@@ -234,6 +278,7 @@ class MenuMapper {
      * 마우스 클릭으로 탭을 전환하는 헬퍼 (다이얼로그 프로빙 등에서 재사용)
      */
     async _switchTab(tab) {
+        await this._ensureForeground();
         win32.mouseClick(tab.clickX, tab.clickY);
         await sleep(DELAY.medium);
         sessionModule.refreshHwpElement();
@@ -366,11 +411,11 @@ class MenuMapper {
      * 관련 버튼도 동일한 컨텍스트에서 평가됨.
      */
     async _resetCaretContext() {
-        await controller.pressKeys({ keys: 'Escape' });
+        await this._safeKeys('Escape');
         await sleep(DELAY.short);
-        await controller.pressKeys({ keys: 'Ctrl+Home' });
+        await this._safeKeys('Ctrl+Home');
         await sleep(DELAY.short);
-        await controller.pressKeys({ keys: 'Ctrl+A' });
+        await this._safeKeys('Ctrl+A');
         await sleep(DELAY.short);
     }
 
@@ -388,7 +433,7 @@ class MenuMapper {
         const title = session.hwpElement.name || '';
         if (/\(\d+\)/.test(title)) {
             log('🔧', `  보조 창 감지 "${title}" — Ctrl+F4로 닫기`);
-            await controller.pressKeys({ keys: 'Ctrl+F4' });
+            await this._safeKeys('Ctrl+F4');
             await sleep(DELAY.long);
             sessionModule.refreshHwpElement();
         }
@@ -402,7 +447,7 @@ class MenuMapper {
 
         if (!hasToolbox) {
             log('🔧', '  리본 최소화 감지 — Ctrl+F1로 복구');
-            await controller.pressKeys({ keys: 'Ctrl+F1' });
+            await this._safeKeys('Ctrl+F1');
             await sleep(DELAY.long);
         }
     }
@@ -565,17 +610,399 @@ class MenuMapper {
     }
 
     // =========================================================================
+    // Foreground 가드 — 이벤트가 잘못된 앱으로 가지 않도록 방어
+    // =========================================================================
+
+    /**
+     * 현재 foreground 창의 소유 PID가 HWP와 일치하는지 확인.
+     * 불일치 시 setForeground 재시도. 2회 실패 시 throw하여 잘못된 이벤트 발사 차단.
+     */
+    async _ensureForeground() {
+        const expectedPid = sessionModule.getSession().hwpProcess.pid;
+        if (!expectedPid) return;
+        const fg = win32.getForegroundPid();
+        if (fg === expectedPid) return;
+        log('🔆', `  foreground=${fg} ≠ HWP=${expectedPid} — 복원 중`);
+        try { await controller.setForeground(); } catch (_) {}
+        await sleep(DELAY.medium);
+        const fg2 = win32.getForegroundPid();
+        if (fg2 !== expectedPid) {
+            // 한 번 더 시도
+            try { await controller.setForeground(); } catch (_) {}
+            await sleep(DELAY.long);
+            const fg3 = win32.getForegroundPid();
+            if (fg3 !== expectedPid) {
+                throw new Error(`HWP foreground 복원 실패: fg=${fg3}, expected=${expectedPid}`);
+            }
+        }
+    }
+
+    async _safeClick(x, y) {
+        await this._ensureForeground();
+        win32.mouseClick(x, y);
+    }
+
+    async _safeKeys(keys) {
+        await this._ensureForeground();
+        return controller.pressKeys({ keys });
+    }
+
+    // =========================================================================
+    // Step 5: 드롭다운 프로빙 (plan §6)
+    // =========================================================================
+
+    async _probeAllDropdowns() {
+        // Step 5 진입 시 _collectMenuTabs가 hwpElement 없어서 실패할 수 있으므로 재시도
+        let menuTabs;
+        for (let retry = 0; retry < 3; retry++) {
+            try {
+                menuTabs = await this._collectMenuTabs();
+                break;
+            } catch (e) {
+                log('⚠', `  _collectMenuTabs 실패 (${retry+1}/3): ${e.message} — 재시도`);
+                try { await controller.setForeground(); } catch (_) {}
+                await sleep(DELAY.long);
+                sessionModule.refreshHwpElement();
+            }
+        }
+        if (!menuTabs) {
+            log('⚠', '  Step 5 진입 실패 — 드롭다운 프로빙 중단');
+            return;
+        }
+        const tabLookup = {};
+        for (const t of menuTabs) tabLookup[t.name] = t;
+
+        const totalDeadline = Date.now() + DD_LIMITS.totalProbingBudgetMs;
+
+        for (const [tabName, tabData] of Object.entries(this.map.tabs)) {
+            if (Date.now() > totalDeadline) {
+                log('⏰', '  전체 드롭다운 프로빙 예산 초과 — 중단');
+                break;
+            }
+            if (tabData.note) continue; // backstage/disabled
+            if (SKIP_PROBING_TABS.has(tabName)) continue;
+
+            const tabInfo = tabLookup[tabName];
+            if (!tabInfo) { log('⚠', `  "${tabName}" 탭 좌표 없음 — 드롭다운 스킵`); continue; }
+
+            const dropdownItems = (tabData.ribbonItems || []).filter(i => i.hasDropdown);
+            if (dropdownItems.length === 0) continue;
+
+            log('▶', `  "${tabName}" 드롭다운 프로빙 (${dropdownItems.length}개)`);
+            const tabDeadline = Date.now() + DD_LIMITS.perTabBudgetMs;
+
+            await this._ensureUiHealthy();
+
+            for (const item of dropdownItems) {
+                if (Date.now() > tabDeadline) {
+                    log('⏰', `  "${tabName}" 탭 예산 초과 — 남은 드롭다운 스킵`);
+                    break;
+                }
+                if (this._isDangerousDropdown(item.name)) {
+                    log('🚫', `    "${item.name}" 드롭다운 블랙리스트 — 스킵`);
+                    item.dropdown = { classification: 'blacklisted', itemCount: 0, items: [], notes: ['blacklisted'] };
+                    continue;
+                }
+
+                try {
+                    await this._switchTab(tabInfo);
+                    await this._resetCaretContext();
+                    const dd = await this._probeDropdown(item);
+                    item.dropdown = dd;
+                    if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
+                        this.map.stats.totalDropdowns++;
+                        this.map.stats.totalDropdownItems += dd.itemCount;
+                    }
+                    log('📂', `    "${item.name}" → ${dd.classification} (${dd.itemCount}개)`);
+                } catch (e) {
+                    log('⚠', `    "${item.name}" 드롭다운 실패: ${e.message}`);
+                    item.dropdown = {
+                        classification: 'error',
+                        itemCount: 0,
+                        items: [],
+                        notes: [`error:${e.message}`],
+                        probeDurationMs: 0,
+                    };
+                    this.map.stats.dropdownErrors++;
+                    // Layer 5: 재귀 복구 차단
+                    if (!this._recoveryInProgress) {
+                        this._recoveryInProgress = true;
+                        try { await this._recover(); }
+                        finally { this._recoveryInProgress = false; }
+                    }
+                }
+
+                await this._ensureNoPopup();
+                await this._ensureUiHealthy();
+            }
+        }
+    }
+
+    /**
+     * 단일 드롭다운 프로빙.
+     * plan §6.4 — 우하단 1/4 클릭 + 팝업 snapshot diff + 트리 walk + Escape close.
+     */
+    async _probeDropdown(item) {
+        const start = Date.now();
+        const deadline = start + DD_LIMITS.perDropdownBudgetMs;
+        const check = () => { if (Date.now() > deadline) throw new Error('BudgetExceeded'); };
+
+        const result = {
+            classification: 'no-popup',
+            popupClass: null,
+            itemCount: 0,
+            items: [],
+            probeDurationMs: 0,
+            notes: [],
+        };
+
+        // Rect 재수집 (pre-sweep 좌표가 stale 할 수 있음)
+        check();
+        const fresh = this._refreshItem(item.name);
+        let clickX, clickY;
+        if (fresh) {
+            const r = fresh.rect;
+            clickX = Math.round(r.left + (r.right - r.left) * 0.8);
+            clickY = Math.round(r.top + (r.bottom - r.top) * 0.8);
+            try { fresh.element.release(); } catch (_) {}
+        } else {
+            clickX = item.clickX;
+            clickY = item.clickY;
+            result.notes.push('rect-refresh-failed');
+        }
+
+        // Before snapshot
+        check();
+        sessionModule.refreshHwpElement();
+        const session = sessionModule.getSession();
+        if (!session.hwpElement) return { ...result, notes: [...result.notes, 'no-hwp-element'] };
+        const before = this._snapshotChildren(session.hwpElement);
+        this._releaseAll(before.children);
+
+        // Click — 한컴 ExpandCollapse 패턴은 no-op 확인됨, 마우스 클릭만 사용
+        check();
+        await this._safeClick(clickX, clickY);
+        await sleep(DD_LIMITS.popupWaitMs);
+
+        // After snapshot
+        check();
+        sessionModule.refreshHwpElement();
+        const frameAfter = sessionModule.getSession().hwpElement;
+        const after = this._snapshotChildren(frameAfter);
+
+        // Diff로 새 Popup 감지
+        const added = this._findAddedChildren(before, after);
+        let popupEl = null;
+        let popupInfo = null;
+        for (const a of added) {
+            if (a.info.className === 'Popup' && a.info.controlType === 'Window') {
+                popupEl = a.element;
+                popupInfo = a.info;
+                break;
+            }
+        }
+
+        if (popupEl) {
+            check();
+            result.popupClass = popupInfo.className;
+            try {
+                const visited = new Set();
+                const nodes = [];
+                this._walkPopupTree(popupEl, 0, visited, nodes);
+                if (nodes.length >= DD_LIMITS.popupTreeMaxNodes) result.notes.push('tree-truncated');
+                result.classification = this._classifyDropdown(nodes);
+                result.itemCount = nodes.length;
+                result.items = this._summarizeItems(nodes);
+            } catch (e) {
+                result.notes.push(`walk-error:${e.message}`);
+                result.classification = 'error';
+            }
+        } else {
+            result.notes.push('no-popup-detected');
+        }
+
+        // 모든 after 자식 해제 (popupEl 포함)
+        this._releaseAll(after.children);
+
+        // Close popup (Layer 1 + 7)
+        for (let i = 0; i < DD_LIMITS.closeAttempts; i++) {
+            check();
+            await this._safeKeys('Escape');
+            await sleep(DELAY.short);
+        }
+
+        result.probeDurationMs = Date.now() - start;
+        return result;
+    }
+
+    /**
+     * 수집된 node 리스트를 바탕으로 드롭다운 유형 결정.
+     * Discovery 결과 기반 — plan §3 갱신.
+     */
+    _classifyDropdown(nodes) {
+        if (nodes.length <= 1) return 'empty';
+        const d1 = nodes.filter(n => n.depth === 1);
+        const hasScroll = d1.some(n => n.className === 'ScrollImpl');
+        const hasGrid = d1.some(n => n.className === 'RowColImpl');
+        const hasList = d1.some(n => n.controlType === 'List');
+        const hasMenuItem = d1.some(n => n.controlType === 'MenuItem');
+
+        if (hasScroll) return 'scrollable-gallery';
+        if (hasGrid) return 'visual-grid';
+        if (hasList && hasMenuItem) return 'gallery-mixed';
+        if (hasMenuItem) return 'menu';
+        if (hasList) return 'gallery-pure';
+        return 'unknown';
+    }
+
+    _summarizeItems(nodes) {
+        return nodes
+            .filter(n => n.name && (n.controlType === 'MenuItem' || n.controlType === 'ListItem'))
+            .map(n => ({
+                name: n.name,
+                controlType: n.controlType,
+                depth: n.depth,
+                isDialogOpener: DIALOG_OPENER_RE.test(n.name),
+            }));
+    }
+
+    _snapshotChildren(parent) {
+        const children = parent.findAllChildren();
+        const infos = children.map(c => {
+            const info = { className: '', controlType: '', name: '', rect: null };
+            try { info.className = c.className || ''; } catch (_) {}
+            try { info.controlType = c.controlTypeName || ''; } catch (_) {}
+            try { info.name = c.name || ''; } catch (_) {}
+            try { info.rect = c.boundingRect; } catch (_) {}
+            return info;
+        });
+        return { children, infos };
+    }
+
+    _findAddedChildren(before, after) {
+        const fp = (info) => {
+            const r = info.rect;
+            const rs = r ? `${r.left},${r.top},${r.right},${r.bottom}` : '';
+            return `${info.className}|${info.controlType}|${info.name}|${rs}`;
+        };
+        const beforeSet = new Set(before.infos.map(fp));
+        const added = [];
+        for (let i = 0; i < after.infos.length; i++) {
+            if (!beforeSet.has(fp(after.infos[i]))) {
+                added.push({ info: after.infos[i], element: after.children[i] });
+            }
+        }
+        return added;
+    }
+
+    /**
+     * 팝업 트리 재귀 순회. Layer 3: visited + depth + count.
+     * visited 키는 (className, name, rect) 튜플 — koffi pointer String 변환 불가 회피.
+     */
+    _walkPopupTree(el, depth, visited, nodes) {
+        if (depth > DD_LIMITS.popupTreeMaxDepth) return;
+        if (nodes.length >= DD_LIMITS.popupTreeMaxNodes) throw new Error('TreeSizeExceeded');
+
+        const node = { depth, name: '', controlType: '', className: '', rect: null };
+        try { node.name = el.name || ''; } catch (_) {}
+        try { node.controlType = el.controlTypeName || ''; } catch (_) {}
+        try { node.className = el.className || ''; } catch (_) {}
+        try { node.rect = el.boundingRect; } catch (_) {}
+
+        const r = node.rect;
+        const key = `${node.className}|${node.name}|${r ? `${r.left},${r.top},${r.right},${r.bottom}` : ''}`;
+        if (visited.has(key)) return;
+        visited.add(key);
+        nodes.push(node);
+
+        if (depth < DD_LIMITS.popupTreeMaxDepth) {
+            const children = el.findAllChildren();
+            try {
+                for (const child of children) {
+                    if (nodes.length >= DD_LIMITS.popupTreeMaxNodes) break;
+                    this._walkPopupTree(child, depth + 1, visited, nodes);
+                }
+            } finally {
+                this._releaseAll(children);
+            }
+        }
+    }
+
+    _releaseAll(list) {
+        for (const c of list) { try { c.release(); } catch (_) {} }
+    }
+
+    /**
+     * 현재 활성 탭에서 리본 항목을 이름으로 찾아 살아있는 element + rect 반환.
+     * 호출자는 사용 후 element.release() 필요.
+     */
+    _refreshItem(itemName) {
+        const session = sessionModule.getSession();
+        sessionModule.refreshHwpElement();
+        if (!session.hwpElement) return null;
+
+        const topChildren = session.hwpElement.findAllChildren();
+        const toolbox = topChildren.find(c => {
+            try { return c.className === 'ToolBoxImpl'; } catch (_) { return false; }
+        });
+        topChildren.filter(c => c !== toolbox).forEach(c => { try { c.release(); } catch (_) {} });
+        if (!toolbox) return null;
+
+        let hit = null;
+        const tbChildren = toolbox.findAllChildren();
+        for (const c of tbChildren) {
+            try {
+                if (c.name === itemName) {
+                    hit = { element: c, rect: c.boundingRect };
+                    break;
+                }
+            } catch (_) {}
+        }
+        tbChildren.filter(c => !hit || c !== hit.element).forEach(c => { try { c.release(); } catch (_) {} });
+        toolbox.release();
+        return hit;
+    }
+
+    /**
+     * FrameWindowImpl 자식 중 Popup(Window)가 여러 개 있으면 Escape로 정리.
+     * 한컴은 baseline으로 내부 Popup(32×32)을 항상 가지므로 count>1 일 때만 정리.
+     */
+    async _ensureNoPopup() {
+        for (let i = 0; i < 3; i++) {
+            sessionModule.refreshHwpElement();
+            const session = sessionModule.getSession();
+            if (!session.hwpElement) return;
+            const children = session.hwpElement.findAllChildren();
+            const popupCount = children.filter(c => {
+                try { return c.className === 'Popup' && c.controlTypeName === 'Window'; }
+                catch (_) { return false; }
+            }).length;
+            children.forEach(c => { try { c.release(); } catch (_) {} });
+            if (popupCount <= 1) return;
+            await this._safeKeys('Escape');
+            await sleep(DELAY.short);
+        }
+    }
+
+    _isDangerousDropdown(name) {
+        if (!name) return false;
+        return DANGEROUS_DROPDOWN_PATTERNS.some(pat => pat.test(name));
+    }
+
+    // =========================================================================
     // 유틸리티
     // =========================================================================
 
     async _recover() {
+        // 포커스 먼저 복원 — Escape가 잘못된 앱으로 가지 않도록
+        try { await controller.setForeground(); } catch (_) {}
+        await sleep(DELAY.medium);
         for (let i = 0; i < 5; i++) {
-            await controller.pressKeys({ keys: 'Escape' });
+            try { await this._safeKeys('Escape'); }
+            catch (_) { break; } // foreground 회복 불가 시 조용히 종료
             await sleep(DELAY.short);
         }
         await sleep(DELAY.long);
-        try { await controller.setForeground(); } catch (_) {}
-        await sleep(DELAY.medium);
     }
 
     _isDialogButton(name) {

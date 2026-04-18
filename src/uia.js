@@ -99,6 +99,7 @@ const VTABLE = {
         Release: 2,
         Expand: 3,
         Collapse: 4,
+        get_CurrentExpandCollapseState: 5,
     },
     IValuePattern: {
         Release: 2,
@@ -141,6 +142,15 @@ const PropertyId = {
     AutomationId: 30011,
     ClassName: 30012,
     IsEnabled: 30010,
+};
+
+// ExpandCollapsePattern state values
+// https://learn.microsoft.com/windows/win32/api/uiautomationcore/ne-uiautomationcore-expandcollapsestate
+const ExpandCollapseState = {
+    Collapsed: 0,
+    Expanded: 1,
+    PartiallyExpanded: 2,
+    LeafNode: 3,
 };
 
 // === COM vtable 호출 헬퍼 ===
@@ -389,6 +399,20 @@ class UIElement {
         return false;
     }
 
+    /**
+     * ExpandCollapsePattern의 현재 상태. 지원하지 않으면 null 반환.
+     * 반환값: 0=Collapsed, 1=Expanded, 2=PartiallyExpanded, 3=LeafNode
+     */
+    get expandCollapseState() {
+        const pp = [null];
+        const hr = comCall(this._ptr, VTABLE.IUIAutomationElement.GetCurrentPattern, proto.GetCurrentPattern, PatternId.ExpandCollapse, pp);
+        if (hr !== 0 || !pp[0]) return null;
+        const out = [0];
+        comCall(pp[0], VTABLE.IExpandCollapsePattern.get_CurrentExpandCollapseState, proto.GetInt32Prop, out);
+        comRelease(pp[0]);
+        return out[0];
+    }
+
     // --- 내부 헬퍼 ---
     _arrayToElements(pArray) {
         const lenOut = [0];
@@ -412,4 +436,5 @@ module.exports = {
     ControlTypeName,
     PatternId,
     PropertyId,
+    ExpandCollapseState,
 };
