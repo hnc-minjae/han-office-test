@@ -29,6 +29,7 @@ const { loadMap, mapToCases, weightedForState, pickWeighted } = require('./map-t
 const seeder = require('./stress-seeder');
 const { SCENARIOS, runScenario } = require('./stress-scenarios');
 const hwpCom = require('./hwp-com');
+const verifier = require('./stress-verifier');
 
 const { execSync } = require('child_process');
 
@@ -228,7 +229,15 @@ function maybeStartProcDump(procdumpPath, hwpPid, outDir) {
 // Case 실행기들
 // =============================================================================
 
-async function execRibbonCase(caseObj, ctx, prng, appendLog) {
+async function execRibbonCase(caseObj, ctx, prng, map, appendLog) {
+    // 탭 전환 먼저 — 맵의 clickX/Y는 해당 탭이 활성 상태 기준 절대좌표.
+    // 탭이 다르면 같은 좌표에 있는 전혀 다른 버튼이 눌려 stress가 무의미해진다.
+    const tabInfo = map.tabs[caseObj.tab];
+    if (tabInfo && tabInfo.accessKey) {
+        try { await controller.pressKeys({ keys: `Alt+${tabInfo.accessKey}` }); } catch (_) {}
+        await sleep(180);
+    }
+
     const action = caseObj.action;
     win32.mouseClick(action.x, action.y);
     await sleep(280);
@@ -615,8 +624,24 @@ async function runStress(options) {
                     case 'ribbon': {
                         const weighted = weightedForState(cases, ctx.state);
                         const c = pickWeighted(weighted, prng);
-                        if (c) await execRibbonCase(c, ctx, prng, e => Object.assign(entry, e));
-                        else entry.skipped = 'no-weighted-cases';
+                        if (c) {
+                            // 액션 전 snapshot → 액션 → 액션 후 snapshot → classify.
+                            // COM 호출 2회 × 약 20~40ms = 아이터당 ~60ms 오버헤드.
+                            const before = verifier.snapshot();
+                            await execRibbonCase(c, ctx, prng, map, e => Object.assign(entry, e));
+                            const after = verifier.snapshot();
+                            const diff = verifier.diff(before, after);
+                            const verdict = verifier.classify(c, entry.interaction, diff,
+                                verifier.summarize(before), verifier.summarize(after));
+                            entry.verification = {
+                                before: verifier.summarize(before),
+                                after:  verifier.summarize(after),
+                                diff,
+                                verdict,
+                            };
+                        } else {
+                            entry.skipped = 'no-weighted-cases';
+                        }
                         break;
                     }
                     case 'typeText':    await execTypeText(prng, e => Object.assign(entry, e)); break;
