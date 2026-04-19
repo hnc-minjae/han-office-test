@@ -28,9 +28,26 @@ const { StressContext, STATES } = require('./stress-context');
 const { loadMap, mapToCases, weightedForState, pickWeighted } = require('./map-to-cases');
 const seeder = require('./stress-seeder');
 const { SCENARIOS, runScenario } = require('./stress-scenarios');
+const hwpCom = require('./hwp-com');
+
+const { execSync } = require('child_process');
 
 const log = (icon, msg) => process.stderr.write(`${icon} [stress] ${msg}\n`);
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+/** 현재 실행 중인 Hwp.exe PID 목록 */
+function listHwpPids() {
+    try {
+        const out = execSync('tasklist /FI "IMAGENAME eq Hwp.exe" /FO CSV /NH',
+            { encoding: 'utf8', windowsHide: true });
+        const pids = [];
+        for (const line of out.split('\n')) {
+            const m = /^"Hwp\.exe","(\d+)"/.exec(line);
+            if (m) pids.push(parseInt(m[1], 10));
+        }
+        return pids;
+    } catch (_) { return []; }
+}
 
 // =============================================================================
 // PRNG (mulberry32) — 시드 기반 재현 가능 PRNG
@@ -107,6 +124,25 @@ function inferStateAfter(caseObj, prevState) {
 // =============================================================================
 // 건강 검진 — crash / hang 감지
 // =============================================================================
+
+/**
+ * HWP COM으로 실시간 caret/selection 상태를 읽어 ctx.state 동기화.
+ * winax 미사용/HWP COM 실패 시엔 no-op이라 기존 추정 방식이 유지됨.
+ * 오버헤드: COM 호출당 ~10~30ms → 매 iter가 아닌 몇 iter 간격으로 호출.
+ */
+function syncStateFromCOM(ctx) {
+    if (!hwpCom.isAvailable()) return null;
+    const snap = hwpCom.getStateSnapshot();
+    if (!snap) return null;
+    const mapped = hwpCom.ctrlIdToContextState(snap);
+    // COM이 명확히 특정 state를 감지한 경우에만 덮어쓴다.
+    // null이면 "모름"이므로 inferStateAfter/시나리오가 설정한 추정 state를 보존.
+    // 이 정책으로 COM(확실) > 추정(덜 확실) > 기본(body) 우선순위가 성립.
+    if (mapped && ctx.state !== mapped) {
+        ctx.transition(mapped, `com-sync(parent=${snap.parentCtrlId || '-'}, sel=${snap.selectedCtrlId || '-'})`);
+    }
+    return snap;
+}
 
 /**
  * 매 iter 시작 전 호출되는 환경 복구 guard.
@@ -297,7 +333,29 @@ async function execUndoRedo(prng, appendLog) {
     appendLog({ kind: 'undoRedo', keys });
 }
 
-async function execNavigate(prng, appendLog) {
+async function execNavigate(prng, ctx, appendLog) {
+    // 50% 확률로 COM을 이용해 표/도형 내부 list로 직접 caret 이동.
+    // 점프 성공 후 즉시 state 확인 — 표면 F5 burst까지 이어서 실행해
+    // "selection 상태에서 추가 액션" 코드 경로를 확실히 stress한다.
+    if (hwpCom.isAvailable() && prng() < 0.5) {
+        const listIdx = 1 + Math.floor(prng() * 4);
+        const ok = hwpCom.moveToList(listIdx);
+        let landed = null;
+        let f5Taps = 0;
+        if (ok) {
+            await sleep(80);
+            const snap = hwpCom.getStateSnapshot();
+            landed = hwpCom.ctrlIdToContextState(snap);
+            if (landed === STATES.IN_TABLE_CELL) {
+                f5Taps = await execTableSelectionBurst(prng);
+                ctx.transition(STATES.IN_TABLE_CELL, `com-setpos-list${listIdx}`);
+            } else if (landed) {
+                ctx.transition(landed, `com-setpos-list${listIdx}`);
+            }
+        }
+        appendLog({ kind: 'navigate', via: 'com-setpos', list: listIdx, ok, landed, f5Taps });
+        return;
+    }
     const keys = pickOne(NAV_KEYS, prng);
     try { await controller.pressKeys({ keys }); } catch (_) {}
     appendLog({ kind: 'navigate', keys });
@@ -398,18 +456,43 @@ async function runStress(options) {
         startedAt: new Date().toISOString(),
     }, null, 2));
 
-    // HWP 연결 — attach 먼저, 실패하면 launch로 기동
-    log('▶', `${product} 연결 시도 (attach)`);
-    try {
-        await controller.attach({ product });
-        log('✓', 'attach 성공');
-    } catch (e) {
-        log('⚠', `attach 실패: ${e.message} — launch로 새 인스턴스 기동`);
+    // HWP 연결 — winax COM을 먼저 띄워 우리 전용 HWP 인스턴스를 확보한 후
+    // UIA를 같은 PID로 attach. 이렇게 해야 winax COM과 UIA가 "같은 HWP"를
+    // 조작/조회하므로 state 동기화가 실제로 동작한다.
+    const beforePids = listHwpPids();
+    log('▶', `${product} — winax COM 기반 HWP 기동 (기존 Hwp.exe ${beforePids.length}개)`);
+    const comObj = hwpCom.init();
+    let ourPid = null;
+    if (comObj) {
+        // 새 HWP 프로세스가 올라오길 기다림
+        for (let i = 0; i < 25; i++) {
+            await sleep(400);
+            const after = listHwpPids();
+            const diff = after.filter(p => !beforePids.includes(p));
+            if (diff.length > 0) { ourPid = diff[0]; break; }
+        }
+        if (ourPid) {
+            log('✓', `winax HWP PID=${ourPid} — UIA attach 시도`);
+            try {
+                await controller.attach({ product, pid: ourPid });
+                log('✓', 'UIA attach 성공 (winax와 동일 인스턴스)');
+            } catch (e) {
+                log('⚠', `UIA attach 실패(pid=${ourPid}): ${e.message} — 일반 attach 폴백`);
+                ourPid = null;
+            }
+        } else {
+            log('⚠', 'winax init 후 새 PID 미탐지 — 일반 attach 폴백');
+        }
+    }
+    if (!ourPid) {
+        // winax 미사용 또는 새 PID 탐지 실패 — 기존 attach/launch 경로
         try {
+            await controller.attach({ product });
+            log('✓', 'attach 성공');
+        } catch (e) {
+            log('⚠', `attach 실패: ${e.message} — launch로 새 인스턴스 기동`);
             const info = await controller.launch({ product, timeoutMs: 30000 });
-            log('✓', `launch 성공: pid=${info.pid}, title="${info.windowTitle}"`);
-        } catch (le) {
-            throw new Error(`attach와 launch 모두 실패: attach="${e.message}", launch="${le.message}"`);
+            log('✓', `launch 성공: pid=${info.pid}`);
         }
     }
     await controller.setForeground();
@@ -427,6 +510,12 @@ async function runStress(options) {
         }
     } catch (e) {
         log('⚠', `최대화 실패 (계속 진행): ${e.message}`);
+    }
+
+    if (hwpCom.isAvailable()) {
+        log('🔌', 'HWP COM 연결됨 — 실시간 state 동기화 활성화');
+    } else {
+        log('ℹ', 'HWP COM 미사용 (winax 초기화 실패) — 추정 방식 fallback');
     }
 
     // ProcDump
@@ -486,8 +575,11 @@ async function runStress(options) {
             const iter = stats.iterations;
             const t0 = Date.now();
 
+            // 매 iter 시작에 COM state sync — 매번 ~10-30ms이지만 selection
+            // 기반 액션(F5 burst 등)이 실제로 의미있게 동작하려면 state가 stale이면 안 된다.
+            syncStateFromCOM(ctx);
+
             // 매 5 iter마다 환경 복구 — 포커스/최대화/잔여 모달 정리.
-            // 매 iter 호출은 과도한 오버헤드, 5 iter 간격이 drift 복구와 속도의 균형점.
             if (iter % 5 === 1) {
                 await restoreEnvironment();
             }
@@ -530,7 +622,7 @@ async function runStress(options) {
                     case 'typeText':    await execTypeText(prng, e => Object.assign(entry, e)); break;
                     case 'scenario':    await execScenario(map, ctx, prng, e => Object.assign(entry, e)); break;
                     case 'undoRedo':    await execUndoRedo(prng, e => Object.assign(entry, e)); break;
-                    case 'navigate':    await execNavigate(prng, e => Object.assign(entry, e)); break;
+                    case 'navigate':    await execNavigate(prng, ctx, e => Object.assign(entry, e)); break;
                     case 'contextMenu': await execContextMenu(ctx, prng, e => Object.assign(entry, e)); break;
                 }
                 entry.durationMs = Date.now() - t0;

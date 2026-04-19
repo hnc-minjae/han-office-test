@@ -17,14 +17,16 @@ const controller = require('./hwp-controller');
 // =============================================================================
 
 const STATES = Object.freeze({
-    BODY:           'body',
-    IN_HEADER:      'in-header',
-    IN_FOOTER:      'in-footer',
-    IN_FOOTNOTE:    'in-footnote',
-    IN_ENDNOTE:     'in-endnote',
-    IN_MEMO:        'in-memo',
-    IN_TABLE_CELL:  'in-table-cell',
-    IN_SHAPE_TEXT:  'in-shape-text',
+    BODY:                'body',
+    IN_HEADER:           'in-header',
+    IN_FOOTER:           'in-footer',
+    IN_FOOTNOTE:         'in-footnote',
+    IN_ENDNOTE:          'in-endnote',
+    IN_MEMO:             'in-memo',
+    IN_TABLE_CELL:       'in-table-cell',
+    IN_SHAPE_TEXT:       'in-shape-text',
+    IN_CHART_SELECTED:   'in-chart-selected',
+    IN_IMAGE_SELECTED:   'in-image-selected',
 });
 
 // 각 state에서 "자연스럽게 실행 가능한" 리본 탭 힌트.
@@ -36,8 +38,10 @@ const STATE_TAB_HINTS = Object.freeze({
     [STATES.IN_FOOTNOTE]:   new Set(['편집', '입력', '서식']),
     [STATES.IN_ENDNOTE]:    new Set(['편집', '입력', '서식']),
     [STATES.IN_MEMO]:       new Set(['편집', '서식']),
-    [STATES.IN_TABLE_CELL]: new Set(['편집', '서식', '표 디자인', '표 레이아웃', '입력']),
-    [STATES.IN_SHAPE_TEXT]: new Set(['편집', '서식', '도형']),
+    [STATES.IN_TABLE_CELL]:     new Set(['편집', '서식', '표 디자인', '표 레이아웃', '입력']),
+    [STATES.IN_SHAPE_TEXT]:     new Set(['편집', '서식', '도형']),
+    [STATES.IN_CHART_SELECTED]: new Set(['편집', '차트 디자인', '차트 서식']),
+    [STATES.IN_IMAGE_SELECTED]: new Set(['편집', '그림']),
 });
 
 // =============================================================================

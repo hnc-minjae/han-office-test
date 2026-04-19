@@ -11,13 +11,20 @@
     "test:hwp": "node test-hwp.js",
     "monkey": "node -e \"const m = require('./src/monkey-test'); m.startMonkeyTest({ product: process.argv[1] || 'hwp', durationMs: parseInt(process.argv[2]) || 300000 }).then(r => r._promise).then(r => { console.log(JSON.stringify(r.summary, null, 2)); })\""
   },
-  "keywords": ["hwp", "hancom", "ui-test", "mcp", "automation"],
+  "keywords": [
+    "hwp",
+    "hancom",
+    "ui-test",
+    "mcp",
+    "automation"
+  ],
   "author": "Hancom",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
     "koffi": "^2.15.6",
+    "winax": "^3.6.9",
     "zod": "^3.24.0"
   }
 }
