@@ -13,6 +13,7 @@ const controller = require('./hwp-controller');
 const sessionModule = require('./session');
 const { TreeScope } = require('./uia');
 const win32 = require('./win32');
+const { CancelledError, CancelWatcher } = require('./cancel-watcher');
 
 const { PRODUCTS } = sessionModule;
 
@@ -52,6 +53,15 @@ const DD_LIMITS = {
 const DANGEROUS_DROPDOWN_PATTERNS = [
     // Discovery 후 필요 시 추가
 ];
+
+// Phase K: 도형 탭에서 "가로 글상자"를 삽입해야만 활성화되는 드롭다운.
+// 직사각형 선택 상태로는 no-popup으로 수집되므로 글상자 모드 2-pass로 재프로빙한다.
+const TEXTBOX_ONLY_DROPDOWNS = new Set([
+    '글상자 여백 : ALT+Y',
+    '글자 방향 : ALT+D',
+    '글상자 정렬 : ALT+X',
+    '글상자 연결 : ALT+N',
+]);
 
 // Phase H: 파일 Backstage 카테고리 블랙리스트.
 // 현재 구현은 카테고리 "이름/좌표만" 수집하고 내부로 진입하지 않으므로 실제 클릭 위험은 없음.
@@ -94,6 +104,11 @@ class MenuMapper {
         this.probeImageTab = options.probeImageTab !== false;
         this.probeFileBackstage = options.probeFileBackstage !== false;
         this._recoveryInProgress = false; // plan §5 Layer 5
+        this._cancelRequested = false;
+        this._cancelWatcher = new CancelWatcher(() => {
+            this._cancelRequested = true;
+            log('🛑', 'ESC × 2 감지 — 취소 요청 (현재 단계 종료 후 정리)');
+        });
 
         const info = PRODUCTS[this.product];
         if (!info) throw new Error(`Unknown product: "${this.product}"`);
@@ -125,9 +140,32 @@ class MenuMapper {
     // Public API
     // =========================================================================
 
+    _checkCancelled() {
+        if (this._cancelRequested) throw new CancelledError();
+    }
+
     async run() {
         this.map.mappedAt = new Date().toISOString();
+        this._cancelWatcher.start();
+        log('ℹ', '취소: ESC를 1초 이내에 두 번 누르면 현재 단계 종료 후 중단');
 
+        try {
+            return await this._runInner();
+        } catch (e) {
+            if (e instanceof CancelledError) {
+                this.map.cancelled = true;
+                this.map.cancelledAt = new Date().toISOString();
+                log('🛑', `취소 완료 — 지금까지 수집한 ${this.map.stats.totalTabs}개 탭은 저장됩니다`);
+                try { await this._recover(); } catch (_) {}
+                return this.map;
+            }
+            throw e;
+        } finally {
+            this._cancelWatcher.stop();
+        }
+    }
+
+    async _runInner() {
         log('▶', `${this.productName} 연결 중...`);
         try {
             await controller.attach({ product: this.product });
@@ -155,12 +193,14 @@ class MenuMapper {
         await sleep(DELAY.long);
 
         // Step 1: 메뉴 탭 목록 수집
+        this._checkCancelled();
         log('▶', 'Step 1: 메뉴 탭 수집');
         const menuTabs = await this._collectMenuTabs();
         log('ℹ', `${menuTabs.length}개 탭: ${menuTabs.map(t => t.name).join(', ')}`);
 
         // Step 2: 각 탭의 리본 항목 수집
         for (const tab of menuTabs) {
+            this._checkCancelled();
             // "파일" 탭은 Backstage 패널을 열므로 리본 탐색에서 제외
             if (tab.name === '파일') {
                 log('ℹ', `  "${tab.name}" — Backstage 패널 (리본 탐색 제외)`);
@@ -186,6 +226,7 @@ class MenuMapper {
                 this.map.stats.totalRibbonItems += ribbonItems.length;
                 log('ℹ', `  "${tab.name}": ${ribbonItems.length}개 항목`);
             } catch (e) {
+                if (e instanceof CancelledError) throw e;
                 log('⚠', `  "${tab.name}" 실패: ${e.message}`);
                 this.map.stats.errors++;
                 await this._recover();
@@ -193,17 +234,20 @@ class MenuMapper {
         }
 
         // Step 3: 고정 ToolBar / StatusBar 수집
+        this._checkCancelled();
         log('▶', 'Step 3: ToolBar + StatusBar 수집');
         await this._collectFixedBars();
 
         // Step 4: 다이얼로그 프로빙
         if (this.probeDialogs) {
+            this._checkCancelled();
             log('▶', 'Step 4: 다이얼로그 프로빙');
             await this._probeAllDialogs();
         }
 
         // Step 5: 드롭다운 프로빙 (plan §6.4)
         if (this.probeDropdowns) {
+            this._checkCancelled();
             log('▶', 'Step 5: 드롭다운 프로빙');
             // Step 4 직후 HWP 포그라운드가 불안정할 수 있음 — 복구 단계
             await this._setForegroundMaximized();
@@ -215,6 +259,7 @@ class MenuMapper {
 
         // Step 6: Selection 상태 프로빙 — 도형 탭 (plan-selection Phase A)
         if (this.probeShapeTab) {
+            this._checkCancelled();
             log('▶', 'Step 6: 도형 탭 프로빙 (Selection 상태)');
             await this._setForegroundMaximized();
             await sleep(DELAY.long);
@@ -225,6 +270,7 @@ class MenuMapper {
 
         // Step 7: Selection 상태 프로빙 — 표 컨텍스트 탭 (Phase B)
         if (this.probeTableTabs) {
+            this._checkCancelled();
             log('▶', 'Step 7: 표 컨텍스트 탭 프로빙 (Selection 상태)');
             await this._setForegroundMaximized();
             await sleep(DELAY.long);
@@ -235,6 +281,7 @@ class MenuMapper {
 
         // Step 8: Selection 상태 프로빙 — 차트 컨텍스트 탭 (Phase D)
         if (this.probeChartTabs) {
+            this._checkCancelled();
             log('▶', 'Step 8: 차트 컨텍스트 탭 프로빙 (Selection 상태)');
             await this._setForegroundMaximized();
             await sleep(DELAY.long);
@@ -245,6 +292,7 @@ class MenuMapper {
 
         // Step 9: Selection 상태 프로빙 — 그림 컨텍스트 탭 (Phase F)
         if (this.probeImageTab) {
+            this._checkCancelled();
             log('▶', 'Step 9: 그림 컨텍스트 탭 프로빙 (Selection 상태)');
             await this._setForegroundMaximized();
             await sleep(DELAY.long);
@@ -255,6 +303,7 @@ class MenuMapper {
 
         // Step 10: 우클릭 컨텍스트 메뉴 프로빙 (Phase E)
         if (this.probeContextMenus) {
+            this._checkCancelled();
             log('▶', 'Step 10: 우클릭 컨텍스트 메뉴 프로빙');
             await this._setForegroundMaximized();
             await sleep(DELAY.long);
@@ -265,6 +314,7 @@ class MenuMapper {
 
         // Step 11: 파일 Backstage 프로빙 (Phase H)
         if (this.probeFileBackstage) {
+            this._checkCancelled();
             log('▶', 'Step 11: 파일 Backstage 프로빙');
             await this._setForegroundMaximized();
             await sleep(DELAY.long);
@@ -273,6 +323,7 @@ class MenuMapper {
             try {
                 await this._probeFileBackstage();
             } catch (e) {
+                if (e instanceof CancelledError) throw e;
                 log('⚠', `  Step 11 실패: ${e.message}`);
                 this.map.stats.errors++;
                 // 실패해도 Escape로 복귀 시도 (Backstage가 열린 상태로 남으면 안 됨)
@@ -431,6 +482,7 @@ class MenuMapper {
         await this._seedBaselineContent();
 
         for (const [tabName, tabData] of Object.entries(this.map.tabs)) {
+            this._checkCancelled();
             if (tabData.note) continue; // backstage/disabled
 
             // 다이얼로그 없음이 확실하고 위험 액션이 많은 탭은 전체 스킵
@@ -451,6 +503,7 @@ class MenuMapper {
             await this._ensureUiHealthy();
 
             for (const item of tabData.ribbonItems) {
+                this._checkCancelled();
                 if (item.hasDropdown) { item.type = 'dropdown'; continue; }
 
                 // 위험 액션(창 생성/분할/리본 토글)은 스킵
@@ -838,6 +891,7 @@ class MenuMapper {
         const totalDeadline = Date.now() + DD_LIMITS.totalProbingBudgetMs;
 
         for (const [tabName, tabData] of Object.entries(this.map.tabs)) {
+            this._checkCancelled();
             if (Date.now() > totalDeadline) {
                 log('⏰', '  전체 드롭다운 프로빙 예산 초과 — 중단');
                 break;
@@ -858,6 +912,7 @@ class MenuMapper {
 
             let probeCount = 0;
             for (const item of dropdownItems) {
+                this._checkCancelled();
                 if (Date.now() > tabDeadline) {
                     log('⏰', `  "${tabName}" 탭 예산 초과 — 남은 드롭다운 스킵`);
                     break;
@@ -906,8 +961,15 @@ class MenuMapper {
     /**
      * 단일 드롭다운 프로빙.
      * plan §6.4 — 우하단 1/4 클릭 + 팝업 snapshot diff + 트리 walk + Escape close.
+     *
+     * Phase J: options.afterClose 콜백을 Escape close 직후 호출한다.
+     * 컨텍스트 탭(그림/차트/도형)에서 Escape가 객체 선택을 해제하는 경우
+     * 콜백에서 F11 / reselectChart / 도형 좌표 클릭 등으로 즉시 선택을 복원해
+     * 다음 드롭다운 진입 시 컨텍스트 재선택 루프가 발동하지 않도록 한다.
+     *
+     * @param {{afterClose?: () => Promise<void>}} options
      */
-    async _probeDropdown(item) {
+    async _probeDropdown(item, options = {}) {
         const start = Date.now();
         const deadline = start + DD_LIMITS.perDropdownBudgetMs;
         const check = () => { if (Date.now() > deadline) throw new Error('BudgetExceeded'); };
@@ -1004,6 +1066,16 @@ class MenuMapper {
             check();
             await this._safeKeys('Escape');
             await sleep(DELAY.short);
+        }
+
+        // Phase J: 객체 컨텍스트(그림/차트/도형)에서 Escape가 선택을 풀었을 수 있으므로
+        // 호출자가 제공한 afterClose 콜백으로 선택을 즉시 복원. 실패해도 본체 결과는 그대로.
+        if (options && typeof options.afterClose === 'function') {
+            try {
+                await options.afterClose();
+            } catch (e) {
+                result.notes.push(`afterClose-error:${e.message}`);
+            }
         }
 
         result.probeDurationMs = Date.now() - start;
@@ -1170,11 +1242,12 @@ class MenuMapper {
     // =========================================================================
 
     /**
-     * 편집 탭의 "도형" 드롭다운을 열고 "직사각형"을 선택한 뒤 캔버스를 단일 클릭
+     * 편집 탭의 "도형" 드롭다운을 열고 shapeType 도형을 선택한 뒤 캔버스를 단일 클릭
      * 하여 기본 크기 도형을 삽입. 삽입 후 자동 선택됨.
+     * @param {string} shapeType 드롭다운 내 도형 이름 — '직사각형' | '가로 글상자' | '세로 글상자' | '다각형'
      * @returns {{clickX:number, clickY:number}|null} 삽입 위치 (재선택용) 또는 실패 시 null
      */
-    async _insertShapeForProbing() {
+    async _insertShapeForProbing(shapeType = '직사각형') {
         await this._safeKeys('Ctrl+End');
         await sleep(DELAY.short);
 
@@ -1197,16 +1270,16 @@ class MenuMapper {
         await this._safeClick(bx, by);
         await sleep(DD_LIMITS.popupWaitMs);
 
-        // "직사각형" 아이템 찾기
+        // shapeType 아이템 찾기
         sessionModule.refreshHwpElement();
         const session = sessionModule.getSession();
         if (!session.hwpElement) { log('⚠', '  HWP element 없음'); return null; }
 
-        const target = this._findInLatestPopup(session.hwpElement, '직사각형');
+        const target = this._findInLatestPopup(session.hwpElement, shapeType);
         if (!target) {
             await this._safeKeys('Escape');
             await sleep(DELAY.short);
-            log('⚠', '  드롭다운에서 "직사각형" 찾지 못함');
+            log('⚠', `  드롭다운에서 "${shapeType}" 찾지 못함`);
             return null;
         }
 
@@ -1342,6 +1415,7 @@ class MenuMapper {
             const tabDeadline = Date.now() + DD_LIMITS.perTabBudgetMs;
 
             for (const item of dropdownItems) {
+                this._checkCancelled();
                 if (Date.now() > tabDeadline) { log('⏰', '  도형 탭 예산 초과'); break; }
                 if (this._isDangerousDropdown(item.name)) {
                     log('🚫', `    "${item.name}" 블랙리스트`);
@@ -1364,7 +1438,13 @@ class MenuMapper {
                 }
 
                 try {
-                    const dd = await this._probeDropdown(item);
+                    // Phase J: drop 종료 직후 도형 좌표 재클릭으로 선택 복원
+                    const dd = await this._probeDropdown(item, {
+                        afterClose: async () => {
+                            await this._safeClick(shapeLoc.clickX, shapeLoc.clickY);
+                            await sleep(DELAY.short);
+                        },
+                    });
                     item.dropdown = dd;
                     if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
                         this.map.stats.totalDropdowns++;
@@ -1383,8 +1463,86 @@ class MenuMapper {
 
                 await this._ensureNoPopup();
             }
+
+            // Phase K: 글상자 전용 드롭다운 재프로빙 (첫 pass에서 no-popup 된 4개)
+            await this._reprobeTextboxDropdowns(ribbonItems);
+
         } finally {
             await this._cleanupShape();
+        }
+    }
+
+    /**
+     * Phase K: 직사각형으로 프로빙 시 no-popup 으로 분류된 글상자 전용 드롭다운 4개
+     * (글상자 여백 / 글자 방향 / 글상자 정렬 / 글상자 연결)를 "가로 글상자" 삽입 상태에서
+     * 재프로빙한다. 직사각형 cleanup → 글상자 삽입 → 도형 탭 재활성 확인 → 타겟만 프로빙.
+     *
+     * 재프로빙 결과가 성공(no-popup/error 아님)이면 dropdown과 stats를 덮어쓰고,
+     * 여전히 실패면 기존 no-popup 결과를 보존한다.
+     */
+    async _reprobeTextboxDropdowns(ribbonItems) {
+        const candidates = ribbonItems.filter(it =>
+            it.hasDropdown
+            && TEXTBOX_ONLY_DROPDOWNS.has(it.name)
+            && it.dropdown
+            && ['no-popup', 'shape-deselected'].includes(it.dropdown.classification)
+        );
+        if (candidates.length === 0) return;
+
+        log('▶', `  글상자 모드 재프로빙 (${candidates.length}개)`);
+
+        // 직사각형 cleanup 선행 — 같은 문서에 두 객체가 겹치지 않도록
+        await this._cleanupShape();
+        await sleep(DELAY.dialog);
+        await this._ensureUiHealthy();
+
+        const textboxLoc = await this._insertShapeForProbing('가로 글상자');
+        if (!textboxLoc) { log('⚠', '  가로 글상자 삽입 실패 — Phase K 재프로빙 스킵'); return; }
+
+        const menuTabs2 = await this._collectMenuTabs();
+        const shapeTab2 = menuTabs2.find(t => t.name === '도형');
+        if (!shapeTab2 || !shapeTab2.isEnabled) {
+            log('⚠', '  글상자 삽입 후 도형 탭 비활성 — Phase K 재프로빙 스킵');
+            return;
+        }
+
+        await this._switchTab(shapeTab2);
+        await sleep(DELAY.long);
+
+        for (const it of candidates) {
+            if (!(await this._isShapeTabActive())) {
+                log('🔁', '    글상자 선택 풀림 — 재선택');
+                await this._safeClick(textboxLoc.clickX, textboxLoc.clickY);
+                await sleep(DELAY.long);
+                if (!(await this._isShapeTabActive())) {
+                    log('⚠', `    [글상자] "${it.name}" 재선택 실패 — 이전 결과 유지`);
+                    continue;
+                }
+                await this._switchTab(shapeTab2);
+                await sleep(DELAY.long);
+            }
+
+            try {
+                // Phase J: drop 종료 직후 글상자 좌표 재클릭으로 선택 복원
+                const dd = await this._probeDropdown(it, {
+                    afterClose: async () => {
+                        await this._safeClick(textboxLoc.clickX, textboxLoc.clickY);
+                        await sleep(DELAY.short);
+                    },
+                });
+                if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
+                    it.dropdown = dd;
+                    this.map.stats.totalDropdowns++;
+                    this.map.stats.totalDropdownItems += dd.itemCount;
+                    log('📂', `    [글상자] "${it.name}" → ${dd.classification} (${dd.itemCount}개)`);
+                } else {
+                    log('⚠', `    [글상자] "${it.name}" → ${dd.classification} — 이전 결과 유지`);
+                }
+            } catch (e) {
+                log('⚠', `    [글상자] "${it.name}" 실패: ${e.message}`);
+            }
+
+            await this._ensureNoPopup();
         }
     }
 
@@ -1511,6 +1669,7 @@ class MenuMapper {
                 const tabDeadline = Date.now() + DD_LIMITS.perTabBudgetMs;
 
                 for (const item of dropdownItems) {
+                    this._checkCancelled();
                     if (Date.now() > tabDeadline) { log('⏰', `  "${tabInfo.name}" 탭 예산 초과`); break; }
                     if (this._isDangerousDropdown(item.name)) {
                         item.dropdown = { classification: 'blacklisted', itemCount: 0, items: [], notes: ['blacklisted'] };
@@ -1698,6 +1857,7 @@ class MenuMapper {
                 const tabDeadline = Date.now() + DD_LIMITS.perTabBudgetMs;
 
                 for (const item of dropdownItems) {
+                    this._checkCancelled();
                     if (Date.now() > tabDeadline) { log('⏰', `  "${tabInfo.name}" 예산 초과`); break; }
                     if (this._isDangerousDropdown(item.name)) {
                         item.dropdown = { classification: 'blacklisted', itemCount: 0, items: [], notes: ['blacklisted'] };
@@ -1716,7 +1876,13 @@ class MenuMapper {
                     }
 
                     try {
-                        const dd = await this._probeDropdown(item);
+                        // Phase J: drop 종료 직후 차트 재선택 + 안정화 sleep으로 다음 drop의 재선택 루프 제거
+                        const dd = await this._probeDropdown(item, {
+                            afterClose: async () => {
+                                await reselectChart(tabInfo.name);
+                                await sleep(DELAY.short);
+                            },
+                        });
                         item.dropdown = dd;
                         if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
                             this.map.stats.totalDropdowns++;
@@ -1838,6 +2004,7 @@ class MenuMapper {
                 let probeCount = 0;
 
                 for (const item of dropdownItems) {
+                    this._checkCancelled();
                     if (Date.now() > tabDeadline) { log('⏰', `  "${tabInfo.name}" 예산 초과`); break; }
                     if (this._isDangerousDropdown(item.name)) {
                         item.dropdown = { classification: 'blacklisted', itemCount: 0, items: [], notes: ['blacklisted'] };
@@ -1857,7 +2024,13 @@ class MenuMapper {
                     }
 
                     try {
-                        const dd = await this._probeDropdown(item);
+                        // Phase J: drop 종료 직후 F11로 이미지 선택 복원 — 다음 drop의 체크/재선택 루프 제거
+                        const dd = await this._probeDropdown(item, {
+                            afterClose: async () => {
+                                await this._safeKeys('F11');
+                                await sleep(DELAY.short);
+                            },
+                        });
                         item.dropdown = dd;
                         if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
                             this.map.stats.totalDropdowns++;
@@ -1915,15 +2088,19 @@ class MenuMapper {
         }
 
         // 객체별 우클릭 메뉴 — 도형/표/차트/그림 (Phase G)
+        this._checkCancelled();
         await this._probeObjectContextMenu('shape-selected',
             this._insertShapeForProbing.bind(this),
             this._cleanupShape.bind(this));
+        this._checkCancelled();
         await this._probeObjectContextMenu('table-inside',
             this._insertTableForProbing.bind(this),
             this._cleanupTable.bind(this));
+        this._checkCancelled();
         await this._probeObjectContextMenu('chart-selected',
             this._insertChartForProbing.bind(this),
             this._cleanupChart.bind(this));
+        this._checkCancelled();
         await this._probeObjectContextMenu('image-selected',
             this._insertImageForProbing.bind(this),
             this._cleanupImage.bind(this));
@@ -2269,11 +2446,15 @@ async function main() {
 
     const mapper = new MenuMapper({ product, probeDialogs: !noDialogs });
     await mapper.run();
-    mapper.save();
+    const outPath = mapper.save();
+    if (mapper.map.cancelled) {
+        log('🛑', `사용자 취소로 중단 — 부분 맵 저장됨: ${outPath}`);
+        process.exit(130); // SIGINT-style exit: 정상 종료이지만 중단 신호 구분
+    }
 }
 
 if (require.main === module) {
     main().catch(e => { console.error('Error:', e.message); process.exit(1); });
 }
 
-module.exports = { MenuMapper };
+module.exports = { MenuMapper, CancelledError };

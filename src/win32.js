@@ -114,10 +114,40 @@ function getApis() {
         AttachThreadInput:        u32.func('int32 __stdcall AttachThreadInput(uint32, uint32, int32)'),
         GetWindowThreadProcessId: u32.func('uint32 __stdcall GetWindowThreadProcessId(void *, void *)'),
         IsHungAppWindow:          u32.func('int32 __stdcall IsHungAppWindow(void *)'),
+        IsIconic:                 u32.func('int32 __stdcall IsIconic(void *)'),
         PostMessageW:             u32.func('int32 __stdcall PostMessageW(void *, uint32, uint64, int64)'),
+        GetAsyncKeyState:         u32.func('int16 __stdcall GetAsyncKeyState(int32)'),
         GetCurrentThreadId:       k32.func('uint32 __stdcall GetCurrentThreadId()'),
     };
     return _apis;
+}
+
+// === ESC-sent marker ===
+// 맵퍼 자체가 SendInput/PostMessage로 보낸 ESC와, 사용자가 키보드에서 직접
+// 누른 ESC를 구분하기 위한 타임스탬프. GetAsyncKeyState로 ESC를 감시하는
+// 취소 watchdog이 이 값을 읽어 쿨다운(기본 250ms) 내의 신호를 무시한다.
+let _lastEscSentAt = 0;
+
+function markEscSent() {
+    _lastEscSentAt = Date.now();
+}
+
+function getLastEscSentAt() {
+    return _lastEscSentAt;
+}
+
+/**
+ * Read the async state of a virtual key.
+ * @param {number} vk - Virtual key code
+ * @returns {boolean} true if the key is currently held down
+ */
+function isKeyPressed(vk) {
+    const { GetAsyncKeyState } = getApis();
+    // high bit (0x8000) indicates key is currently down. GetAsyncKeyState
+    // returns SHORT which koffi decodes as signed int16 — the high bit shows
+    // up as a negative value, so test against the sign bit directly.
+    const state = GetAsyncKeyState(vk);
+    return (state & 0x8000) !== 0;
 }
 
 // === Internal helper: build an INPUT_KEYBOARD entry ===
@@ -142,6 +172,7 @@ function makeInput(vk, flags) {
  */
 function sendKey(vk) {
     const { SendInput } = getApis();
+    if (vk === VK_ESCAPE) markEscSent();
     const r1 = SendInput(1, [makeInput(vk, 0)], 40);
     const r2 = SendInput(1, [makeInput(vk, KEYEVENTF_KEYUP)], 40);
     return r1 > 0 && r2 > 0;
@@ -254,6 +285,7 @@ function clipboardPaste(text) {
  */
 function postKey(hwnd, vk) {
     const { PostMessageW } = getApis();
+    if (vk === VK_ESCAPE) markEscSent();
     PostMessageW(hwnd, WM_KEYDOWN, vk, 0);
     PostMessageW(hwnd, WM_KEYUP, vk, 0);
 }
@@ -271,7 +303,11 @@ function forceSetForeground(hwnd) {
     if (fgThread !== myThread) {
         apis.AttachThreadInput(fgThread, myThread, 1);
     }
-    apis.ShowWindow(hwnd, SW_RESTORE);
+    // SW_RESTORE는 최소화된 창을 복원하지만, 최대화된 창에 호출하면 normal 크기로
+    // 축소시키는 부작용이 있음. 따라서 iconic(최소화) 상태일 때만 호출한다.
+    if (apis.IsIconic(hwnd)) {
+        apis.ShowWindow(hwnd, SW_RESTORE);
+    }
     apis.BringWindowToTop(hwnd);
     apis.SetForegroundWindow(hwnd);
     if (fgThread !== myThread) {
@@ -471,6 +507,10 @@ module.exports = {
     // Key expression parser & executor
     parseKeyExpression,
     executeKeyExpression,
+    // Async key state + ESC cooldown hooks (cancel watchdog)
+    isKeyPressed,
+    markEscSent,
+    getLastEscSentAt,
     // VK constants
     VK_ESCAPE, VK_RETURN, VK_TAB,
     VK_CONTROL, VK_ALT, VK_SHIFT,

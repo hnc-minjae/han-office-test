@@ -2,7 +2,7 @@
   "product": "hwp",
   "productName": "한글",
   "version": "2027",
-  "mappedAt": "2026-04-18T11:02:13.326Z",
+  "mappedAt": "2026-04-18T15:13:34.908Z",
   "tabs": {
     "파일": {
       "accessKey": "F",
@@ -373,7 +373,7 @@
             "isDangerous": true
           }
         ],
-        "probeDurationMs": 2442,
+        "probeDurationMs": 2410,
         "notes": [],
         "recentDocumentCount": 3
       }
@@ -429,7 +429,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2168,
+            "probeDurationMs": 2164,
             "notes": []
           }
         },
@@ -943,9 +943,19 @@
                   "className": "RadioButtonImpl"
                 },
                 {
+                  "name": "ALT+L",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
                   "name": "번호 문단 : ALT+M",
                   "type": "RadioButton",
                   "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
                 },
                 {
                   "name": "글머리표 문단 : ALT+B",
@@ -1368,7 +1378,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2313,
+            "probeDurationMs": 2266,
             "notes": []
           }
         },
@@ -1407,7 +1417,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2461,
+            "probeDurationMs": 2218,
             "notes": []
           }
         },
@@ -1538,7 +1548,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2375,
+            "probeDurationMs": 2238,
             "notes": []
           }
         },
@@ -1675,7 +1685,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2448,
+            "probeDurationMs": 2356,
             "notes": []
           }
         },
@@ -1722,7 +1732,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2203,
+            "probeDurationMs": 2204,
             "notes": []
           }
         },
@@ -1769,7 +1779,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2193,
+            "probeDurationMs": 2146,
             "notes": []
           }
         },
@@ -2230,7 +2240,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2683,
+            "probeDurationMs": 2542,
             "notes": []
           }
         },
@@ -2259,7 +2269,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2180,
+            "probeDurationMs": 2233,
             "notes": []
           }
         },
@@ -2288,7 +2298,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2332,
+            "probeDurationMs": 2204,
             "notes": []
           }
         },
@@ -2329,7 +2339,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2246,
+            "probeDurationMs": 2132,
             "notes": []
           }
         },
@@ -2382,7 +2392,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2238,
+            "probeDurationMs": 2142,
             "notes": []
           }
         },
@@ -2657,7 +2667,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2245,
+            "probeDurationMs": 2334,
             "notes": []
           }
         },
@@ -2704,7 +2714,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2182,
+            "probeDurationMs": 2143,
             "notes": []
           }
         },
@@ -3165,7 +3175,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2559,
+            "probeDurationMs": 2495,
             "notes": []
           }
         },
@@ -3332,7 +3342,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2388,
+            "probeDurationMs": 2374,
             "notes": []
           }
         },
@@ -3397,7 +3407,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2331,
+            "probeDurationMs": 2222,
             "notes": []
           }
         },
@@ -3513,7 +3523,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2254,
+            "probeDurationMs": 2149,
             "notes": []
           }
         },
@@ -3688,7 +3698,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2247,
+            "probeDurationMs": 2231,
             "notes": []
           }
         },
@@ -3987,7 +3997,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2241,
+            "probeDurationMs": 2202,
             "notes": []
           }
         },
@@ -4034,7 +4044,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2326,
+            "probeDurationMs": 2185,
             "notes": []
           }
         },
@@ -4075,7 +4085,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 1799,
+            "probeDurationMs": 2196,
             "notes": []
           }
         },
@@ -4600,7 +4610,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2356,
+            "probeDurationMs": 2405,
             "notes": []
           }
         },
@@ -4689,7 +4699,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2382,
+            "probeDurationMs": 2325,
             "notes": []
           }
         },
@@ -4800,7 +4810,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2347,
+            "probeDurationMs": 2212,
             "notes": []
           }
         },
@@ -4823,7 +4833,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2174,
+            "probeDurationMs": 2278,
             "notes": []
           }
         },
@@ -4839,7 +4849,7 @@
             "popupClass": "Popup",
             "itemCount": 6,
             "items": [],
-            "probeDurationMs": 2260,
+            "probeDurationMs": 2262,
             "notes": []
           }
         },
@@ -5350,7 +5360,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2172,
+            "probeDurationMs": 2198,
             "notes": []
           }
         },
@@ -5491,7 +5501,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2474,
+            "probeDurationMs": 2391,
             "notes": []
           }
         },
@@ -5532,7 +5542,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2414,
+            "probeDurationMs": 2340,
             "notes": []
           }
         },
@@ -5567,7 +5577,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2513,
+            "probeDurationMs": 2256,
             "notes": []
           }
         },
@@ -5662,7 +5672,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2335,
+            "probeDurationMs": 2237,
             "notes": []
           }
         },
@@ -5739,7 +5749,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2243,
+            "probeDurationMs": 2216,
             "notes": []
           }
         },
@@ -5780,7 +5790,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2230,
+            "probeDurationMs": 2235,
             "notes": []
           }
         },
@@ -5893,7 +5903,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2265,
+            "probeDurationMs": 2282,
             "notes": []
           }
         },
@@ -5916,7 +5926,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2249,
+            "probeDurationMs": 2505,
             "notes": []
           }
         },
@@ -6138,7 +6148,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2266,
+            "probeDurationMs": 2107,
             "notes": []
           }
         },
@@ -6215,7 +6225,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2157,
+            "probeDurationMs": 2239,
             "notes": []
           }
         },
@@ -6268,7 +6278,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2159,
+            "probeDurationMs": 2187,
             "notes": []
           }
         },
@@ -6751,7 +6761,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2286,
+            "probeDurationMs": 2252,
             "notes": []
           }
         },
@@ -6902,7 +6912,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2236,
+            "probeDurationMs": 2120,
             "notes": []
           }
         },
@@ -6951,7 +6961,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2335,
+            "probeDurationMs": 2271,
             "notes": []
           }
         },
@@ -7024,7 +7034,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2136,
+            "probeDurationMs": 2227,
             "notes": []
           }
         },
@@ -7065,7 +7075,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2179,
+            "probeDurationMs": 2216,
             "notes": []
           }
         },
@@ -7124,7 +7134,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2174,
+            "probeDurationMs": 2344,
             "notes": []
           }
         }
@@ -7159,7 +7169,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2273,
+            "probeDurationMs": 2202,
             "notes": []
           }
         },
@@ -7200,7 +7210,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2195,
+            "probeDurationMs": 2185,
             "notes": []
           }
         },
@@ -7229,7 +7239,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2174,
+            "probeDurationMs": 2178,
             "notes": []
           }
         },
@@ -7302,7 +7312,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2193,
+            "probeDurationMs": 2259,
             "notes": []
           }
         },
@@ -7326,7 +7336,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2056,
+            "probeDurationMs": 2155,
             "notes": [
               "no-popup-detected"
             ]
@@ -7375,7 +7385,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2289,
+            "probeDurationMs": 2172,
             "notes": []
           }
         },
@@ -7404,7 +7414,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2398,
+            "probeDurationMs": 2212,
             "notes": []
           }
         },
@@ -7445,7 +7455,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2172,
+            "probeDurationMs": 2148,
             "notes": []
           }
         },
@@ -7494,7 +7504,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2160,
+            "probeDurationMs": 2163,
             "notes": []
           }
         },
@@ -7529,7 +7539,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2341,
+            "probeDurationMs": 2206,
             "notes": []
           }
         },
@@ -7570,7 +7580,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2185,
+            "probeDurationMs": 2113,
             "notes": []
           }
         },
@@ -7832,29 +7842,179 @@
                   "className": "EditImplBase"
                 },
                 {
-                  "name": "삭제 : ALT+Y",
-                  "type": "Button",
-                  "className": "ButtonImpl"
-                },
-                {
-                  "name": "ALT+N",
-                  "type": "Edit",
-                  "className": "EditImplBase"
-                },
-                {
                   "name": "추가 : ALT+A",
                   "type": "Button",
                   "className": "ButtonImpl"
                 },
                 {
-                  "name": "ALT+M",
-                  "type": "Edit",
-                  "className": "EditImplBase"
+                  "name": "삭제 : ALT+Y",
+                  "type": "Button",
+                  "className": "ButtonImpl"
                 },
                 {
-                  "name": "ALT+P",
-                  "type": "Edit",
-                  "className": "EditImplBase"
+                  "name": "메뉴 및 기본 도구 상자 : ALT+M",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "서식 도구 상자 : ALT+F",
+                  "type": "RadioButton",
+                  "className": "RadioButtonImpl"
+                },
+                {
+                  "name": "ALT+J",
+                  "type": "ComboBox",
+                  "className": "ComboImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "CheckBox",
+                  "className": "CheckBoxImpl"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "",
+                  "type": "Button",
+                  "className": "Button"
+                },
+                {
+                  "name": "새 탭 : ALT+N",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "구분 기호 추가 : ALT+I",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "이름 바꾸기 : ALT+G",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "위로 이동 : ALT+Q",
+                  "type": "Button",
+                  "className": "ButtonImpl"
+                },
+                {
+                  "name": "아래로 이동 : ALT+W",
+                  "type": "Button",
+                  "className": "ButtonImpl"
                 },
                 {
                   "name": "처음 값으로 : ALT+R",
@@ -7898,7 +8058,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2158,
+            "probeDurationMs": 2339,
             "notes": []
           }
         },
@@ -8008,7 +8168,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2165,
+            "probeDurationMs": 2184,
             "notes": [
               "no-popup-detected"
             ]
@@ -8067,7 +8227,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2318,
+            "probeDurationMs": 2248,
             "notes": []
           }
         },
@@ -8108,7 +8268,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2220,
+            "probeDurationMs": 2377,
             "notes": []
           }
         },
@@ -8137,7 +8297,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2285,
+            "probeDurationMs": 2219,
             "notes": []
           }
         },
@@ -8238,7 +8398,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2399,
+            "probeDurationMs": 2247,
             "notes": []
           }
         },
@@ -8333,7 +8493,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2206,
+            "probeDurationMs": 2253,
             "notes": []
           }
         },
@@ -8385,14 +8545,37 @@
           "clickX": 592,
           "clickY": 106,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2260,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "gallery-pure",
+            "popupClass": "Popup",
+            "itemCount": 6,
+            "items": [
+              {
+                "name": "없음",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "보통",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "넓게",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "좁게",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2347,
+            "notes": []
           }
         },
         {
@@ -8403,14 +8586,31 @@
           "clickX": 671,
           "clickY": 93,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2106,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 4,
+            "items": [
+              {
+                "name": "가로쓰기 : ALT+H",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "세로쓰기(영문 눕힘) : ALT+O",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "세로쓰기(영문 세움) : ALT+U",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2124,
+            "notes": []
           }
         },
         {
@@ -8421,14 +8621,67 @@
           "clickX": 676,
           "clickY": 118,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2334,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "gallery-pure",
+            "popupClass": "Popup",
+            "itemCount": 11,
+            "items": [
+              {
+                "name": "왼쪽 위",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "위쪽 가운데",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 위",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 가운데",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "정가운데",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 가운데",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "왼쪽 아래",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "아래쪽 가운데",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              },
+              {
+                "name": "오른쪽 아래",
+                "controlType": "ListItem",
+                "depth": 2,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2223,
+            "notes": []
           }
         },
         {
@@ -8439,14 +8692,37 @@
           "clickX": 677,
           "clickY": 143,
           "dropdown": {
-            "classification": "no-popup",
-            "popupClass": null,
-            "itemCount": 0,
-            "items": [],
-            "probeDurationMs": 2227,
-            "notes": [
-              "no-popup-detected"
-            ]
+            "classification": "menu",
+            "popupClass": "Popup",
+            "itemCount": 5,
+            "items": [
+              {
+                "name": "글상자 연결 : ALT+C",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "연결 끊기 : ALT+D",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "이전 글상자 : ALT+P",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              },
+              {
+                "name": "다음 글상자 : ALT+N",
+                "controlType": "MenuItem",
+                "depth": 1,
+                "isDialogOpener": false
+              }
+            ],
+            "probeDurationMs": 2308,
+            "notes": []
           }
         },
         {
@@ -8549,7 +8825,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2199,
+            "probeDurationMs": 2251,
             "notes": [
               "no-popup-detected"
             ]
@@ -8580,7 +8856,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2174,
+            "probeDurationMs": 2177,
             "notes": []
           }
         },
@@ -8609,7 +8885,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2329,
+            "probeDurationMs": 2253,
             "notes": []
           }
         },
@@ -8625,7 +8901,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2297,
+            "probeDurationMs": 2208,
             "notes": [
               "no-popup-detected"
             ]
@@ -8674,7 +8950,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2268,
+            "probeDurationMs": 2359,
             "notes": []
           }
         },
@@ -8745,7 +9021,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2311,
+            "probeDurationMs": 2224,
             "notes": []
           }
         },
@@ -8774,7 +9050,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2298,
+            "probeDurationMs": 2193,
             "notes": []
           }
         }
@@ -8807,43 +9083,14 @@
           "clickX": 61,
           "clickY": 106,
           "dropdown": {
-            "classification": "visual-grid",
-            "popupClass": "Popup",
-            "itemCount": 7,
-            "items": [
-              {
-                "name": "표 만들기 : ALT+T",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "표 그리기 : ALT+W",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "표 지우개 : ALT+D",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "문자열을 표로 : ALT+L",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "표를 문자열로 : ALT+X",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              }
-            ],
-            "probeDurationMs": 2215,
-            "notes": []
+            "classification": "no-popup",
+            "popupClass": null,
+            "itemCount": 0,
+            "items": [],
+            "probeDurationMs": 2227,
+            "notes": [
+              "no-popup-detected"
+            ]
           }
         },
         {
@@ -8886,25 +9133,14 @@
           "clickX": 950,
           "clickY": 92,
           "dropdown": {
-            "classification": "menu",
-            "popupClass": "Popup",
-            "itemCount": 8,
-            "items": [
-              {
-                "name": "없음 : ALT+T",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              },
-              {
-                "name": "다른 채우기 : ALT+O",
-                "controlType": "MenuItem",
-                "depth": 1,
-                "isDialogOpener": false
-              }
-            ],
-            "probeDurationMs": 2183,
-            "notes": []
+            "classification": "no-popup",
+            "popupClass": null,
+            "itemCount": 0,
+            "items": [],
+            "probeDurationMs": 2664,
+            "notes": [
+              "no-popup-detected"
+            ]
           }
         },
         {
@@ -8992,7 +9228,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2324,
+            "probeDurationMs": 2200,
             "notes": []
           }
         },
@@ -9081,7 +9317,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2328,
+            "probeDurationMs": 2154,
             "notes": []
           }
         },
@@ -9194,7 +9430,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2314,
+            "probeDurationMs": 2238,
             "notes": []
           }
         },
@@ -9295,7 +9531,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2302,
+            "probeDurationMs": 2347,
             "notes": []
           }
         },
@@ -9311,7 +9547,7 @@
             "popupClass": "Popup",
             "itemCount": 6,
             "items": [],
-            "probeDurationMs": 2204,
+            "probeDurationMs": 2134,
             "notes": []
           }
         }
@@ -9449,7 +9685,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2125,
+            "probeDurationMs": 2171,
             "notes": []
           }
         },
@@ -9478,7 +9714,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2324,
+            "probeDurationMs": 2201,
             "notes": []
           }
         },
@@ -9549,7 +9785,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2246,
+            "probeDurationMs": 2284,
             "notes": []
           }
         },
@@ -9608,7 +9844,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2183,
+            "probeDurationMs": 2252,
             "notes": []
           }
         },
@@ -9624,7 +9860,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2167,
+            "probeDurationMs": 2169,
             "notes": [
               "no-popup-detected"
             ]
@@ -9703,7 +9939,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2189,
+            "probeDurationMs": 2322,
             "notes": []
           }
         },
@@ -9838,7 +10074,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2330,
+            "probeDurationMs": 2206,
             "notes": []
           }
         }
@@ -10306,7 +10542,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2574,
+            "probeDurationMs": 3482,
             "notes": []
           }
         },
@@ -10474,7 +10710,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2406,
+            "probeDurationMs": 2328,
             "notes": []
           }
         },
@@ -10511,7 +10747,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2392,
+            "probeDurationMs": 2399,
             "notes": []
           }
         },
@@ -10562,7 +10798,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2211,
+            "probeDurationMs": 2440,
             "notes": []
           }
         },
@@ -10603,7 +10839,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2375,
+            "probeDurationMs": 2406,
             "notes": []
           }
         },
@@ -10644,7 +10880,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2379,
+            "probeDurationMs": 2385,
             "notes": []
           }
         },
@@ -10745,7 +10981,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2424,
+            "probeDurationMs": 2461,
             "notes": []
           }
         },
@@ -10846,7 +11082,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2363,
+            "probeDurationMs": 2292,
             "notes": []
           }
         },
@@ -10893,7 +11129,7 @@
                 "isDialogOpener": true
               }
             ],
-            "probeDurationMs": 2379,
+            "probeDurationMs": 2333,
             "notes": []
           }
         },
@@ -11013,7 +11249,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2302,
+            "probeDurationMs": 2257,
             "notes": [
               "no-popup-detected"
             ]
@@ -11044,7 +11280,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2374,
+            "probeDurationMs": 2314,
             "notes": []
           }
         },
@@ -11073,7 +11309,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2448,
+            "probeDurationMs": 2223,
             "notes": []
           }
         },
@@ -11089,7 +11325,7 @@
             "popupClass": null,
             "itemCount": 0,
             "items": [],
-            "probeDurationMs": 2147,
+            "probeDurationMs": 2236,
             "notes": [
               "no-popup-detected"
             ]
@@ -11138,7 +11374,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2329,
+            "probeDurationMs": 2393,
             "notes": []
           }
         },
@@ -11209,7 +11445,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2318,
+            "probeDurationMs": 2379,
             "notes": []
           }
         },
@@ -11238,7 +11474,7 @@
                 "isDialogOpener": false
               }
             ],
-            "probeDurationMs": 2230,
+            "probeDurationMs": 2371,
             "notes": []
           }
         }
@@ -11414,9 +11650,9 @@
     "totalTabs": 15,
     "totalRibbonItems": 283,
     "totalDialogs": 21,
-    "totalControls": 508,
-    "totalDropdowns": 94,
-    "totalDropdownItems": 1125,
+    "totalControls": 540,
+    "totalDropdowns": 96,
+    "totalDropdownItems": 1136,
     "totalBackstageCategories": 22,
     "dropdownErrors": 0,
     "errors": 0
@@ -11520,7 +11756,7 @@
         }
       ],
       "itemCount": 17,
-      "probeDurationMs": 2782,
+      "probeDurationMs": 2747,
       "notes": []
     },
     "text-selected": {
@@ -11621,7 +11857,7 @@
         }
       ],
       "itemCount": 17,
-      "probeDurationMs": 2569,
+      "probeDurationMs": 2664,
       "notes": []
     },
     "shape-selected": {
@@ -11770,7 +12006,7 @@
         }
       ],
       "itemCount": 26,
-      "probeDurationMs": 2657,
+      "probeDurationMs": 2789,
       "notes": []
     },
     "table-inside": {
@@ -11871,7 +12107,7 @@
         }
       ],
       "itemCount": 17,
-      "probeDurationMs": 2729,
+      "probeDurationMs": 2686,
       "notes": []
     },
     "chart-selected": {
@@ -11960,7 +12196,7 @@
         }
       ],
       "itemCount": 16,
-      "probeDurationMs": 2840,
+      "probeDurationMs": 2767,
       "notes": []
     },
     "image-selected": {
@@ -12079,7 +12315,7 @@
         }
       ],
       "itemCount": 20,
-      "probeDurationMs": 2629,
+      "probeDurationMs": 2803,
       "notes": []
     }
   }
