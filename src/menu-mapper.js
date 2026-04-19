@@ -103,6 +103,9 @@ class MenuMapper {
         this.probeContextMenus = options.probeContextMenus !== false;
         this.probeImageTab = options.probeImageTab !== false;
         this.probeFileBackstage = options.probeFileBackstage !== false;
+        this.probeMemoTab = options.probeMemoTab !== false;
+        this.probeAnnotationTab = options.probeAnnotationTab !== false;
+        this.probeHeaderFooterTab = options.probeHeaderFooterTab !== false;
         this._recoveryInProgress = false; // plan §5 Layer 5
         this._cancelRequested = false;
         this._cancelWatcher = new CancelWatcher(() => {
@@ -301,6 +304,48 @@ class MenuMapper {
             await this._probeImageTab();
         }
 
+        // Step 9.5: Caret 컨텍스트 — 메모 탭
+        //   입력/메모 클릭 시 MenuBarImpl에 "메모" contextual tab이 등장.
+        //   도형·표 탭과 동일한 diff 패턴으로 캡처.
+        if (this.probeMemoTab) {
+            this._checkCancelled();
+            log('▶', 'Step 9.5: 메모 탭 프로빙 (캐럿 컨텍스트)');
+            await this._setForegroundMaximized();
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            try { await this._probeMemoTab(); }
+            catch (e) { if (e instanceof CancelledError) throw e; log('⚠', `  Step 9.5 실패: ${e.message}`); }
+        }
+
+        // Step 9.6: Caret 컨텍스트 — 주석 탭 (각주 삽입으로 진입)
+        //   Ctrl+N, N으로 각주 삽입 시 "주석" contextual tab이 등장.
+        //   미주도 동일한 "주석" 탭을 띄우므로 각주만 프로빙.
+        if (this.probeAnnotationTab) {
+            this._checkCancelled();
+            log('▶', 'Step 9.6: 주석 탭 프로빙 (각주 삽입)');
+            await this._setForegroundMaximized();
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            try { await this._probeAnnotationTab(); }
+            catch (e) { if (e instanceof CancelledError) throw e; log('⚠', `  Step 9.6 실패: ${e.message}`); }
+        }
+
+        // Step 9.7: Caret 컨텍스트 — 머리말/꼬리말 탭
+        //   쪽/머리말 드롭다운의 기본 항목 선택으로 편집 영역 진입.
+        //   "머리말/꼬리말" contextual tab이 등장.
+        if (this.probeHeaderFooterTab) {
+            this._checkCancelled();
+            log('▶', 'Step 9.7: 머리말/꼬리말 탭 프로빙 (캐럿 컨텍스트)');
+            await this._setForegroundMaximized();
+            await sleep(DELAY.long);
+            await this._ensureNoDialog();
+            await this._ensureUiHealthy();
+            try { await this._probeHeaderFooterTab(); }
+            catch (e) { if (e instanceof CancelledError) throw e; log('⚠', `  Step 9.7 실패: ${e.message}`); }
+        }
+
         // Step 10: 우클릭 컨텍스트 메뉴 프로빙 (Phase E)
         if (this.probeContextMenus) {
             this._checkCancelled();
@@ -393,8 +438,15 @@ class MenuMapper {
         // 마우스 클릭으로 탭 전환 (버튼 영역 클릭 → 리본 패널 교체)
         win32.mouseClick(tab.clickX, tab.clickY);
         await sleep(DELAY.long);
+        return this._scanActiveRibbon();
+    }
 
-        // ToolBox 자식을 UIA로 직접 읽기
+    /**
+     * 현재 화면에 떠있는 리본(ToolBoxImpl)의 항목을 그대로 읽어온다.
+     * 탭 클릭 없이 "지금 활성인 리본"을 스캔 — 메모/머리말/꼬리말/각주/미주
+     * 편집 모드처럼 전용 리본으로 교체되는 컨텍스트에서 재사용.
+     */
+    async _scanActiveRibbon() {
         const session = sessionModule.getSession();
         sessionModule.refreshHwpElement();
         if (!session.hwpElement) return [];
@@ -2407,6 +2459,209 @@ class MenuMapper {
     _isDangerousBackstage(name) {
         if (!name) return false;
         return DANGEROUS_BACKSTAGE_CATEGORIES.some(p => p.test(name));
+    }
+
+    // =========================================================================
+    // Caret 컨텍스트 탭 프로빙 (메모/주석/머리말·꼬리말)
+    //   편집 영역(메모 내용창·각주·머리말 등)에 캐럿이 위치하면 MenuBarImpl에
+    //   contextual tab이 등장. 도형·표 탭과 동일한 diff 패턴으로 수집하되,
+    //   cleanup은 리본 안의 '닫기' 버튼 클릭을 우선한다.
+    // =========================================================================
+
+    /**
+     * Caret 컨텍스트 탭을 diff 방식으로 프로빙하는 공통 헬퍼.
+     * enterFn으로 편집 영역에 진입한 뒤 새로 isEnabled된 탭을 모두 수집/프로빙한다.
+     * cleanup은 수집한 리본에서 closePatterns에 매칭되는 '닫기' 버튼을 우선 클릭.
+     *
+     * @param {object} params
+     * @param {string} params.label        로그 라벨 (예: '메모 탭')
+     * @param {string} params.contextState tabs[name].contextState 값
+     * @param {function} params.enterFn    async () => void
+     * @param {RegExp[]} params.closePatterns 리본에서 닫기 버튼을 찾는 정규식(우선순위 순)
+     * @param {number} [params.rollbackUndos=3] cleanup 후 Ctrl+Z 반복 횟수
+     */
+    async _probeContextualTabByEntry({ label, contextState, enterFn, closePatterns, rollbackUndos = 3 }) {
+        await this._ensureUiHealthy();
+
+        // 진입 전 enabled 탭 스냅샷 — diff의 기준
+        const beforeTabs = await this._collectMenuTabs();
+        const beforeNames = new Set(beforeTabs.filter(t => t.isEnabled).map(t => t.name));
+
+        try { await enterFn(); }
+        catch (e) {
+            log('⚠', `  ${label} 진입 실패: ${e.message}`);
+            await this._recover();
+            return;
+        }
+        await sleep(DELAY.dialog);
+
+        const capturedCloseItems = [];
+        try {
+            const afterTabs = await this._collectMenuTabs();
+            const newTabs = afterTabs.filter(t => t.isEnabled && !beforeNames.has(t.name));
+            if (newTabs.length === 0) {
+                log('⚠', `  ${label}: 새 contextual tab 미탐지 — 스킵`);
+                return;
+            }
+            log('ℹ', `  ${label}: 새 탭 ${newTabs.map(t => t.name).join(', ')}`);
+
+            for (const tabInfo of newTabs) {
+                this._checkCancelled();
+                await this._switchTab(tabInfo);
+                await sleep(DELAY.long);
+                const ribbonItems = await this._collectRibbonItems(tabInfo);
+                for (const it of ribbonItems) it.type = it.hasDropdown ? 'dropdown' : 'action';
+
+                this.map.tabs[tabInfo.name] = {
+                    accessKey: tabInfo.accessKey,
+                    uiaName: tabInfo.uiaName,
+                    ribbonItems,
+                    contextState,
+                };
+                this.map.stats.totalTabs++;
+                this.map.stats.totalRibbonItems += ribbonItems.length;
+                log('ℹ', `  "${tabInfo.name}" 탭: ${ribbonItems.length}개 리본 항목`);
+
+                // cleanup용 닫기 버튼 후보 저장
+                for (const pat of closePatterns) {
+                    const hit = ribbonItems.find(i => i.name && pat.test(i.name));
+                    if (hit) { capturedCloseItems.push(hit); break; }
+                }
+
+                // 드롭다운 프로빙 — 컨텍스트 상실 시 재진입 없이 마킹
+                const dropdownItems = ribbonItems.filter(i => i.hasDropdown);
+                if (dropdownItems.length === 0) continue;
+                log('▶', `  "${tabInfo.name}" 드롭다운 프로빙 (${dropdownItems.length}개)`);
+                const tabDeadline = Date.now() + DD_LIMITS.perTabBudgetMs;
+
+                for (const item of dropdownItems) {
+                    this._checkCancelled();
+                    if (Date.now() > tabDeadline) { log('⏰', `  "${tabInfo.name}" 탭 예산 초과`); break; }
+                    if (this._isDangerousDropdown(item.name)) {
+                        item.dropdown = { classification: 'blacklisted', itemCount: 0, items: [], notes: ['blacklisted'] };
+                        continue;
+                    }
+                    if (!(await this._isTabStillActive(tabInfo.name))) {
+                        item.dropdown = { classification: 'context-lost', itemCount: 0, items: [], notes: ['context-lost'] };
+                        continue;
+                    }
+
+                    try {
+                        const dd = await this._probeDropdown(item);
+                        item.dropdown = dd;
+                        if (dd.classification !== 'no-popup' && dd.classification !== 'error') {
+                            this.map.stats.totalDropdowns++;
+                            this.map.stats.totalDropdownItems += dd.itemCount;
+                        }
+                        log('📂', `    "${item.name}" → ${dd.classification} (${dd.itemCount}개)`);
+                    } catch (e) {
+                        log('⚠', `    "${item.name}" 실패: ${e.message}`);
+                        item.dropdown = { classification: 'error', itemCount: 0, items: [], notes: [`error:${e.message}`] };
+                        this.map.stats.dropdownErrors++;
+                        if (!this._recoveryInProgress) {
+                            this._recoveryInProgress = true;
+                            try { await this._recover(); } finally { this._recoveryInProgress = false; }
+                        }
+                    }
+                    await this._ensureNoPopup();
+                }
+            }
+        } finally {
+            // cleanup: 리본에서 찾은 닫기 버튼 클릭을 우선, 실패 시 Escape 복구
+            let closed = false;
+            for (const closeItem of capturedCloseItems) {
+                try {
+                    win32.mouseClick(closeItem.clickX, closeItem.clickY);
+                    await sleep(DELAY.long);
+                    log('ℹ', `  ${label} 종료: "${closeItem.name}"`);
+                    closed = true;
+                    break;
+                } catch (_) {}
+            }
+            if (!closed) {
+                log('⚠', `  ${label} 종료 버튼 미사용 — Escape 폴백`);
+                await this._recover();
+            }
+            // 삽입 롤백
+            for (let i = 0; i < rollbackUndos; i++) {
+                try { await this._safeKeys('Ctrl+Z'); } catch (_) { break; }
+                await sleep(DELAY.short);
+            }
+        }
+    }
+
+    async _probeMemoTab() {
+        const memoItem = (this.map.tabs['입력']?.ribbonItems || [])
+            .find(i => i.name && i.name.includes('메모'));
+        if (!memoItem) { log('⚠', '  입력/메모 항목 미탐지 — Step 9.5 스킵'); return; }
+
+        // 입력 탭으로 마우스 전환 — Alt+accessKey는 실제 accessKey(D)와 달라
+        // 과거 `Alt+I` 가정이 잘못돼 있었음. `_switchTab` + `_safeClick`이 신뢰성 높음.
+        const menuTabs = await this._collectMenuTabs();
+        const inputTab = menuTabs.find(t => t.name === '입력');
+        if (!inputTab) { log('⚠', '  입력 탭 미탐지 — Step 9.5 스킵'); return; }
+
+        return this._probeContextualTabByEntry({
+            label: '메모 탭',
+            contextState: 'memo-caret',
+            enterFn: async () => {
+                await this._switchTab(inputTab);
+                await sleep(DELAY.long);
+                await this._safeClick(memoItem.clickX, memoItem.clickY);
+            },
+            closePatterns: [/메모.*닫기/, /^닫기/],
+            rollbackUndos: 3,
+        });
+    }
+
+    async _probeAnnotationTab() {
+        return this._probeContextualTabByEntry({
+            label: '주석 탭',
+            contextState: 'annotation-caret',
+            // Ctrl+N, N = 각주 삽입. 미주도 같은 "주석" 탭을 띄우므로 각주만 프로빙.
+            enterFn: async () => {
+                await this._safeKeys('Ctrl+N');
+                await sleep(100);
+                await this._safeKeys('N');
+            },
+            closePatterns: [/주석 닫기/, /각주.*닫기/, /본문으로/, /^닫기/],
+            rollbackUndos: 2,
+        });
+    }
+
+    async _probeHeaderFooterTab() {
+        // 알려진 한계: 머리말 드롭다운은 `_probeDropdown`으로 열 수 있으나, 그 안의
+        // 아이템("위쪽 : ALT+A", "머리말/꼬리말 : ALT+H" 등)이 키보드·마우스·UIA invoke
+        // 어느 수단으로도 실행되지 않음. HWP 2027의 머리말 드롭다운은 표준 입력을
+        // 수신하지 않는 것으로 보이며, 정식 진입 경로 재조사가 필요.
+        //
+        // 그 결과 "머리말/꼬리말" contextual tab은 현재 자동 캡처 불가.
+        // probe는 best-effort로 시도하고, diff가 비면 _probeContextualTabByEntry가
+        // "새 contextual tab 미탐지"로 로그하고 스킵.
+        const tab = this.map.tabs['쪽'];
+        if (!tab) { log('⚠', '  쪽 탭 미탐지 — Step 9.7 스킵'); return; }
+        const headerItem = (tab.ribbonItems || []).find(i => i.name && /머리말/.test(i.name));
+        if (!headerItem) { log('⚠', '  쪽/머리말 항목 미탐지 — Step 9.7 스킵'); return; }
+
+        const menuTabs = await this._collectMenuTabs();
+        const sideTab = menuTabs.find(t => t.name === '쪽');
+        if (!sideTab) { log('⚠', '  쪽 탭 좌표 미탐지 — Step 9.7 스킵'); return; }
+
+        return this._probeContextualTabByEntry({
+            label: '머리말/꼬리말 탭',
+            contextState: 'header-footer-caret',
+            enterFn: async () => {
+                await this._switchTab(sideTab);
+                await sleep(DELAY.long);
+                await this._safeClick(headerItem.clickX, headerItem.clickY);
+                await sleep(DELAY.long);
+                // 드롭다운의 기본 항목 선택 시도 — 현재 HWP가 이 Enter를 무시하는
+                // 문제가 있으나, 향후 HWP 업데이트 또는 다른 진입 경로 발견 시 작동.
+                await this._safeKeys('Enter');
+            },
+            closePatterns: [/머리말\/꼬리말 닫기/, /본문으로/, /^닫기/],
+            rollbackUndos: 2,
+        });
     }
 
     // =========================================================================
