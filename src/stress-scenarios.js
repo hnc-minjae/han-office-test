@@ -47,6 +47,11 @@ async function enterHeaderOrFooter(map, pattern, ctx, targetState) {
     if (!tab) throw new Error('쪽 탭 없음');
     const item = (tab.ribbonItems || []).find(i => i.name && pattern.test(i.name));
     if (!item) throw new Error(`${targetState} 진입 버튼 없음`);
+    // 쪽 탭 전환 — Alt+P 등
+    if (tab.accessKey) {
+        await controller.pressKeys({ keys: `Alt+${tab.accessKey}` });
+        await sleep(180);
+    }
     win32.mouseClick(item.clickX, item.clickY);
     await sleep(500);
     // 드롭다운에서 기본 항목(양쪽) Enter
@@ -79,6 +84,11 @@ async function execStep(step, map, ctx) {
             const pattern = step.name instanceof RegExp ? step.name : new RegExp(step.name);
             const item = (tab.ribbonItems || []).find(i => i.name && pattern.test(i.name));
             if (!item) throw new Error(`항목 없음: ${step.tab} > ${step.name}`);
+            // 탭 전환 필수 — 맵 좌표는 해당 탭 활성 기준
+            if (tab.accessKey) {
+                await controller.pressKeys({ keys: `Alt+${tab.accessKey}` });
+                await sleep(180);
+            }
             win32.mouseClick(item.clickX, item.clickY);
             await sleep(250);
             break;

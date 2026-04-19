@@ -81,10 +81,21 @@ function findRibbonItem(map, tabName, pattern) {
 }
 
 async function clickRibbonByMap(map, tabName, pattern, label) {
+    const tabInfo = map.tabs[tabName];
+    if (!tabInfo) {
+        log('⚠', `${label}: 탭 "${tabName}" 맵에 없음 — 스킵`);
+        return false;
+    }
     const item = findRibbonItem(map, tabName, pattern);
     if (!item) {
         log('⚠', `${label}: 맵에서 "${tabName} > ${pattern}" 찾을 수 없음 — 스킵`);
         return false;
+    }
+    // 탭 전환 — 맵 좌표는 해당 탭 활성 기준 절대 좌표이므로 먼저 탭을 활성화해야
+    // 의도한 리본 항목이 실제로 눌린다. access key 방식이 resolution-safe.
+    if (tabInfo.accessKey) {
+        await controller.pressKeys({ keys: `Alt+${tabInfo.accessKey}` });
+        await sleep(DELAY.medium);
     }
     win32.mouseClick(item.clickX, item.clickY);
     await sleep(DELAY.medium);
@@ -178,14 +189,14 @@ async function seedEndnote() {
 
 async function seedMemo(map) {
     try {
-        // 입력 탭 > 메모(드롭다운 or 직접 버튼). 맵에서 "메모" 이름 찾기.
+        // 입력 탭 > 메모는 type=action(버튼). 클릭 즉시 메모 편집 모드 진입.
+        // 여기서 Enter를 치면 본문에 줄바꿈이 들어가 본문 상태가 깨진다 — 금지.
         const clicked = await clickRibbonByMap(map, '입력', /메모/, '메모');
         if (!clicked) return false;
-        await sleep(DELAY.long);
-        // 드롭다운일 수 있음 → "새 메모" 같은 첫 항목 Enter
-        await pressKey('Enter');
-        await sleep(DELAY.long);
+        // 메모 편집 영역으로 포커스 전환될 시간 확보
+        await sleep(DELAY.dialog);
         await typeLine(CORPUS.memoText);
+        // 메모 편집 모드 종료 — 두 번 Esc (한 번은 메모, 두 번째는 안전장치)
         await pressKey('Escape');
         await pressKey('Escape');
         log('✓', '메모 삽입');
@@ -255,7 +266,11 @@ async function seed(map, ctx, runId) {
     results.table           = await seedTable();
     results.footnote        = await seedFootnote();
     results.endnote         = await seedEndnote();
-    results.memo            = await seedMemo(map);
+    // 메모 삽입은 리본 클릭/access key/HAction 모두 안정적으로 메모를 생성하지
+    // 못하고 후속 typeText가 본문으로 새어 본문이 오염되는 버그가 확인됨.
+    // stress는 랜덤 ribbon 샘플링에서 메모 항목이 뽑힐 때만 해당 코드 경로를 치며,
+    // 초기 시딩에서는 제외해 본문 안정성을 우선한다.
+    // results.memo         = await seedMemo(map);
     results.header          = await seedHeader(map, runId);
     results.footer          = await seedFooter(map, runId);
     try { await ctx.forceReturnToBody(); } catch (_) {}

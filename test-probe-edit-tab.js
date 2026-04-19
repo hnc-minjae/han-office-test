@@ -75,3 +75,4 @@ async function run() {
 }
 
 run().catch(e => { console.error('ERROR:', e.message); process.exit(1); });
+'use strict';
